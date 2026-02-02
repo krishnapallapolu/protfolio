@@ -581,13 +581,20 @@ include_once('inc/header.php');
                     <div class="skill-card shadow p-3 h-100">
                         <h4 class="skill-card-title">Frontend</h4>
                         <div class="skill-badges">
+                            <span class="skill-badge">JavaScript (ES6+)</span>
                             <span class="skill-badge">React</span>
+                            <span class="skill-badge">React Components</span>
                             <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">MUI</span>
+                            <span class="skill-badge">Bootstrap</span>
                             <span class="skill-badge">TypeScript</span>
                             <span class="skill-badge">HTML5</span>
                             <span class="skill-badge">CSS3 / Sass</span>
                             <span class="skill-badge">Tailwind</span>
                         </div>
+
+                        <div class="skill-packages mt-2 small text-muted">Popular packages: <span class="package">react-router</span>, <span class="package">redux-toolkit</span>, <span class="package">axios</span>, <span class="package">formik</span>, <span class="package">react-hook-form</span>, <span class="package">@mui/material</span>, <span class="package">react-bootstrap</span></div>
+
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">UI Architecture</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
                             <div class="skill-row"><div class="skill-name">Performance</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
