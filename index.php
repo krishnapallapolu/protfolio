@@ -730,6 +730,8 @@ include_once('inc/header.php');
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>
                                 <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON.</li>
                                 <li>Leveraged Laravel, PHP, MySQL, JavaScript, jQuery, Ajax, WordPress, Webflow, and Wix Velo API for various web projects, maintaining robust version control using Git/GitHub.</li>
+                                <li>Databases: Production-grade PostgreSQL deployments and Supabase for real-time sync and hosted Postgres solutions.</li>
+                                <li>Implemented AI-driven automation using <strong>n8n</strong> for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
                             </ul>
                             
 

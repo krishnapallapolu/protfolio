@@ -49,9 +49,11 @@
             setTheme(newTheme);
         });
 
-        // Set initial pressed state for accessibility
+        // Set initial pressed state for accessibility and apply theme classes immediately
         const initTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         themeToggle.setAttribute('aria-pressed', initTheme === 'light' ? 'true' : 'false');
+        // Ensure the rest of the UI (navbar, footer classes) reflects the selected theme without requiring a refresh
+        setTheme(initTheme);
     }
 
     // Listen for system theme changes
