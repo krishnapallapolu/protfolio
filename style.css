@@ -315,17 +315,11 @@ a:hover {
     transform: scale(1);
 }
 
-/* Profile thumbnail for hero card */
-.profile-thumb {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* Optional larger variant for About card */
+/* Unified profile headshot (applies to any headshot class) */
+.profile-headshot,
+.profile-thumb,
 .profile-about {
-    width: 300px;
+    width: 300px; /* desktop default */
     height: 300px;
     object-fit: cover;
     border-radius: 12px;
@@ -961,6 +955,8 @@ h1 .name {
         flex: 0 0 100px;
     }
 
+    .profile-headshot,
+    .profile-thumb,
     .profile-about {
         width: 220px;
         height: 220px;
@@ -1007,14 +1003,11 @@ h1 .name {
         height: 200px;
     }
 
-    .profile-thumb {
+    .profile-headshot,
+    .profile-thumb,
+    .profile-about {
         width: 180px;
         height: 180px;
-    }
-
-    .profile-about {
-        width: 160px;
-        height: 160px;
     }
 
     /* Hide geometric shapes on mobile */

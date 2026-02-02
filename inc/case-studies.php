@@ -4,7 +4,7 @@
         <h2 class="text_shadow mb-5 text-center">Case Studies</h2>
         <div class="row g-4">
             <!-- Case Study 1: Healthcare Platform -->
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
                         <i class="fas fa-hospital-user"></i>
@@ -40,7 +40,7 @@
             </div>
 
             <!-- Case Study 2: Restaurant POS -->
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
                         <i class="fas fa-utensils"></i>
@@ -76,7 +76,7 @@
             </div>
 
             <!-- Case Study 3: Event Management -->
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
                         <i class="fas fa-calendar-check"></i>
@@ -112,7 +112,7 @@
             </div>
 
             <!-- Case Study 4: Internal Tools -->
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
                         <i class="fas fa-tools"></i>
@@ -148,7 +148,7 @@
             </div>
 
             <!-- Case Study 5: ETL & Social Automation -->
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
                         <i class="fas fa-project-diagram"></i>
