@@ -81,16 +81,12 @@ include_once('inc/header.php');
                         <div class="d-flex align-items-center">
                             <img class="rounded shadow me-3 profile-about" src="images/krishna-headshot2.png" alt="Krishna" />
                             <div>
-                                <h4 class="mb-1">Krishna Pallapolu</h4>
-                                <div class="mb-2 text-muted">Development Lead</div>
-                                <div>
-                                    <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                    <a class="d-inline pe-2"  href="https://github.com/krishna-pallapolu" target="_blank">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
+                                <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a class="d-inline pe-2"  href="https://github.com/krishna-pallapolu" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -297,15 +293,15 @@ include_once('inc/header.php');
                     <section id="work-history">
                         <h2 class="text_shadow mb-5">Work History</h2>
                         <article class="pb-5">
-                            <h3>Full Stack Developer / Development Lead</h3>
+                            <h3>Development Manager/ Senior Full Stack Developer</h3>
                             <p>Meeting Minds Experts - Dubai, Dubai</p>
                             <p><i> 2023 - Present</i></p>
                             <ul class="d-none">
                                 <li>Design, develop, and manage websites, educational platforms, and internal applications specific to the healthcare sector.                                
-                                <li>Proficient in integrating websites with third-party applications such as DTCM and Eventsair to retrieve registration and program data, as well as generate barcodes using PHP, cURL, REST API, and JSON.</li>
-                                <li>Collaborate closely with stakeholders and project man- agers to ensure seamless coordination and timely delivery of projects.</li>
+                                <li>Proficient in integrating websites with third-party applications such as DTCM and Eventsair to retrieve registration and program data, as well as generate barcodes using PHP, cURL, REST API, GraphQl and JSON.</li>
+                                <li>Collaborate closely with stakeholders and project managers to ensure seamless coordination and timely delivery of projects.</li>
                                 <li>Demonstrated ability to lead teams effectively, resulting in the successful and punctual delivery of websites and applications.</li>
-                                <li>Utilized MERN stack for internal applications and Lar- avel, MySQL, JavaScript, jQuery, Wordpress, Webflow, Wix Velo API, Git/Github and other web technologies.</li>
+                                <li>Utilized MERN stack for internal applications and Laravel, MySQL, JavaScript, jQuery, Wordpress, Webflow, Wix Velo API, Git/Github and other web technologies.</li>
                             </ul>
                             <ul>
                                 <li>Developed, and managed scalable websites, educational platforms, and internal applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) ensuring high performance, data integrity, and seamless user experiences.</li>
@@ -324,7 +320,7 @@ include_once('inc/header.php');
                             <p><i>Jan 2022 - Nov 2023</i></p>
 
                             <ul class="d-none">
-                                <li>Led and managed a team of 4 in the development projects for the websites throughout the various phases of the project life cycle with industry best practices</li>
+                                <li>Led and managed a team of developers in the development projects for the websites throughout the various phases of the project life cycle with industry best practices</li>
                                 <li>Innovated and implemented several processes in place to ensure smoother functioning among the cross-functional teams (Design, Content, QA, Marketing)</li>
                                 <li>Improved and ensured the site's uptime to 99.9% from 80%, implemented SEO using Ahrefs, Pagespeed Insights, GT Metrix.</li>
                                 <li>Assisted developers in templates/components development using PHP, JavaScript, jQuery, MySQL, Ajax, NodeJS, JSON API,  HTML5, CSS3 and testing, debugging, and deployment.</li>
