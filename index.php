@@ -88,9 +88,16 @@ include_once('inc/header.php');
                         <a class="nav-link" href="#work-history">Work History</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#education">Education</a>
                     </li>
                 </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -167,18 +174,19 @@ include_once('inc/header.php');
                         <li>HTML5</li>
                         <li>CSS3</li>
                         <li>Sass</li>
+                        <li>Tailwind CSS</li>
                         <li>JavaScript (ES6+)</li>
                         <li>TypeScript</li>
                         <li>jQuery</li>
                         <li>Ajax</li>
                         <li>Web APIs</li>
+                        <li>Vite</li>
+                        <li>Framer Motion</li>
                         <li>Responsive Design</li>
                         <li>Redux Toolkit</li>
-                        <li>Frontend Development</li>
-                        <li>Web Development</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
                     <h3>Backend</h3>
                     <ul class="list-unstyled row px-3">
@@ -188,11 +196,38 @@ include_once('inc/header.php');
                         <li>Laravel</li>
                         <li>REST APIs</li>
                         <li>GraphQL</li>
-                        <li>Microservices Architecture</li>
+                        <li>Prisma</li>
+                        <li>Supabase</li>
+                        <li>Redis</li>
+                        <li>Microservices</li>
                         <li>Cloudflare Workers</li>
                     </ul>
                 </div>
-                
+
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <ul class="list-unstyled row px-3">
+                        <li>OpenAI API</li>
+                        <li>Claude API</li>
+                        <li>LangChain</li>
+                        <li>Prompt Engineering</li>
+                        <li>RAG Systems</li>
+                        <li>AI Integrations</li>
+                        <li>Chatbot Development</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <ul class="list-unstyled row px-3">
+                        <li>React Native</li>
+                        <li>Expo</li>
+                        <li>PWA Development</li>
+                        <li>Mobile-First Design</li>
+                        <li>App Store Deployment</li>
+                    </ul>
+                </div>
+
                 <div class="skill-category">
                     <h3>CMS</h3>
                     <ul class="list-unstyled row px-3">
@@ -203,50 +238,53 @@ include_once('inc/header.php');
                         <li>Custom Themes & Plugins</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
                     <h3>DevOps & Cloud</h3>
                     <ul class="list-unstyled row px-3">
                         <li>AWS (Lambda, S3, RDS)</li>
                         <li>Docker</li>
-                        <li>CI/CD Pipelines (GitHub Actions, Jenkins)</li>
+                        <li>Vercel</li>
+                        <li>Netlify</li>
+                        <li>Cloudflare</li>
+                        <li>CI/CD (GitHub Actions)</li>
                         <li>Kubernetes</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
                     <h3>Databases</h3>
                     <ul class="list-unstyled row px-3">
-                        <li>NoSQL (MongoDB)</li>
+                        <li>MongoDB</li>
                         <li>MySQL</li>
                         <li>PostgreSQL</li>
+                        <li>Firebase</li>
                         <li>Database Optimization</li>
                         <li>Migrations</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
                     <h3>Authentication & Security</h3>
                     <ul class="list-unstyled row px-3">
                         <li>JWT</li>
                         <li>OAuth 2.0</li>
                         <li>Bcrypt.js</li>
-                        <li>Role-based Access Control (RBAC)</li>
+                        <li>RBAC</li>
                         <li>Security Best Practices</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
-                    <h3>Others</h3>
+                    <h3>Tools & Practices</h3>
                     <ul class="list-unstyled row px-3">
-                        <li>Git</li>
+                        <li>Git & GitHub</li>
                         <li>PM2</li>
                         <li>Webpack</li>
                         <li>TDD</li>
                         <li>Unit Testing</li>
                         <li>SOLID Principles</li>
-                        <li>Version Control (GitHub, Bitbucket)</li>
-                        <li>Agile/Scrum Methodology</li>
+                        <li>Agile/Scrum</li>
                     </ul>
                 </div>
 
@@ -428,6 +466,159 @@ include_once('inc/header.php');
             </div>
         </div>
     </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies-section border-bottom">
+        <div class="container">
+            <h2 class="text_shadow mb-5 text-center">Case Studies</h2>
+            <div class="row g-4">
+                <!-- Case Study 1: Healthcare Platform -->
+                <div class="col-lg-6">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <h3 class="case-study-title">Healthcare Education Platform</h3>
+                            <p class="case-study-description">
+                                Developed a comprehensive healthcare education platform serving medical professionals.
+                                Built scalable architecture to handle concurrent users during live training sessions.
+                            </p>
+                            <div class="case-study-tech">
+                                <span class="tech-badge">React.js</span>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">AWS</span>
+                            </div>
+                            <div class="case-study-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">6,000+</div>
+                                    <div class="stat-label">Active Users</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">99.9%</div>
+                                    <div class="stat-label">Uptime</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">40%</div>
+                                    <div class="stat-label">Faster Load</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Restaurant POS -->
+                <div class="col-lg-6">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <h3 class="case-study-title">Enterprise Restaurant POS System</h3>
+                            <p class="case-study-description">
+                                Led development of a cloud-based POS system for restaurants.
+                                Improved website uptime from 80% to 99.9% and implemented security measures against DDoS attacks.
+                            </p>
+                            <div class="case-study-tech">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">React.js</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Redis</span>
+                            </div>
+                            <div class="case-study-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">30,000+</div>
+                                    <div class="stat-label">User Base</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">On-time Delivery</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">20%</div>
+                                    <div class="stat-label">Performance Boost</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Event Management -->
+                <div class="col-lg-6">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <h3 class="case-study-title">Event Registration System</h3>
+                            <p class="case-study-description">
+                                Built integrated event management system with third-party APIs (DTCM, Eventsair).
+                                Automated registration data retrieval and barcode generation for seamless check-ins.
+                            </p>
+                            <div class="case-study-tech">
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">REST API</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">MySQL</span>
+                            </div>
+                            <div class="case-study-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">50+</div>
+                                    <div class="stat-label">Events Managed</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">10,000+</div>
+                                    <div class="stat-label">Registrations</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">60%</div>
+                                    <div class="stat-label">Time Saved</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 4: Internal Tools -->
+                <div class="col-lg-6">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <h3 class="case-study-title">Internal Tools & Automation</h3>
+                            <p class="case-study-description">
+                                Developed suite of internal tools for workflow automation.
+                                Implemented CI/CD pipelines with GitHub Actions for continuous deployment and automated testing.
+                            </p>
+                            <div class="case-study-tech">
+                                <span class="tech-badge">MERN Stack</span>
+                                <span class="tech-badge">Docker</span>
+                                <span class="tech-badge">GitHub Actions</span>
+                                <span class="tech-badge">AWS</span>
+                            </div>
+                            <div class="case-study-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">5+</div>
+                                    <div class="stat-label">Tools Built</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">80%</div>
+                                    <div class="stat-label">Manual Work Reduced</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">3x</div>
+                                    <div class="stat-label">Deploy Speed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="border-bottom py-5">
         <div class="container">
             <!-- Education Section -->
@@ -435,17 +626,16 @@ include_once('inc/header.php');
                 <div class="col-12">
                     <section class="" id="education">
                         <h2 class="d-inline text_shadow mb-5">Education</h2>
-                        <article class="w-100 my-3 p-4 rounded-4" style="background: #055160">
-                            <h3>Bachelor of Technology(M.E)</h3>
+                        <article class="w-100 my-3 p-4 rounded-4 education-card">
+                            <h3>Bachelor of Technology (M.E)</h3>
                             <p>QIS College of Engineering & Technology (QIS)</p>
                             <p>Ongole, Andhra Pradesh</p>
-
                         </article>
 
-                        <article class="w-100 my-3 p-4  rounded-4" style="background:#055160">
-                            <h3>Board of Intermediate Education(Maths, Physics, Chemistry)</h3>
+                        <article class="w-100 my-3 p-4 rounded-4 education-card">
+                            <h3>Board of Intermediate Education (Maths, Physics, Chemistry)</h3>
                             <p>Sri Chaitanya Junior College</p>
-                            <p> Vijaywada, Andhra Pradesh </p>
+                            <p>Vijaywada, Andhra Pradesh</p>
                         </article>
                     </section>
                 </div>

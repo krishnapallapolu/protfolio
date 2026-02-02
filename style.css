@@ -1,10 +1,134 @@
+/* ===== CSS Variables for Theming ===== */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: #212529;
+    --bg-secondary: #1a1d21;
+    --bg-card: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent: #34e89e;
+    --accent-dark: #2bc47f;
+    --accent-shadow: rgba(51, 232, 158, 0.75);
+    --accent-shadow-light: rgba(51, 232, 158, 0.3);
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: rgba(0, 0, 0, 0.4);
+    --education-bg: #055160;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --navbar-bg: #212529;
+    --link-color: #34e89e;
+    --link-hover: #2bc47f;
+}
+
+[data-theme="light"] {
+    /* Light Theme (Warm Cream/Green) */
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f0ede8;
+    --bg-card: rgba(0, 0, 0, 0.05);
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --accent: #00b894;
+    --accent-dark: #00a383;
+    --accent-shadow: rgba(0, 184, 148, 0.4);
+    --accent-shadow-light: rgba(0, 184, 148, 0.2);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: rgba(0, 0, 0, 0.15);
+    --education-bg: #e8f6f3;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --navbar-bg: #f0ede8;
+    --link-color: #00a383;
+    --link-hover: #00896e;
+}
+
+/* ===== Base Styles ===== */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     margin: 0;
     padding: 0;
 }
 
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.theme-toggle:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    transform: rotate(15deg);
+}
+
+.theme-toggle .fa-sun {
+    display: none;
+}
+
+.theme-toggle .fa-moon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .fa-sun {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .fa-moon {
+    display: none;
+}
+
+/* ===== Navbar Overrides ===== */
+.navbar {
+    background-color: var(--navbar-bg) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--text-primary) !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent) !important;
+}
+
+/* ===== Section Backgrounds ===== */
+.bg-dark {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-secondary-custom {
+    background-color: var(--bg-secondary) !important;
+}
+
+.text-white {
+    color: var(--text-primary) !important;
+}
+
+/* ===== Skills Section ===== */
 .skills-section {
     padding: 50px;
     text-align: center;
@@ -17,7 +141,7 @@ body {
     font-weight: bold;
     margin-bottom: 40px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .skills-container {
@@ -30,40 +154,223 @@ body {
     display: inline;
     width: auto;
 }
+
 .skill-category {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-card);
     border-radius: 10px;
     padding: 20px;
     width: calc(33% - 30px);
     margin: 15px 0;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 15px var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-category:hover {
     transform: scale(1.05);
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 8px 25px var(--card-shadow-hover);
 }
 
 .skill-category h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: #34e89e;
+    color: var(--accent);
 }
 
 .skill-category p {
     font-size: 1rem;
     line-height: 1.6;
+    color: var(--text-secondary);
 }
 
+.skill-category ul li {
+    color: var(--text-primary);
+}
+
+/* ===== Card Styles ===== */
+.card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+}
+
+.card-body {
+    color: var(--text-primary);
+}
+
+.profile_card,
+.shadow_r {
+    box-shadow: 10px 10px 5px 0px var(--accent-shadow);
+    -webkit-box-shadow: 10px 10px 5px 0px var(--accent-shadow);
+    -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow);
+}
+
+.shadow_l,
+#skills {
+    box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
+    -webkit-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
+    -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
+}
+
+/* ===== Text Shadow Effect ===== */
+.text_shadow {
+    padding: 0 5px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #FFFFFF;
+    background: rgba(49, 63, 141, 0.7);
+    text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
+}
+
+[data-theme="light"] .text_shadow {
+    background: rgba(0, 184, 148, 0.9);
+    text-shadow: 2px 2px 0 #00896e, 2px -2px 0 #00896e, -2px 2px 0 #00896e, -2px -2px 0 #00896e, 2px 0px 0 #00896e, 0px 2px 0 #00896e, -2px 0px 0 #00896e, 0px -2px 0 #00896e;
+}
+
+/* ===== Education Section ===== */
+.education-card {
+    background-color: var(--education-bg) !important;
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .education-card {
+    border: 2px solid var(--accent);
+}
+
+/* ===== Border Styles ===== */
+.border-bottom {
+    border-color: var(--border-color) !important;
+}
+
+/* ===== Case Studies Section ===== */
+.case-studies-section {
+    padding: 60px 0;
+    background-color: var(--bg-secondary);
+}
+
+.case-study-card {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.case-study-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px var(--accent-shadow-light);
+}
+
+.case-study-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--accent);
+}
+
+.case-study-content {
+    padding: 25px;
+}
+
+.case-study-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.case-study-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.case-study-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tech-badge {
+    background-color: var(--accent);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+[data-theme="light"] .tech-badge {
+    background-color: var(--accent);
+    color: #ffffff;
+}
+
+.case-study-stats {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.case-study-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 15px;
+    transition: gap 0.3s ease;
+}
+
+.case-study-link:hover {
+    gap: 10px;
+    color: var(--accent-dark);
+}
+
+/* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
     .skill-category {
         width: calc(50% - 30px);
+    }
+
+    .case-study-card {
+        margin-bottom: 30px;
     }
 }
 
 @media (max-width: 480px) {
     .skill-category {
         width: 100%;
+    }
+
+    .skills-section {
+        padding: 30px 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
     }
 }
