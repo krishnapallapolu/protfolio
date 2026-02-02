@@ -54,7 +54,7 @@ include_once('inc/header.php');
                     <h3 class="hero-greeting">Hi, I'm</h3>
                     <h1 class="hero-name">Krishna Pallapolu</h1>
                     <div class="typewriter">Development Lead • Full-stack (MERN & LAMP) • AI Integrations</div>
-                    <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams.</p>
+                    <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams. Driving large-scale product delivery with a relentless focus on performance, security, and automation — leading cross-functional engineering teams to deliver measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI integrations.</p>
 
                     <div class="mt-4 d-flex gap-2">
                         <a href="/index.php#case-studies" class="btn btn-accent">Case Studies</a>
@@ -78,9 +78,9 @@ include_once('inc/header.php');
 
                 <div class="col-lg-5">
                     <div class="shadow p-3 profile_card card bg-transparent text-white text-start">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex flex-column align-items-center">
                             <img class="rounded shadow me-3 profile-about" src="images/krishna-headshot2.png" alt="Krishna" />
-                            <div>
+                            <div class="pt-2">
                                 <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
@@ -96,9 +96,6 @@ include_once('inc/header.php');
                         <p class="mb-2"><i class="fas fa-mobile-alt me-2"></i><a href="tel:+971503242537">+971 50 324 2537</a></p>
                         <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Dubai, UAE</p>
                         <p class="mb-2"><i class="fas fa-id-card me-2"></i>Valid UAE driving license</p>
-
-                        <!-- Hype: Technical + Interpersonal -->
-                        <p class="mb-2 profile-hype">Driving large-scale product delivery with a relentless focus on performance, security, and automation — leading cross-functional engineering teams to deliver measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI integrations.</p>
 
                         <div class="mb-3 interpersonal-badges">
                             <span class="badge badge-accent">Leadership</span>
