@@ -116,15 +116,42 @@ include_once('inc/header.php');
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body p-0">
-                                <iframe src="/assets/krishna-coverletter.pdf" style="width:100%;height:75vh;border:0;" aria-label="Cover letter PDF"></iframe>
+                                <iframe src="assets/krishna-coverletter.pdf" style="width:100%;height:75vh;border:0;display:block;" aria-label="Cover letter PDF"></iframe>
                               </div>
                               <div class="modal-footer">
-                                <a class="btn btn-outline-secondary btn-sm" href="/assets/krishna-coverletter.pdf" target="_blank" rel="noopener">Open in new tab</a>
+                                <a class="btn btn-outline-secondary btn-sm" href="assets/krishna-coverletter.pdf" target="_blank" rel="noopener">Open in new tab</a>
                                 <button type="button" class="btn btn-accent btn-sm" data-bs-dismiss="modal">Close</button>
                               </div>
                             </div>
                           </div>
                         </div>
+
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var modal = document.getElementById('coverLetterModal');
+                            if (!modal) return;
+                            var iframe = modal.querySelector('iframe');
+                            var body = modal.querySelector('.modal-body');
+                            var openLink = modal.querySelector('.modal-footer a');
+                            modal.addEventListener('show.bs.modal', function (e) {
+                                var url = 'assets/krishna-coverletter.pdf';
+                                // Check if resource exists before showing it
+                                fetch(url, { method: 'HEAD' }).then(function (res) {
+                                    if (res.ok) {
+                                        if (iframe) { iframe.style.display = 'block'; iframe.src = url; }
+                                        if (openLink) openLink.href = url;
+                                    } else {
+                                        if (iframe) { iframe.style.display = 'none'; iframe.src = ''; }
+                                        if (body) { body.innerHTML = '<div class="p-4 text-center">Cover letter not available. <a href="' + url + '" target="_blank">Open in new tab</a></div>'; }
+                                    }
+                                }).catch(function () {
+                                    if (iframe) { iframe.style.display = 'none'; iframe.src = ''; }
+                                    if (body) { body.innerHTML = '<div class="p-4 text-center">Unable to load cover letter at this time.</div>'; }
+                                });
+                            });
+                            modal.addEventListener('hidden.bs.modal', function () { if (iframe) { iframe.src = ''; } });
+                        });
+                        </script>
                     </div>
                 </div>
 
