@@ -19,7 +19,27 @@
         } else {
             document.documentElement.removeAttribute('data-theme');
         }
+
+        // Toggle Bootstrap utility classes to reflect the theme more accurately
+        document.querySelectorAll('.bg-dark').forEach(el => el.classList.toggle('bg-dark', theme !== 'light'));
+        document.querySelectorAll('.text-white').forEach(el => el.classList.toggle('text-white', theme !== 'light'));
+
+        // Navbar adjustments (switch navbar-dark / navbar-light)
+        document.querySelectorAll('.navbar').forEach(nav => {
+            nav.classList.toggle('navbar-dark', theme !== 'light');
+            nav.classList.toggle('navbar-light', theme === 'light');
+        });
+
+        // Footer adjustments
+        document.querySelectorAll('.footer').forEach(f => {
+            f.classList.toggle('bg-dark', theme !== 'light');
+            f.classList.toggle('text-white', theme !== 'light');
+        });
+
         localStorage.setItem('theme', theme);
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+        }
     }
 
     if (themeToggle) {
@@ -28,6 +48,10 @@
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             setTheme(newTheme);
         });
+
+        // Set initial pressed state for accessibility
+        const initTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        themeToggle.setAttribute('aria-pressed', initTheme === 'light' ? 'true' : 'false');
     }
 
     // Listen for system theme changes

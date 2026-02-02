@@ -20,23 +20,66 @@
 }
 
 [data-theme="light"] {
-    /* Light Theme (Warm Cream/Green) */
-    --bg-primary: #faf8f5;
-    --bg-secondary: #f0ede8;
-    --bg-card: rgba(0, 0, 0, 0.05);
-    --text-primary: #2d3436;
-    --text-secondary: #636e72;
-    --accent: #00b894;
-    --accent-dark: #00a383;
-    --accent-shadow: rgba(0, 184, 148, 0.4);
-    --accent-shadow-light: rgba(0, 184, 148, 0.2);
-    --card-shadow: rgba(0, 0, 0, 0.1);
-    --card-shadow-hover: rgba(0, 0, 0, 0.15);
-    --education-bg: #e8f6f3;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --navbar-bg: #f0ede8;
-    --link-color: #00a383;
-    --link-hover: #00896e;
+    /* Light Theme (White background, slightly higher contrast) */
+    --bg-primary: #ffffff; /* pure white for body */
+    --bg-secondary: #f8f9fa; /* subtle off-white for sections */
+    --bg-card: #ffffff; /* cards on white with subtle shadows */
+    --text-primary: #0f1720; /* slightly darker for improved contrast */
+    --text-secondary: #585e66; /* slightly darker muted text */
+    --accent: #34e89e; /* keep brand accent consistent */
+    --accent-dark: #28b776; /* small darken for hover/contrast */
+    --accent-shadow: rgba(52, 232, 158, 0.15);
+    --accent-shadow-light: rgba(52, 232, 158, 0.08);
+    --card-shadow: rgba(16, 24, 40, 0.08);
+    --card-shadow-hover: rgba(16, 24, 40, 0.10);
+    --education-bg: #f0fdf9;
+    --border-color: rgba(0, 0, 0, 0.12);
+    --navbar-bg: #ffffff;
+    --link-color: var(--accent);
+    --link-hover: #279e67;
+}
+
+/* ===== Light theme overrides for Bootstrap utility classes ===== */
+[data-theme="light"] .bg-dark {
+    background-color: var(--bg-primary) !important; /* force white */
+}
+
+[data-theme="light"] .text-white {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .card.bg-dark {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .footer.bg-dark,
+[data-theme="light"] footer.bg-dark {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Navbar specific overrides */
+[data-theme="light"] .navbar {
+    background-color: var(--navbar-bg) !important;
+}
+[data-theme="light"] .navbar .navbar-brand,
+[data-theme="light"] .navbar .nav-link {
+    color: var(--text-primary) !important;
+}
+[data-theme="light"] .navbar .nav-link:hover,
+[data-theme="light"] .navbar .nav-link.active {
+    color: var(--accent) !important;
+}
+
+/* Ensure shadows are lighter in light mode */
+[data-theme="light"] .shadow {
+    box-shadow: 0 6px 18px var(--card-shadow) !important;
+}
+
+/* Utility: prefer variable-driven backgrounds when present */
+[data-theme="light"] [class*="bg-"] {
+    background-color: inherit !important;
 }
 
 /* ===== Base Styles ===== */
