@@ -547,23 +547,23 @@ a:hover {
 /* ===== Button contrast fixes for light theme ===== */
 [data-theme="light"] .btn-outline-light {
     color: var(--text-primary);
-    border-color: rgba(0,0,0,0.08) !important;
+    border-color: rgba(0,0,0,0.08);
 }
 
 [data-theme="light"] .btn-outline-light:hover,
 [data-theme="light"] .btn-outline-light:focus {
-    background-color: rgba(0,0,0,0.04) !important;
-    color: var(--text-primary) !important;
+    background-color: rgba(0,0,0,0.04);
+    color: var(--text-primary);
 }
 
-/* Ensure accent buttons remain legible on light background */
+/* Ensure accent buttons remain legible on light background (subtle shadow) */
 [data-theme="light"] .btn-accent {
-    color: #ffffff !important;
-    background: var(--accent) !important;
-    box-shadow: 0 6px 18px var(--accent-shadow) !important;
+    color: #ffffff;
+    background: var(--accent);
+    box-shadow: 0 4px 12px var(--accent-shadow-light);
 }
 [data-theme="light"] .btn-accent:hover {
-    background: var(--accent-dark) !important;
+    background: var(--accent-dark);
 }
 
 /* When buttons sit on cards with light backgrounds, ensure outline visibility */
@@ -571,33 +571,33 @@ a:hover {
     border-color: rgba(255,255,255,0.1);
 }
 [data-theme="light"] .card .btn-outline-light {
-    border-color: rgba(0,0,0,0.06) !important;
+    border-color: rgba(0,0,0,0.06);
 }
 
-/* ===== Dark theme: ensure CTA contrast and focus states ===== */
+/* ===== Dark theme: ensure CTA contrast and focus states (no !important) ===== */
 [data-theme="dark"] .btn-outline-light {
-    color: #ffffff !important;
-    border-color: rgba(255,255,255,0.18) !important;
-    background: transparent !important;
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.14);
+    background: transparent;
 }
 
 [data-theme="dark"] .btn-outline-light:hover,
 [data-theme="dark"] .btn-outline-light:focus {
-    background-color: rgba(255,255,255,0.06) !important;
-    color: #ffffff !important;
+    background-color: rgba(255,255,255,0.04);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .card .btn-outline-light {
-    border-color: rgba(255,255,255,0.12) !important;
+    border-color: rgba(255,255,255,0.08);
 }
 
 [data-theme="dark"] .btn-accent {
-    color: #ffffff !important;
-    background: var(--accent) !important;
-    box-shadow: 0 6px 18px var(--accent-shadow) !important;
+    color: #ffffff;
+    background: var(--accent);
+    box-shadow: 0 4px 12px var(--accent-shadow-light);
 }
 [data-theme="dark"] .btn-accent:hover {
-    background: var(--accent-dark) !important;
+    background: var(--accent-dark);
 }
 
 /* Accessibility: provide a stronger focus ring for keyboard users */
