@@ -3,6 +3,7 @@
             <p>&copy; <?php echo date('Y'); ?> Krishna Pallapolu. All rights reserved.</p>
         </div>
     </footer>
+    <button id="go-top" class="go-top" aria-label="Go to top" title="Go to top">↑</button>
 </main>
 <!-- Bootstrap Bundle with Popper -->
 <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -35,6 +36,37 @@
             setTheme(e.matches ? 'dark' : 'light');
         }
     });
+
+    // Go to Top button behavior
+    (function() {
+        const goTop = document.getElementById('go-top');
+        if (!goTop) return;
+
+        const showAt = 200; // px
+        const onScroll = () => {
+            if (window.scrollY > showAt) {
+                goTop.classList.add('show');
+            } else {
+                goTop.classList.remove('show');
+            }
+        };
+
+        document.addEventListener('scroll', onScroll, { passive: true });
+
+        goTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        goTop.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                goTop.click();
+            }
+        });
+
+        // Init visibility
+        onScroll();
+    })();
 </script>
 </body>
 </html>

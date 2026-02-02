@@ -5,58 +5,457 @@ include_once('inc/header.php');
 
 ?>
     <style>
-        /* Custom CSS */
-        /* Add your custom styles here */
-        
+        /* ===== Hero Section Animations ===== */
+
         body {
             font-family: "Noto Sans", sans-serif;
             font-optical-sizing: auto;
+            overflow-x: hidden;
         }
+
+        /* Animated Background */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
         }
-        h1 .intro_text{
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(52, 232, 158, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(64, 116, 181, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(52, 232, 158, 0.05) 0%, transparent 30%);
+            animation: bgPulse 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, 2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-1deg); }
+        }
+
+        /* Floating Geometric Shapes */
+        .geo-shape {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .geo-shape-1 {
+            top: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--accent);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: float1 8s ease-in-out infinite, morph 12s ease-in-out infinite;
+        }
+
+        .geo-shape-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, transparent 50%);
+            animation: float2 10s ease-in-out infinite;
+        }
+
+        .geo-shape-3 {
+            top: 40%;
+            right: 5%;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            transform: rotate(45deg);
+            animation: float3 7s ease-in-out infinite, spin 20s linear infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(-25px) rotate(45deg); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+
+        /* Profile Image Container */
+        .profile-image-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            animation: profileFloat 6s ease-in-out infinite;
+        }
+
+        .profile-image-wrapper:hover {
+            transform: scale(1.05) rotateY(10deg);
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .profile-image.primary {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .profile-image.secondary {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .profile-image-wrapper:hover .profile-image.primary {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .profile-image-wrapper:hover .profile-image.secondary {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Profile thumbnail for hero card */
+        .profile-thumb {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-thumb {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+
+        /* Glowing Border Animation */
+        .profile-image-container::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, var(--accent), #4074b5, var(--accent), #4074b5);
+            background-size: 400% 400%;
+            border-radius: 24px;
+            z-index: -1;
+            animation: glowBorder 4s ease infinite;
+        }
+
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, var(--accent), #4074b5, var(--accent), #4074b5);
+            background-size: 400% 400%;
+            border-radius: 24px;
+            z-index: -2;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: glowBorder 4s ease infinite;
+        }
+
+        @keyframes glowBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animated Name with Gradient */
+        .hero-name {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, #4074b5 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 5s ease infinite, fadeSlideUp 1s ease forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+            animation-delay: 1s;
+            width: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Fade Slide Up Animation */
+        .fade-slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeSlideUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+
+        /* Staggered List Animation */
+        .animated-list li {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .animated-list li:nth-child(1) { animation-delay: 1.2s; }
+        .animated-list li:nth-child(2) { animation-delay: 1.4s; }
+        .animated-list li:nth-child(3) { animation-delay: 1.6s; }
+        .animated-list li:nth-child(4) { animation-delay: 1.8s; }
+        .animated-list li:nth-child(5) { animation-delay: 2.0s; }
+        .animated-list li:nth-child(6) { animation-delay: 2.2s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Social Icons Bounce */
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            margin-right: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--bg-primary) !important;
+        }
+
+        .social-icon:hover i {
+            color: var(--bg-primary) !important;
+        }
+
+        /* Contact Info Animation */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            width: 30px;
+            color: var(--accent);
+        }
+
+        /* Hero Title Styles */
+        .hero-greeting {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Highlight badges */
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 5px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-badge:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(52, 232, 158, 0.2);
+        }
+
+        /* Accent button used in hero */
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            color: #fff;
+        }
+
+        .highlight-badge i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* Original styles kept for compatibility */
+        h1 .intro_text {
             font-size: 32px;
         }
         h1 .name {
             font-size: 64px;
         }
         .hightlights li {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .hightlights li:hover {
+            background: var(--bg-card);
+            transform: translateX(10px);
         }
         .profile_card,
         .shadow_r {
-            box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75);
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75);
-            -moz-box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75);
+            box-shadow: 10px 10px 5px 0px var(--accent-shadow);
+            -webkit-box-shadow: 10px 10px 5px 0px var(--accent-shadow);
+            -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow);
         }
         .shadow_l,
         #skills {
-            box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75) inset;
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75) inset;
-            /*-moz-box-shadow: 10px 10px 5px 0px rgba(54,71,173,0.75) inset;*/
-            -moz-box-shadow: 10px 10px 5px 0px rgba(51, 232, 158, 0.75) inset;
-
+            box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
+            -webkit-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
+            -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
         }
         .text_shadow {
             padding: 0 5px;
-            border-radius: 5px;;
+            border-radius: 5px;
             display: inline-block;
             color: #FFFFFF;
             background: rgba(49, 63, 141, 0.7);
             text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
         }
         .fab {
-            font-size: 30px;
+            font-size: 24px;
         }
         .fas {
-            font-size: 20px;
+            font-size: 18px;
             padding-right: 10px;
         }
         .f18 {
-            font-size:18px;
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 1.7;
         }
-        
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            .profile-image-container {
+                width: 200px;
+                height: 200px;
+            }
+            .geo-shape {
+                display: none;
+            }
+        }
     </style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPZK0V35K0"></script>
@@ -101,22 +500,43 @@ include_once('inc/header.php');
             </div>
         </div>
     </nav>
-    <section id="about" class="bg-dark py-5 shadow border-bottom">
+
+    <section id="hero" class="hero-section py-5 bg-dark text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-5 py-4">
-                    <div class="shadow p-3">
-                        <div class="profile_card card bg-transparent text-white align-items-center align-items-md-start">
-                            <img class="rounded shadow" width="200px" height="200px" src="krishna_l.jpeg" class="Krishna" />
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <div class="d-flex flex-column ">
-                                        <a class="mb-2" href="mailto:krishna.naidu24@gmail.com"><i class="fas fa-envelope pr-2"></i>krishna.naidu24@gmail.com</a>
-                                        <a class="mb-2" href="tel:+971503242537"><i class="fas fa-mobile-alt pr-2"></i>+971503242537</a>
-                                        <a class="mb-2" href="tel:+919945789900"><i class="fas fa-mobile-alt pr-2"></i>+919945789900</a>
-                                        <p><i class="fas fa-map-marker-alt"></i> Dubai, UAE</p>
-                                    </div>
-                                </p>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h3 class="hero-greeting">Hi, I'm</h3>
+                    <h1 class="hero-name">Krishna Pallapolu</h1>
+                    <div class="typewriter">Development Lead • Full-stack (MERN & LAMP) • AI Integrations</div>
+                    <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams.</p>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <a href="#case-studies" class="btn btn-accent">Case Studies</a>
+                        <a href="#skills" class="btn btn-outline-light">Skills</a>
+                        <a href="#education" class="btn btn-outline-light">Education</a>
+                    </div>
+
+                    <div class="mt-4">
+                        <ul class="list-unstyled row hightlights">
+                            <li class="col-sm-6"><i class="fas fa-laptop-code"></i> Full-stack development (MERN & LAMP)</li>
+                            <li class="col-sm-6"><i class="fas fa-chart-line"></i> Improved uptime to 99.9% for enterprise platforms</li>
+                            <li class="col-sm-6"><i class="fas fa-shield-alt"></i> Security hardening (DDoS, Brute-force mitigation)</li>
+                            <li class="col-sm-6"><i class="fas fa-users"></i> Leading cross-functional development teams</li>
+                            <li class="col-sm-6"><i class="fas fa-code"></i> Performance optimization & refactoring</li>
+                            <li class="col-sm-6"><i class="fas fa-cloud"></i> Cloud & DevOps: AWS, Docker, GitHub Actions</li>
+                            <li class="col-sm-6"><i class="fas fa-tools"></i> Internal tools & workflow automation</li>
+                            <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations (DTCM, Eventsair) and barcode automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="shadow p-3 profile_card card bg-transparent text-white text-start">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded shadow me-3 profile-thumb" src="images/krishna-headshot2.png" alt="Krishna" />
+                            <div>
+                                <h4 class="mb-1">Krishna Pallapolu</h4>
+                                <div class="mb-2 text-muted">Development Lead</div>
                                 <div>
                                     <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
                                         <i class="fab fa-linkedin"></i>
@@ -124,44 +544,32 @@ include_once('inc/header.php');
                                     <a class="d-inline pe-2"  href="https://github.com/krishna-pallapolu" target="_blank">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                    <!-- Add more social icons from Font Awesome as needed -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-9 col-lg-8 col-md-7 py-4">
-                    <div class="card bg-dark w-100 text-white">
-                        <div class="card-body">
-                            
-                            <h1 class=" pb-5"><span class="intro_text shadow-none">Hi!</span></br> <span class="name text_shadow mt-5">Krishna Pallapolu</span></h1>
-                            <h2 class="card-title mb-5">a Full stack Developer (MERN & LAMP)</h2>
-                            <div class="card-text">
-                                <h4 class="mb-5">Development Lead | Senior Developer | A Decade of Web Development Mastery</h4>
-                                <p class="f18"> A decade of hands-on experience in leading high-performing development teams, delivering innovative web interfaces, and crafting seamless user experiences across a range of industries. Proven expertise in full-stack development, performance optimization, and security enhancements, with a passion for driving digital transformation through the latest technologies.</p>
-                               
 
-                                
-                                <ul class="list-unstyled row px-3 ps-2 hightlights">
-                                    <li><i class="fas fa-laptop-code"></i>Full-stack development expertise using MERN stack, LAMP stack to build scalable, maintainable, and secure solutions.</li>
-                                    <li><i class="fas fa-chart-line"></i> Decade of hands-on experience</li>
-                                    <li><i class="fas fa-code"></i>Demonstrated success in optimizing system performance, achieving 99.9% uptime, and mitigating security risks (Brute-force, DDoS) to ensure system reliability and data protection.</li>
-                                    <li><i class="fas fa-magic"></i> Collaborated with cross-functional teams (Design, QA, Marketing) to ensure smooth project delivery, maintaining a 100% on-time launch record while improving team productivity.</li>
-                                    <li><i class="fas fa-users"></i> Leading successful development teams</li>
-                                    <li><i class="fas fa-trophy"></i> Proven track record of delivering high-quality solutions</li>
-                                    <li><i class="fas fa-wrench"></i> Optimizing performance and implementing security measures</li>
-                                    <li><i class="fas fa-cogs"></i>Expertise in cloud infrastructure (AWS, Docker, Github Actions), CI/CD pipelines to streamline deployment, reduce downtime, and enhance operational efficiency.</li>
-                                    <li><i class="fas fa-users-cog"></i>Adept at implementing security best practices and authentication protocols (JWT, OAuth), ensuring robust protection for users and sensitive data.</li>
-                                </ul>
-                                </ul>
-                            </div>
+                        <hr class="my-3" />
+
+                        <p class="mb-2"><i class="fas fa-envelope me-2"></i><a href="mailto:krishna.naidu24@gmail.com">krishna.naidu24@gmail.com</a></p>
+                        <p class="mb-2"><i class="fas fa-mobile-alt me-2"></i><a href="tel:+971503242537">+971 50 324 2537</a></p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Dubai, UAE</p>
+                        <p class="mb-2"><i class="fas fa-id-card me-2"></i>Valid UAE driving license</p>
+
+                        <div class="mt-3">
+                            <a class="btn btn-outline-light btn-sm me-2" href="#contact">Contact</a>
+                            <a class="btn btn-accent btn-sm" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        </section>
-        <section id="skills">
+        <div class="geo-shape geo-shape-1"></div>
+        <div class="geo-shape geo-shape-2"></div>
+        <div class="geo-shape geo-shape-3"></div>
+    </section>
+
+    <section id="skills">
         <div class="skills-section" >
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-container">
