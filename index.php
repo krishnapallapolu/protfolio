@@ -84,7 +84,7 @@ include_once('inc/header.php');
                                 <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
-                                <a class="d-inline pe-2"  href="https://github.com/krishna-pallapolu" target="_blank">
+                                <a class="d-inline pe-2"  href="https://github.com/krishnapallapolu" target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
