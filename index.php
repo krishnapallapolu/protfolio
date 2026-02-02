@@ -103,7 +103,27 @@ include_once('inc/header.php');
 
                         <div class="mt-3">
                             <a class="btn btn-outline-light btn-sm me-2" href="#contact">Contact</a>
-                            <a class="btn btn-accent btn-sm" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+                            <a class="btn btn-accent btn-sm me-2" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+                            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="coverLetterModal" aria-expanded="false">Cover Letter</button>
+                        </div>
+
+                        <!-- Cover Letter Modal -->
+                        <div class="modal fade" id="coverLetterModal" tabindex="-1" aria-labelledby="coverLetterModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="coverLetterModalLabel">Cover Letter — Krishna Pallapolu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body p-0">
+                                <iframe src="/assets/krishna-coverletter.pdf" style="width:100%;height:75vh;border:0;" aria-label="Cover letter PDF"></iframe>
+                              </div>
+                              <div class="modal-footer">
+                                <a class="btn btn-outline-secondary btn-sm" href="/assets/krishna-coverletter.pdf" target="_blank" rel="noopener">Open in new tab</a>
+                                <button type="button" class="btn btn-accent btn-sm" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
