@@ -24,19 +24,19 @@ include_once('inc/header.php');
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#about">About</a>
+                        <a class="nav-link active" aria-current="page" href="index.php#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="index.php#skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#work-history">Work History</a>
+                        <a class="nav-link" href="index.php#work-history">Work History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#case-studies">Case Studies</a>
+                        <a class="nav-link" href="index.php#case-studies">Case Studies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
+                        <a class="nav-link" href="index.php#education">Education</a>
                     </li>
                 </ul>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -57,9 +57,9 @@ include_once('inc/header.php');
                     <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams.</p>
 
                     <div class="mt-4 d-flex gap-2">
-                        <a href="#case-studies" class="btn btn-accent">Case Studies</a>
-                        <a href="#skills" class="btn btn-outline-light">Skills</a>
-                        <a href="#education" class="btn btn-outline-light">Education</a>
+                        <a href="index.php#case-studies" class="btn btn-accent">Case Studies</a>
+                        <a href="index.php#skills" class="btn btn-outline-light">Skills</a>
+                        <a href="index.php#education" class="btn btn-outline-light">Education</a>
                     </div>
 
                     <div class="mt-4">
@@ -110,9 +110,9 @@ include_once('inc/header.php');
                         </div>
 
                         <div class="mt-3">
-                            <a class="btn btn-outline-light btn-sm me-2" href="#contact">Contact</a>
-                            <a class="btn btn-accent btn-sm me-2" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
-                            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="coverLetterModal" aria-expanded="false">Cover Letter</button>
+                            <a class="btn btn-outline-light btn-sm me-2" href="index.php#contact">Contact</a>
+                            <a class="btn btn-accent btn-sm me-2" href="assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+                            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="#coverLetterModal" aria-expanded="false">Cover Letter</button>
                         </div>
 
                         <!-- Cover Letter Modal -->

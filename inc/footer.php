@@ -14,11 +14,8 @@
     const themeToggle = document.getElementById('theme-toggle');
 
     function setTheme(theme) {
-        if (theme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
+        // Set explicit data-theme value
+        document.documentElement.setAttribute('data-theme', theme);
 
         // Toggle Bootstrap utility classes to reflect the theme more accurately
         document.querySelectorAll('.bg-dark').forEach(el => el.classList.toggle('bg-dark', theme !== 'light'));
@@ -49,10 +46,12 @@
             setTheme(newTheme);
         });
 
-        // Set initial pressed state for accessibility and apply theme classes immediately
-        const initTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        // Determine initial theme from localStorage or system preference and apply immediately
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initTheme = saved ? saved : (prefersDark ? 'dark' : 'light');
         themeToggle.setAttribute('aria-pressed', initTheme === 'light' ? 'true' : 'false');
-        // Ensure the rest of the UI (navbar, footer classes) reflects the selected theme without requiring a refresh
+        // Apply theme classes immediately so no reload is required
         setTheme(initTheme);
     }
 
@@ -92,6 +91,34 @@
 
         // Init visibility
         onScroll();
+    })();
+
+    // Smooth scroll for intra-site anchor links that point to index anchors (prevents reloads when already on index)
+    (function() {
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href) return;
+
+            // Handle links like "index.php#case-studies" or "#case-studies"
+            if (href.indexOf('#') !== -1) {
+                const [path, hash] = href.split('#');
+                const targetId = hash;
+
+                // If link points to index anchors and we're on index page, do smooth scroll instead of reload
+                const onIndex = location.pathname.endsWith('index.php') || location.pathname === '/' || location.pathname === '';
+                if ((path === '' || path === 'index.php') && targetId) {
+                    if (onIndex) {
+                        const el = document.getElementById(targetId);
+                        if (el) {
+                            e.preventDefault();
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                }
+            }
+        });
     })();
 </script>
 </body>

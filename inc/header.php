@@ -20,11 +20,8 @@
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             // Default to system preference when no saved choice exists
             const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-            if (theme === 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-            }
+            // Explicitly set data-theme to 'light' or 'dark' for consistency
+            document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
 
