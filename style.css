@@ -312,8 +312,12 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 4rem; /* increased icon size */
     color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .case-study-image { font-size: 3rem; }
 }
 
 .case-study-content {

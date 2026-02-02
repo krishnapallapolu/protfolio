@@ -162,17 +162,30 @@ include_once('inc/header.php');
 
         /* Profile thumbnail for hero card */
         .profile-thumb {
-            width: 160px;
-            height: 160px;
+            width: 260px; /* increased */
+            height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Slightly smaller on mobile */
+        @media (max-width: 768px) {
+            .profile-thumb {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* Optional larger variant for About card */
+        .profile-about {
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             border-radius: 12px;
         }
 
         @media (max-width: 768px) {
-            .profile-thumb {
-                width: 110px;
-                height: 110px;
-            }
+            .profile-about { width: 180px; height: 180px; }
         }
 
 
@@ -533,7 +546,7 @@ include_once('inc/header.php');
                 <div class="col-lg-5">
                     <div class="shadow p-3 profile_card card bg-transparent text-white text-start">
                         <div class="d-flex align-items-center">
-                            <img class="rounded shadow me-3 profile-thumb" src="images/krishna-headshot2.png" alt="Krishna" />
+                            <img class="rounded shadow me-3 profile-about" src="images/krishna-headshot2.png" alt="Krishna" />
                             <div>
                                 <h4 class="mb-1">Krishna Pallapolu</h4>
                                 <div class="mb-2 text-muted">Development Lead</div>
