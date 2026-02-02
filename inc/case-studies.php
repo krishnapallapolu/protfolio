@@ -7,7 +7,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <i class="fas fa-hospital-user"></i>
+                        <i class="fs-1 fas fa-hospital-user"></i>
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">Healthcare Education Platform</h3>
@@ -18,8 +18,8 @@
                         <div class="case-study-tech">
                             <span class="tech-badge">React.js</span>
                             <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">MongoDB</span>
-                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Mongodb / Supabase</span>
+                            <span class="tech-badge">AWS/ Vercel</span>
                         </div>
                         <div class="case-study-stats">
                             <div class="stat-item">
@@ -43,7 +43,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fs-1 fas fa-utensils"></i>
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">Enterprise Restaurant POS System</h3>
@@ -53,7 +53,8 @@
                         </p>
                         <div class="case-study-tech">
                             <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">NodeJS</span>
                             <span class="tech-badge">MySQL</span>
                             <span class="tech-badge">Redis</span>
                         </div>
@@ -79,7 +80,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <i class="fas fa-calendar-check"></i>
+                        <i class="fs-1 fas fa-calendar-check"></i>
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">Event Registration System</h3>
@@ -115,7 +116,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <i class="fas fa-tools"></i>
+                        <i class="fs-1 fas fa-tools"></i>
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">Internal Tools & Automation</h3>
@@ -151,7 +152,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <i class="fas fa-project-diagram"></i>
+                        <i class="fs-1 fas fa-project-diagram"></i>
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">ETL Pipeline & Social Media Automation</h3>
