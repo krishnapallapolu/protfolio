@@ -593,7 +593,6 @@ include_once('inc/header.php');
                             <span class="skill-badge">Tailwind</span>
                         </div>
 
-                        <div class="skill-packages mt-2 small text-muted">Popular packages: <span class="package">react-router</span>, <span class="package">redux-toolkit</span>, <span class="package">axios</span>, <span class="package">formik</span>, <span class="package">react-hook-form</span>, <span class="package">@mui/material</span>, <span class="package">react-bootstrap</span></div>
 
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">UI Architecture</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
