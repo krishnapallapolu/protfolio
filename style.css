@@ -448,3 +448,80 @@ a:hover {
 .go-top:focus {
     outline: 2px solid rgba(255,255,255,0.15);
 }
+
+/* ===== Skills UI Improvements ===== */
+.skills-grid {
+    margin-top: 10px;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px var(--card-shadow-hover);
+}
+
+.skill-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-badge {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+[data-theme="light"] .skill-badge {
+    border-color: rgba(0,0,0,0.08);
+    color: var(--text-secondary);
+}
+
+.skill-list {
+    margin-top: 10px;
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.skill-name {
+    flex: 0 0 140px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.skill-line {
+    flex: 1 1 auto;
+    height: 8px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    border-radius: 8px;
+    transition: width 0.6s cubic-bezier(.2,.9,.2,1);
+}
+
+@media (max-width: 767px) {
+    .skill-name { flex-basis: 100px; }
+}

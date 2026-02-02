@@ -569,139 +569,123 @@ include_once('inc/header.php');
         <div class="geo-shape geo-shape-3"></div>
     </section>
 
-    <section id="skills">
-        <div class="skills-section" >
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category w-100">
-                    <h3>Frontend</h3>
-                    <ul class="frontend list-unstyled row px-3 align-items-center justify-content-center">
-                        <li>React.js</li>
-                        <li>Next.js</li>
-                        <li>Redux</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>Sass</li>
-                        <li>Tailwind CSS</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>TypeScript</li>
-                        <li>jQuery</li>
-                        <li>Ajax</li>
-                        <li>Web APIs</li>
-                        <li>Vite</li>
-                        <li>Framer Motion</li>
-                        <li>Responsive Design</li>
-                        <li>Redux Toolkit</li>
-                    </ul>
+<section id="skills" class="skills-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Technical Skills</h2>
+            <p class="text-center text-muted mb-4">A concise snapshot of tools, platforms, and expertise used to deliver scalable, secure, and performant systems.</p>
+
+            <div class="row g-3 skills-grid">
+
+                <!-- Skill Card: Frontend -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Frontend</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">TypeScript</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3 / Sass</span>
+                            <span class="skill-badge">Tailwind</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">UI Architecture</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Performance</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                        <li>PHP</li>
-                        <li>Laravel</li>
-                        <li>REST APIs</li>
-                        <li>GraphQL</li>
-                        <li>Prisma</li>
-                        <li>Supabase</li>
-                        <li>Redis</li>
-                        <li>Microservices</li>
-                        <li>Cloudflare Workers</li>
-                    </ul>
+                <!-- Skill Card: Backend -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Backend & APIs</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Express</span>
+                            <span class="skill-badge">PHP / Laravel</span>
+                            <span class="skill-badge">GraphQL</span>
+                            <span class="skill-badge">Prisma</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Scalability</div><div class="skill-line"><div class="skill-level" style="width:88%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">API Design</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>OpenAI API</li>
-                        <li>Claude API</li>
-                        <li>LangChain</li>
-                        <li>Prompt Engineering</li>
-                        <li>RAG Systems</li>
-                        <li>AI Integrations</li>
-                        <li>Chatbot Development</li>
-                    </ul>
+                <!-- Skill Card: DevOps & Cloud -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">DevOps & Cloud</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">AWS</span>
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">GitHub Actions</span>
+                            <span class="skill-badge">Kubernetes</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Reliability</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">CI/CD</div><div class="skill-line"><div class="skill-level" style="width:88%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>Automation & Integration</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>n8n Workflows</li>
-                        <li>Data Aggregation</li>
-                        <li>Data Transformation</li>
-                        <li>Platform Integration</li>
-                        <li>API Orchestration</li>
-                        <li>ETL Pipelines</li>
-                        <li>Workflow Automation</li>
-                    </ul>
+                <!-- Skill Card: Databases -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Databases</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">Supabase</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Data Modelling</div><div class="skill-line"><div class="skill-level" style="width:86%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Performance Tuning</div><div class="skill-line"><div class="skill-level" style="width:80%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>CMS</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>WordPress</li>
-                        <li>Webflow</li>
-                        <li>Shopify</li>
-                        <li>Wix</li>
-                        <li>Custom Themes & Plugins</li>
-                    </ul>
+                <!-- Skill Card: AI & Automation -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">AI & Automation</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">OpenAI</span>
+                            <span class="skill-badge">Claude</span>
+                            <span class="skill-badge">n8n</span>
+                            <span class="skill-badge">RAG</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">AI Integrations</div><div class="skill-line"><div class="skill-level" style="width:84%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Automation</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>DevOps & Cloud</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>AWS (Lambda, S3, RDS)</li>
-                        <li>Docker</li>
-                        <li>Vercel</li>
-                        <li>Netlify</li>
-                        <li>Cloudflare</li>
-                        <li>CI/CD (GitHub Actions)</li>
-                        <li>Kubernetes</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>MongoDB</li>
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>Firebase</li>
-                        <li>Database Optimization</li>
-                        <li>Migrations</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Authentication & Security</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>JWT</li>
-                        <li>OAuth 2.0</li>
-                        <li>Bcrypt.js</li>
-                        <li>RBAC</li>
-                        <li>Security Best Practices</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Practices</h3>
-                    <ul class="list-unstyled row px-3">
-                        <li>Git & GitHub</li>
-                        <li>PM2</li>
-                        <li>Webpack</li>
-                        <li>TDD</li>
-                        <li>Unit Testing</li>
-                        <li>SOLID Principles</li>
-                        <li>Agile/Scrum</li>
-                    </ul>
+                <!-- Skill Card: Security & Auth -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Security & Auth</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">JWT</span>
+                            <span class="skill-badge">OAuth 2.0</span>
+                            <span class="skill-badge">RBAC</span>
+                            <span class="skill-badge">OWASP</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Threat Modelling</div><div class="skill-line"><div class="skill-level" style="width:82%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Secure Design</div><div class="skill-line"><div class="skill-level" style="width:84%"></div></div></div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
-
     </section>
+
+    <section class="border-bottom pt-5">
     
     
     <section class="border-bottom pt-5">
@@ -730,7 +714,6 @@ include_once('inc/header.php');
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>
                                 <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON.</li>
                                 <li>Leveraged Laravel, PHP, MySQL, JavaScript, jQuery, Ajax, WordPress, Webflow, and Wix Velo API for various web projects, maintaining robust version control using Git/GitHub.</li>
-                                <li>Databases: Production-grade PostgreSQL deployments and Supabase for real-time sync and hosted Postgres solutions.</li>
                                 <li>Implemented AI-driven automation using <strong>n8n</strong> for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
                             </ul>
                             
