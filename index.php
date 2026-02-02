@@ -70,8 +70,8 @@ include_once('inc/header.php');
                             <li class="col-sm-6"><i class="fas fa-users"></i> Leading cross-functional development teams</li>
                             <li class="col-sm-6"><i class="fas fa-code"></i> Performance optimization & refactoring</li>
                             <li class="col-sm-6"><i class="fas fa-cloud"></i> Cloud & DevOps: AWS, Docker, GitHub Actions</li>
-                            <li class="col-sm-6"><i class="fas fa-tools"></i> Internal tools & workflow automation</li>
-                            <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations (DTCM, Eventsair) and barcode automation</li>
+                            <li class="col-sm-6"><i class="fas fa-tools"></i> Internal tools & workflows automation</li>
+                            <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations and AI Automations</li>
                         </ul>
                     </div>
                 </div>
@@ -107,7 +107,6 @@ include_once('inc/header.php');
                         </div>
 
                         <div class="mt-3">
-                            <a class="btn btn-outline-light btn-sm me-2" href="/index.php#contact">Contact</a>
                             <a class="btn btn-accent btn-sm me-2" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
                             <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="#coverLetterModal" aria-expanded="false">Cover Letter</button>
                         </div>
