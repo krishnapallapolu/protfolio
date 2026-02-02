@@ -97,6 +97,18 @@ include_once('inc/header.php');
                         <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Dubai, UAE</p>
                         <p class="mb-2"><i class="fas fa-id-card me-2"></i>Valid UAE driving license</p>
 
+                        <!-- Hype: Technical + Interpersonal -->
+                        <p class="mb-2 profile-hype">Driving large-scale product delivery with a relentless focus on performance, security, and automation — leading cross-functional engineering teams to deliver measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI integrations.</p>
+
+                        <div class="mb-3 interpersonal-badges">
+                            <span class="badge badge-accent">Leadership</span>
+                            <span class="badge badge-accent">Mentorship</span>
+                            <span class="badge badge-accent">Stakeholder Communication</span>
+                            <span class="badge badge-accent">Strategic Planning</span>
+                            <span class="badge badge-accent">Problem Solving</span>
+                            <span class="badge badge-accent">Agile Delivery</span>
+                        </div>
+
                         <div class="mt-3">
                             <a class="btn btn-outline-light btn-sm me-2" href="#contact">Contact</a>
                             <a class="btn btn-accent btn-sm me-2" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
