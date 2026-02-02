@@ -1,0 +1,69 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.skills-section {
+    padding: 50px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.skill-category .frontend > li {
+    display: inline;
+    width: auto;
+}
+.skill-category {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33% - 30px);
+    margin: 15px 0;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #34e89e;
+}
+
+.skill-category p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .skill-category {
+        width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-category {
+        width: 100%;
+    }
+}
