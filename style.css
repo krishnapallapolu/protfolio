@@ -574,6 +574,44 @@ a:hover {
     border-color: rgba(0,0,0,0.06) !important;
 }
 
+/* ===== Dark theme: ensure CTA contrast and focus states ===== */
+[data-theme="dark"] .btn-outline-light {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.18) !important;
+    background: transparent !important;
+}
+
+[data-theme="dark"] .btn-outline-light:hover,
+[data-theme="dark"] .btn-outline-light:focus {
+    background-color: rgba(255,255,255,0.06) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .card .btn-outline-light {
+    border-color: rgba(255,255,255,0.12) !important;
+}
+
+[data-theme="dark"] .btn-accent {
+    color: #ffffff !important;
+    background: var(--accent) !important;
+    box-shadow: 0 6px 18px var(--accent-shadow) !important;
+}
+[data-theme="dark"] .btn-accent:hover {
+    background: var(--accent-dark) !important;
+}
+
+/* Accessibility: provide a stronger focus ring for keyboard users */
+.btn:focus {
+    outline: 3px solid rgba(52,232,158,0.25);
+    outline-offset: 2px;
+}
+[data-theme="light"] .btn:focus {
+    outline: 3px solid rgba(0,184,148,0.18);
+}
+[data-theme="dark"] .btn:focus {
+    outline: 3px solid rgba(52,232,158,0.25);
+}
+
 /* Original styles for compatibility */
 h1 .intro_text {
     font-size: 32px;
