@@ -218,13 +218,15 @@ include_once('inc/header.php');
                 </div>
 
                 <div class="skill-category">
-                    <h3>Mobile Development</h3>
+                    <h3>Automation & Integration</h3>
                     <ul class="list-unstyled row px-3">
-                        <li>React Native</li>
-                        <li>Expo</li>
-                        <li>PWA Development</li>
-                        <li>Mobile-First Design</li>
-                        <li>App Store Deployment</li>
+                        <li>n8n Workflows</li>
+                        <li>Data Aggregation</li>
+                        <li>Data Transformation</li>
+                        <li>Platform Integration</li>
+                        <li>API Orchestration</li>
+                        <li>ETL Pipelines</li>
+                        <li>Workflow Automation</li>
                     </ul>
                 </div>
 
