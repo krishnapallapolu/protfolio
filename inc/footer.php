@@ -101,14 +101,15 @@
             const href = link.getAttribute('href');
             if (!href) return;
 
-            // Handle links like "index.php#case-studies" or "#case-studies"
+            // Handle links containing an anchor (e.g. "/index.php#case-studies", "index.php#case-studies" or "#case-studies")
             if (href.indexOf('#') !== -1) {
                 const [path, hash] = href.split('#');
                 const targetId = hash;
+                const cleanPath = (path || '').replace(/^\.\//, '').replace(/^\//, ''); // remove leading ./ or /
 
                 // If link points to index anchors and we're on index page, do smooth scroll instead of reload
                 const onIndex = location.pathname.endsWith('index.php') || location.pathname === '/' || location.pathname === '';
-                if ((path === '' || path === 'index.php') && targetId) {
+                if ((cleanPath === '' || cleanPath === 'index.php') && targetId) {
                     if (onIndex) {
                         const el = document.getElementById(targetId);
                         if (el) {
