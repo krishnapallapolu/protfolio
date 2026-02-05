@@ -289,65 +289,6 @@ include_once('inc/header.php');
         </div>
     </section>
 
-    <section id="faq" class="border-bottom py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-4">FAQs</h2>
-            <p class="text-center text-muted mb-4">Quick answers for recruiters, collaborators, and clients.</p>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card bg-transparent text-white p-4 h-100 shadow">
-                        <h3 class="h5">Who is Krishna Pallapolu?</h3>
-                        <p class="mb-0">A full-stack developer and development lead focused on AI automation, RAG chatbots, and scalable web platforms.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-transparent text-white p-4 h-100 shadow">
-                        <h3 class="h5">What technologies do you specialize in?</h3>
-                        <p class="mb-0">MERN/LAMP, API integrations, Cloudflare Workers, vector databases, and AI copilots like Codex and Claude Code.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-transparent text-white p-4 h-100 shadow">
-                        <h3 class="h5">What roles are you open to?</h3>
-                        <p class="mb-0">Full-stack developer, AI automation engineer, or development lead roles in Dubai or remote.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": "Who is Krishna Pallapolu?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Krishna Pallapolu is a full-stack developer and development lead focused on AI automation, RAG chatbots, and scalable web platforms."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "What technologies does Krishna specialize in?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "MERN/LAMP, API integrations, Cloudflare Workers, vector databases, and AI copilots like Codex and Claude Code."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "What roles is Krishna open to?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Full-stack developer, AI automation engineer, or development lead roles in Dubai or remote."
-                    }
-                }
-            ]
-        }
-        </script>
-    </section>
-
     <section class="border-bottom pt-5">
     
     
@@ -529,6 +470,65 @@ include_once('inc/header.php');
 
     <?php include_once('inc/case-studies.php'); ?>
             </div>
+
+    <section id="faq" class="faq-section border-bottom py-5 d-none hidden">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">FAQs</h2>
+            <p class="text-center text-muted mb-4">Quick answers for recruiters, collaborators, and clients.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="faq-card h-100">
+                        <h3 class="faq-question">Who is Krishna Pallapolu?</h3>
+                        <p class="faq-answer">A senior full-stack developer and development lead with more than a decade of experience, focused on scalable web platforms, AI automation, RAG chatbots.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="faq-card h-100">
+                        <h3 class="faq-question">What do you specialize in?</h3>
+                        <p class="faq-answer">MERN/LAMP, API integrations, Cloudflare Workers, vector databases, and AI copilots like Codex and Claude Code.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="faq-card h-100">
+                        <h3 class="faq-question">What roles are you open to?</h3>
+                        <p class="faq-answer">Senior/Lead full-stack developer, AI automation engineer, or Development Lead roles in Dubai or remote.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Who is Krishna Pallapolu?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Krishna Pallapolu is a senior full-stack developer and development lead with experience since 2014, focused on AI automation, RAG chatbots, and scalable web platforms."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What does Krishna specialize in?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "MERN/LAMP, API integrations, Cloudflare Workers, vector databases, and AI copilots like Codex and Claude Code."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What roles is Krishna open to?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Senior/Lead full-stack developer, AI automation engineer, or development lead roles in Dubai or remote."
+                    }
+                }
+            ]
+        }
+        </script>
+    </section>
 
     <section class="border-bottom py-5">
         <div class="container">

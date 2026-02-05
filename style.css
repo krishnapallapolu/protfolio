@@ -969,6 +969,39 @@ h1 .name {
     color: var(--accent-dark);
 }
 
+/* ===== FAQ Section ===== */
+.faq-section {
+    background: linear-gradient(135deg, rgba(52, 232, 158, 0.06), rgba(64, 116, 181, 0.05));
+}
+
+.faq-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 10px 24px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px var(--accent-shadow-light);
+}
+
+.faq-question {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.faq-answer {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
 /* ===== Go To Top Button ===== */
 .go-top {
     position: fixed;
