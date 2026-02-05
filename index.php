@@ -54,7 +54,7 @@ include_once('inc/header.php');
                     <h3 class="hero-greeting">Hi, I'm</h3>
                     <h1 class="hero-name">Krishna Pallapolu</h1>
                     <div class="typewriter">Development Lead • Full-stack (MERN & LAMP) • AI Integrations</div>
-                    <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams. Driving large-scale product delivery with a relentless focus on performance, security, and automation — leading cross-functional engineering teams to deliver measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI integrations.</p>
+                    <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams. Driving large-scale product delivery with a relentless focus on performance, security, and automation — delivering measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI copilots like Codex and Claude Code.</p>
 
                     <div class="mt-4 d-flex gap-2">
                         <a href="/index.php#case-studies" class="btn btn-accent">Case Studies</a>
@@ -71,7 +71,7 @@ include_once('inc/header.php');
                             <li class="col-sm-6"><i class="fas fa-code"></i> Performance optimization & refactoring</li>
                             <li class="col-sm-6"><i class="fas fa-cloud"></i> Cloud & DevOps: AWS, Docker, GitHub Actions</li>
                             <li class="col-sm-6"><i class="fas fa-tools"></i> Internal tools & workflows automation</li>
-                            <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations and AI Automations</li>
+                            <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations and AI automation (Codex, Claude Code)</li>
                         </ul>
                     </div>
                 </div>
@@ -256,7 +256,8 @@ include_once('inc/header.php');
                         <h4 class="skill-card-title">AI & Automation</h4>
                         <div class="skill-badges">
                             <span class="skill-badge">OpenAI</span>
-                            <span class="skill-badge">Claude</span>
+                            <span class="skill-badge">Codex</span>
+                            <span class="skill-badge">Claude Code</span>
                             <span class="skill-badge">n8n</span>
                             <span class="skill-badge">RAG</span>
                         </div>
@@ -317,7 +318,7 @@ include_once('inc/header.php');
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>
                                 <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON.</li>
                                 <li>Leveraged Laravel, PHP, MySQL, JavaScript, jQuery, Ajax, WordPress, Webflow, and Wix Velo API for various web projects, maintaining robust version control using Git/GitHub.</li>
-                                <li>Implemented AI-driven automation using <strong>n8n</strong> for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
+                                <li>Implemented AI-driven automation using <strong>n8n</strong>, Codex, and Claude Code for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
                             </ul>
                             
 
@@ -437,6 +438,8 @@ include_once('inc/header.php');
                                 <li>MySQL</li>
                                 <li>PostgreSQL</li>
                                 <li>MongoDB</li>
+                                <li>Codex</li>
+                                <li>Claude Code</li>
                             </ul>
                         </div>
                         <div class="py-5">

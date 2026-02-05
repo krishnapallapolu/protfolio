@@ -12,12 +12,14 @@
                     <div class="case-study-content">
                         <h3 class="case-study-title">ETL Pipeline & Social Media Automation</h3>
                         <p class="case-study-description">
-                            Designed and deployed an ETL pipeline using <strong>n8n</strong> to collect, transform, and load data from CRMs, Google Sheets, and external APIs into a centralized datastore. Built an automated social post generation workflow (templated copy + generated assets) and published posts via a social-media aggregator, reducing manual scheduling and ensuring consistent publishing.
+                            Designed and deployed an ETL pipeline using <strong>n8n</strong> to collect, transform, and load data from CRMs, Google Sheets, and external APIs into a centralized datastore. Built an automated social post generation workflow (templated copy + generated assets) and published posts via a social-media aggregator, reducing manual scheduling and ensuring consistent publishing with Codex and Claude Code-assisted prompt iterations.
                         </p>
                         <div class="case-study-tech">
                             <span class="tech-badge">n8n</span>
                             <span class="tech-badge">ETL</span>
                             <span class="tech-badge">OpenAI</span>
+                            <span class="tech-badge">Codex</span>
+                            <span class="tech-badge">Claude Code</span>
                             <span class="tech-badge">Social APIs</span>
                         </div>
                         <div class="case-study-stats">
@@ -108,6 +110,42 @@
                     </div>
                 </div>
             </div>
+            <!-- Case Study 4: Internal Tools -->
+            <div class="col-lg-4 col-md-6">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <i class="fs-1 fas fa-robot"></i>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">RAG Chatbot on Cloudflare Workers</h3>
+                        <p class="case-study-description">
+                            Implemented a RAG chatbot hosted on Cloudflare Workers using a vector database and Cloudflare native services. Deployed with Wrangler and automated releases via GitHub Actions for consistent, fast edge delivery.
+                        </p>
+                        <div class="case-study-tech">
+                            <span class="tech-badge">Cloudflare Workers</span>
+                            <span class="tech-badge">Vector DB</span>
+                            <span class="tech-badge">RAG</span>
+                            <span class="tech-badge">Wrangler</span>
+                            <span class="tech-badge">GitHub Actions</span>
+                        </div>
+                        <div class="case-study-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">Edge</div>
+                                <div class="stat-label">Hosted Globally</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">CI/CD</div>
+                                <div class="stat-label">Automated Deploys</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">Native</div>
+                                <div class="stat-label">Cloudflare Stack</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Case Study 4: Internal Tools -->
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
