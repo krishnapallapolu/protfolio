@@ -12,14 +12,14 @@
                     <div class="case-study-content">
                         <h3 class="case-study-title">ETL Pipeline & Social Media Automation</h3>
                         <p class="case-study-description">
-                            Designed and deployed an ETL pipeline using <strong>n8n</strong> to collect, transform, and load data from CRMs, Google Sheets, and external APIs into a centralized datastore. Built an automated social post generation workflow (templated copy + generated assets) and published posts via a social-media aggregator, reducing manual scheduling and ensuring consistent publishing with Codex and Claude Code-assisted prompt iterations.
+                            Designed and deployed an ETL pipeline using <strong>n8n</strong> to collect, transform, and load data from CRMs, Google Sheets, and external APIs into a centralized datastore. 
+                            Built an automated social post generation workflow (templated copy + generated assets) and published posts via a social-media aggregator, reducing manual scheduling and ensuring consistent publishing.
                         </p>
                         <div class="case-study-tech">
                             <span class="tech-badge">n8n</span>
                             <span class="tech-badge">ETL</span>
                             <span class="tech-badge">OpenAI</span>
-                            <span class="tech-badge">Codex</span>
-                            <span class="tech-badge">Claude Code</span>
+                            <span class="tech-badge">Google AI Studio/ Gemini 2.5 Flash</span>
                             <span class="tech-badge">Social APIs</span>
                         </div>
                         <div class="case-study-stats">
@@ -49,7 +49,7 @@
                     <div class="case-study-content">
                         <h3 class="case-study-title">Event Registration System</h3>
                         <p class="case-study-description">
-                            Built integrated event management system with third-party APIs (DTCM, Eventsair).
+                            Built integrated event management system with third-party APIs leveraging REST APIs and GraphQL.
                             Automated registration data retrieval and barcode generation for seamless check-ins.
                         </p>
                         <div class="case-study-tech">
