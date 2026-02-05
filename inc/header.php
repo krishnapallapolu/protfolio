@@ -1,9 +1,70 @@
+<?php
+$siteName = 'Krishna Pallapolu';
+$pageTitle = 'Krishna Pallapolu | Full-Stack Developer & AI Automation';
+$metaDescription = 'Krishna Pallapolu is a full-stack developer and development lead specializing in AI automation, RAG chatbots, and scalable web apps (MERN/LAMP).';
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+$requestUri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+$canonical = 'https://' . $host . strtok($requestUri, '?');
+$ogImage = 'https://' . $host . '/images/krishna-headshot2.png';
+$metaKeywords = 'Krishna Pallapolu, full stack developer, AI automation, RAG, MERN, LAMP, Cloudflare Workers, API integrations';
+$structuredData = [
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'Person',
+            '@id' => $canonical . '#person',
+            'name' => 'Krishna Pallapolu',
+            'url' => $canonical,
+            'jobTitle' => 'Development Lead, Full-Stack Developer',
+            'knowsAbout' => [
+                'AI automation',
+                'RAG',
+                'Full-stack development',
+                'MERN',
+                'LAMP',
+                'Cloudflare Workers',
+                'API integrations'
+            ],
+            'sameAs' => [
+                'https://www.linkedin.com/in/krishna-pallapolu-b4552738/',
+                'https://github.com/krishnapallapolu'
+            ]
+        ],
+        [
+            '@type' => 'WebSite',
+            '@id' => $canonical . '#website',
+            'name' => $siteName,
+            'url' => $canonical,
+            'publisher' => [
+                '@id' => $canonical . '#person'
+            ]
+        ]
+    ]
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Krishna Pallapolu</title>
+    <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES); ?>" />
+    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords, ENT_QUOTES); ?>" />
+    <meta name="author" content="Krishna Pallapolu" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonical, ENT_QUOTES); ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES); ?>" />
+    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES); ?>" />
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonical, ENT_QUOTES); ?>" />
+    <meta property="og:image" content="<?php echo htmlspecialchars($ogImage, ENT_QUOTES); ?>" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES); ?>" />
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES); ?>" />
+    <meta name="twitter:image" content="<?php echo htmlspecialchars($ogImage, ENT_QUOTES); ?>" />
+    <script type="application/ld+json">
+        <?php echo json_encode($structuredData, JSON_UNESCAPED_SLASHES); ?>
+    </script>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,4 +89,3 @@
 </head>
 <body>
 <main>
-
