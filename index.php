@@ -33,7 +33,7 @@ include_once('inc/header.php');
                         <a class="nav-link" href="/index.php#work-history">Work History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index.php#case-studies">Case Studies</a>
+                        <a class="nav-link" href="/index.php#case-studies">Featured Work</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/index.php#education">Education</a>
@@ -57,7 +57,7 @@ include_once('inc/header.php');
                     <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams. Driving large-scale product delivery with a relentless focus on performance, security, and automation — delivering measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI copilots like Codex and Claude Code.</p>
 
                     <div class="mt-4 d-flex gap-2">
-                        <a href="/index.php#case-studies" class="btn btn-accent">Case Studies</a>
+                        <a href="/index.php#case-studies" class="btn btn-accent">Featured Work</a>
                         <a href="/index.php#skills" class="btn btn-outline-light">Skills</a>
                         <a href="/index.php#education" class="btn btn-outline-light">Education</a>
                     </div>

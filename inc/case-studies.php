@@ -1,7 +1,7 @@
 <!-- Case Studies Section (moved from index.php) -->
 <section id="case-studies" class="case-studies-section border-bottom">
     <div class="container">
-        <h2 class="text_shadow mb-5 text-center">Case Studies</h2>
+        <h2 class="text_shadow mb-5 text-center">Featured Work</h2>
         <div class="row g-4">
             <!-- Case Study 1: ETL & Social Automation -->
             <div class="col-lg-4 col-md-6">
