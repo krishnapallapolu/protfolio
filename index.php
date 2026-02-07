@@ -95,7 +95,7 @@ include_once('inc/header.php');
                         <p class="mb-2"><i class="fas fa-envelope me-2"></i><a href="mailto:krishna.naidu24@gmail.com">krishna.naidu24@gmail.com</a></p>
                         <p class="mb-2"><i class="fas fa-mobile-alt me-2"></i><a href="tel:+971503242537">+971 50 324 2537</a></p>
                         <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Dubai, UAE</p>
-                        <p class="mb-2"><i class="fas fa-id-card me-2"></i>Valid UAE driving license</p>
+                        <p class="mb-2"><i class="fas fa-id-card me-2"></i>UAE driving license</p>
 
                         <div class="mb-3 interpersonal-badges">
                             <span class="badge badge-accent">Leadership</span>
