@@ -222,9 +222,14 @@ include_once('inc/header.php');
                         <h4 class="skill-card-title">DevOps & Cloud</h4>
                         <div class="skill-badges">
                             <span class="skill-badge">AWS</span>
+                            <span class="skill-badge">Apache Server</span>
+                            <span class="skill-badge">Linux</span>
+                            <span class="skill-badge">Cloudflare Stack</span>
                             <span class="skill-badge">Docker</span>
                             <span class="skill-badge">GitHub Actions</span>
+                            <span class="skill-badge">Vercel</span>
                             <span class="skill-badge">Kubernetes</span>
+
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Reliability</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
