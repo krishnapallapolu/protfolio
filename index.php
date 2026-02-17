@@ -206,8 +206,8 @@ include_once('inc/header.php');
                             <span class="skill-badge">Node.js</span>
                             <span class="skill-badge">Express</span>
                             <span class="skill-badge">PHP / Laravel</span>
-                            <span class="skill-badge">GraphQL</span>
-                            <span class="skill-badge">Prisma</span>
+                            <span class="skill-badge">Rest API, GraphQL</span>
+                            <span class="skill-badge">Mongoose, Prisma</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Scalability</div><div class="skill-line"><div class="skill-level" style="width:88%"></div></div></div>
@@ -260,10 +260,9 @@ include_once('inc/header.php');
                     <div class="skill-card shadow p-3 h-100">
                         <h4 class="skill-card-title">AI & Automation</h4>
                         <div class="skill-badges">
-                            <span class="skill-badge">OpenAI</span>
-                            <span class="skill-badge">Codex</span>
-                            <span class="skill-badge">Claude Code</span>
-                            <span class="skill-badge">n8n</span>
+                            <span class="skill-badge">n8n / Zapier MCP / Make</span>
+                            <span class="skill-badge">OpenAI, Codex</span>
+                            <span class="skill-badge">Claude, Claude Code</span>
                             <span class="skill-badge">RAG</span>
                         </div>
                         <div class="skill-list mt-3">
