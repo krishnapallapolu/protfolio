@@ -6,17 +6,17 @@
     --bg-card: rgba(255, 255, 255, 0.1);
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
-    --accent: #34e89e;
-    --accent-dark: #2bc47f;
-    --accent-shadow: rgba(51, 232, 158, 0.75);
-    --accent-shadow-light: rgba(51, 232, 158, 0.3);
+    --accent: #1db87a;
+    --accent-dark: #179963;
+    --accent-shadow: rgba(29, 184, 122, 0.35);
+    --accent-shadow-light: rgba(29, 184, 122, 0.18);
     --card-shadow: rgba(0, 0, 0, 0.3);
     --card-shadow-hover: rgba(0, 0, 0, 0.4);
     --education-bg: #055160;
     --border-color: rgba(255, 255, 255, 0.1);
     --navbar-bg: #212529;
-    --link-color: #34e89e;
-    --link-hover: #2bc47f;
+    --link-color: #1db87a;
+    --link-hover: #179963;
 }
 
 [data-theme="light"] {
@@ -26,17 +26,17 @@
     --bg-card: #ffffff;
     --text-primary: #0f1720;
     --text-secondary: #585e66;
-    --accent: #34e89e;
-    --accent-dark: #28b776;
-    --accent-shadow: rgba(52, 232, 158, 0.15);
-    --accent-shadow-light: rgba(52, 232, 158, 0.08);
+    --accent: #1db87a;
+    --accent-dark: #179963;
+    --accent-shadow: rgba(29, 184, 122, 0.15);
+    --accent-shadow-light: rgba(29, 184, 122, 0.08);
     --card-shadow: rgba(16, 24, 40, 0.08);
     --card-shadow-hover: rgba(16, 24, 40, 0.10);
     --education-bg: #f0fdf9;
     --border-color: rgba(0, 0, 0, 0.12);
     --navbar-bg: #ffffff;
     --link-color: var(--accent);
-    --link-hover: #279e67;
+    --link-hover: #179963;
 }
 
 /* ===== Light theme overrides for Bootstrap utility classes ===== */
@@ -537,11 +537,14 @@ a:hover {
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px var(--accent-shadow-light);
 }
 
 .btn-accent:hover {
     background: var(--accent-dark);
     color: #fff;
+    box-shadow: 0 4px 14px var(--accent-shadow);
 }
 
 /* ===== Button contrast fixes for light theme ===== */

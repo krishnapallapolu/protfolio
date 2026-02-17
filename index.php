@@ -179,15 +179,15 @@ include_once('inc/header.php');
                         <h4 class="skill-card-title">Frontend</h4>
                         <div class="skill-badges">
                             <span class="skill-badge">JavaScript (ES6+)</span>
+                            <span class="skill-badge">TypeScript</span>
                             <span class="skill-badge">React</span>
-                            <span class="skill-badge">React Components</span>
                             <span class="skill-badge">Next.js</span>
                             <span class="skill-badge">MUI</span>
-                            <span class="skill-badge">Bootstrap</span>
-                            <span class="skill-badge">TypeScript</span>
                             <span class="skill-badge">HTML5</span>
                             <span class="skill-badge">CSS3 / Sass</span>
                             <span class="skill-badge">Tailwind</span>
+                            <span class="skill-badge">Bootstrap</span>
+
                         </div>
 
 
