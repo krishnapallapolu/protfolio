@@ -108,7 +108,8 @@ include_once('inc/header.php');
 
                         <div class="mt-3">
                             <a class="btn btn-accent btn-sm me-2" href="/assets/krishnap-cv.pdf" target="_blank" rel="noopener">Download CV</a>
-                            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="#coverLetterModal" aria-expanded="false">Cover Letter</button>
+                            <button class="btn btn-outline-light btn-sm me-2" data-bs-toggle="modal" data-bs-target="#coverLetterModal" aria-controls="#coverLetterModal" aria-expanded="false">Cover Letter</button>
+                            <button class="btn btn-outline-light btn-sm btn-print" onclick="window.print()"><i class="fas fa-print me-1"></i>Print</button>
                         </div>
 
                         <!-- Cover Letter Modal -->

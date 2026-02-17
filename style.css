@@ -1369,3 +1369,202 @@ h1 .name {
         display: none;
     }
 }
+
+/* ===== Print / Resume Styles ===== */
+@media print {
+    /* Force white background, black text everywhere */
+    *, *::before, *::after {
+        color: #000 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        border-color: #ccc !important;
+    }
+
+    body {
+        font-size: 10.5pt;
+        line-height: 1.45;
+    }
+
+    /* ── Hide non-resume chrome ── */
+    .navbar,
+    #theme-toggle,
+    .geo-shape,
+    .case-studies-section,
+    #faq,
+    .footer,
+    #go-top,
+    .modal,
+    .btn-print,
+    #skills,
+    .interpersonal-badges,
+    .profile-about,
+    .col-lg-5 .pt-2,
+    .col-lg-5 .mt-3,
+    #hero .mt-4.d-flex,
+    #hero .hightlights,
+    .skill-list {
+        display: none !important;
+    }
+
+    /* ── Page setup ── */
+    @page {
+        margin: 1.5cm 2cm;
+        size: A4 portrait;
+    }
+
+    /* ── Hero → Resume header ── */
+    #hero {
+        padding: 0 0 1rem !important;
+        margin-bottom: 0.5rem;
+        border-bottom: 1.5pt solid #000;
+    }
+
+    #hero .row {
+        display: block !important;
+    }
+
+    #hero .col-lg-7,
+    #hero .col-lg-5 {
+        max-width: 100% !important;
+        width: 100% !important;
+        flex: none !important;
+        padding: 0 !important;
+    }
+
+    .hero-greeting { display: none !important; }
+
+    .hero-name {
+        font-size: 20pt !important;
+        font-weight: 700;
+        margin-bottom: 0.15rem;
+    }
+
+    .typewriter {
+        font-size: 11pt !important;
+        animation: none !important;
+        border-right: none !important;
+        width: auto !important;
+        white-space: normal !important;
+        margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 9pt !important;
+        margin: 0.4rem 0 0.8rem !important;
+        color: #333 !important;
+    }
+
+    /* Contact row from profile card */
+    .profile_card {
+        border: none !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.3rem 1.5rem !important;
+        margin-top: 0.4rem;
+    }
+
+    .profile_card hr { display: none !important; }
+
+    .profile_card p {
+        font-size: 9pt !important;
+        margin: 0 !important;
+    }
+
+    .profile_card p a {
+        text-decoration: none !important;
+    }
+
+    /* ── Sections ── */
+    .border-bottom {
+        border: none !important;
+        padding-top: 0.6rem !important;
+    }
+
+    /* ── Work history ── */
+    #work-history h2 {
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #000;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.6rem !important;
+    }
+
+    #work-history article {
+        page-break-inside: avoid;
+        padding-bottom: 0.7rem !important;
+    }
+
+    #work-history h3 {
+        font-size: 10.5pt !important;
+        font-weight: 700;
+        margin-bottom: 0.1rem;
+    }
+
+    #work-history article > p {
+        font-size: 9pt !important;
+        margin: 0 0 0.1rem !important;
+    }
+
+    #work-history ul {
+        font-size: 9pt !important;
+        margin: 0.2rem 0 0 !important;
+        padding-left: 1.2rem !important;
+    }
+
+    #work-history ul.d-none {
+        display: none !important;
+    }
+
+    /* ── Sidebar skills: show full-width in print ── */
+    #content > .row {
+        display: block !important;
+    }
+
+    #content .col-md-8,
+    #content .col-md-4.sidebar-sticky {
+        max-width: 100% !important;
+        width: 100% !important;
+        flex: none !important;
+        padding: 0 !important;
+    }
+
+    .sidebar-sticky .card {
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .sidebar-sticky h2 {
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #000;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .sidebar-sticky ul {
+        font-size: 9pt !important;
+        columns: 3;
+        list-style: disc;
+        padding-left: 1rem !important;
+    }
+
+    /* ── Education ── */
+    #education h2 {
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #000;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.6rem !important;
+    }
+
+    .education-card {
+        page-break-inside: avoid;
+        border: none !important;
+        padding: 0.4rem 0 !important;
+    }
+
+    /* ── Links: don't show URLs ── */
+    a[href]::after {
+        content: none !important;
+    }
+}
