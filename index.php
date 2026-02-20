@@ -3,7 +3,7 @@
 include_once('inc/header.php');
 
 ?>
-    <!-- Google tag (gtag.js) — FIX: removed stray </head><body> wrapper that was here; GA works fine in body -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPZK0V35K0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,6 +12,8 @@ include_once('inc/header.php');
 
   gtag('config', 'G-VPZK0V35K0');
 </script>
+</head>
+<body class="bg-dark text-white">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Krishna Pallapolu</a>
@@ -138,6 +140,7 @@ include_once('inc/header.php');
                             var openLink = modal.querySelector('.modal-footer a');
                             modal.addEventListener('show.bs.modal', function (e) {
                                 var url = 'assets/krishna-coverletter.pdf';
+                                // Check if resource exists before showing it
                                 fetch(url, { method: 'HEAD' }).then(function (res) {
                                     if (res.ok) {
                                         if (iframe) { iframe.style.display = 'block'; iframe.src = url; }
@@ -185,7 +188,10 @@ include_once('inc/header.php');
                             <span class="skill-badge">CSS3 / Sass</span>
                             <span class="skill-badge">Tailwind</span>
                             <span class="skill-badge">Bootstrap</span>
+
                         </div>
+
+
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">UI Architecture</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
                             <div class="skill-row"><div class="skill-name">Performance</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
@@ -228,6 +234,7 @@ include_once('inc/header.php');
                             <span class="skill-badge">GitHub Actions</span>
                             <span class="skill-badge">Vercel</span>
                             <span class="skill-badge">Kubernetes</span>
+
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Reliability</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
@@ -291,23 +298,24 @@ include_once('inc/header.php');
         </div>
     </section>
 
-    <!-- FIX: Removed duplicate outer <section> wrapper that was never closed -->
+    <section class="border-bottom pt-5">
+    
+    
     <section class="border-bottom pt-5">
         <div class="container" id="content">
+            <!-- Skills Section -->
             <div class="row">
 
-                <!-- FIX: Expanded to col-12 — removed old duplicate skills sidebar (col-md-4) -->
-                <div class="col-12">
+                <div class="col-md-8">
                     <!-- Work History Section -->
                     <section id="work-history">
                         <h2 class="text_shadow mb-5">Work History</h2>
                         <article class="pb-5">
-                            <!-- FIX: "Dubai, Dubai" → "Dubai" -->
                             <h3>Development Manager / Senior Full Stack Developer</h3>
-                            <p>Meeting Minds Experts — Dubai</p>
-                            <p><i>2023 - Present</i></p>
+                            <p>Meeting Minds Experts - Dubai, Dubai</p>
+                            <p><i> 2023 - Present</i></p>
                             <ul class="d-none">
-                                <li>Design, develop, and manage websites, educational platforms, and internal applications specific to the healthcare sector.</li>
+                                <li>Design, develop, and manage websites, educational platforms, and internal applications specific to the healthcare sector.                                
                                 <li>Proficient in integrating websites with third-party applications such as DTCM and Eventsair to retrieve registration and program data, as well as generate barcodes using PHP, cURL, REST API, GraphQl and JSON.</li>
                                 <li>Collaborate closely with stakeholders and project managers to ensure seamless coordination and timely delivery of projects.</li>
                                 <li>Demonstrated ability to lead teams effectively, resulting in the successful and punctual delivery of websites and applications.</li>
@@ -315,34 +323,37 @@ include_once('inc/header.php');
                             </ul>
                             <ul>
                                 <li>Developed, and managed scalable websites, educational platforms, and internal applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) ensuring high performance, data integrity, and seamless user experiences.</li>
-                                <li>Led the development of internal application, utilizing the MERN stack to ensure efficient data handling, secure authentication, and user-friendly interfaces.</li>
+                                <li>Led the development of internal application, utilizing the MERN stack to ensure efficient data handling, secure authentication, and user-friendly interfaces. </li>
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>
                                 <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON.</li>
                                 <li>Leveraged Laravel, PHP, MySQL, JavaScript, jQuery, Ajax, WordPress, Webflow, and Wix Velo API for various web projects, maintaining robust version control using Git/GitHub.</li>
                                 <li>Implemented AI-driven automation using <strong>n8n</strong>, Codex, and Claude Code for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
                             </ul>
-                        </article>
+                            
 
+                        </article>
                         <article class="pb-5">
                             <h3>Senior Web Developer/Lead</h3>
-                            <!-- FIX: "WFA" expanded for clarity -->
-                            <p>Sapaad Pte Ltd, Work From Anywhere, Bengaluru</p>
+                            <p>Sapaad Pte Ltd, WFA, Bengaluru</p>
                             <p><i>Jan 2022 - Nov 2023</i></p>
+
                             <ul class="d-none">
                                 <li>Led and managed a team of developers in the development projects for the websites throughout the various phases of the project life cycle with industry best practices</li>
                                 <li>Innovated and implemented several processes in place to ensure smoother functioning among the cross-functional teams (Design, Content, QA, Marketing)</li>
                                 <li>Improved and ensured the site's uptime to 99.9% from 80%, implemented SEO using Ahrefs, Pagespeed Insights, GT Metrix.</li>
-                                <li>Assisted developers in templates/components development using PHP, JavaScript, jQuery, MySQL, Ajax, NodeJS, JSON API, HTML5, CSS3 and testing, debugging, and deployment.</li>
+                                <li>Assisted developers in templates/components development using PHP, JavaScript, jQuery, MySQL, Ajax, NodeJS, JSON API,  HTML5, CSS3 and testing, debugging, and deployment.</li>
                             </ul>
-                            <p>Led a development team through the SDLC, improving system performance and security across websites and internal tools. Increased website uptime from 80% to 99.9%, enhancing reliability and user satisfaction. Mitigated security threats like Brute-force and DDoS attacks while implementing redundancy.</p>
+                            <p> Led a development team through the SDLC, improving system performance and security across websites and internal tools. Increased website uptime from 80% to 99.9%, enhancing reliability and user satisfaction. Mitigated security threats like Brute-force and DDoS attacks while implementing redundancy.</p>
                             <ul>
-                                <!-- FIX: Removed malformed <li></li> before text; fixed closing tag on first li -->
-                                <li>Key achievements: Delivered enterprise-level projects with over 30,000 user base on time through cross-functional collaboration.</li>
-                                <li>Utilized PHP, JavaScript, Node.js, React.js, jQuery, MySQL, AJAX, REST API, and tools like Figma and Photoshop for user-centric, visually appealing applications.</li>
-                                <li>Automated processes with cron jobs and GitHub Actions for Continuous Deployment (CD), increasing release efficiency.</li>
-                                <li>Established web accessibility standards and used insights from Google Analytics, Clarity, and HubSpot to drive user engagement.</li>
-                                <li>Fostered innovation and ensured high-quality, scalable solutions through leadership and process optimization.</li>
+                                
+                                <li>  Key achievements:
+                            Delivered enterprise-level projects with over 30,000 user base on time through cross-functional collaboration.</li>
+                            <li></li>Utilized PHP, JavaScript, Node.js, React.js, jQuery, MySQL, AJAX, REST API, and tools like Figma and Photoshop for user-centric, visually appealing applications.</li>
+                            <li>Automated processes with cron jobs and GitHub Actions for Continuous Deployment (CD), increasing release efficiency.</li>
+                            <li>Established web accessibility standards and used insights from Google Analytics, Clarity, and HubSpot to drive user engagement.</li>
+                            <li>Fostered innovation and ensured high-quality, scalable solutions through leadership and process optimization.</li>
                             </ul>
+                          
                         </article>
 
                         <article class="pb-5">
@@ -350,36 +361,35 @@ include_once('inc/header.php');
                             <p>Google Operations Center, Hyderabad</p>
                             <p><i>Aug 2020 - Dec 2021</i></p>
                             <ul>
-                                <li>Coded the Google Analytics email template from scratch as well as other email templates using HTML, CSS, and FreeMarker Template Language (FTL), HTML, CSS, JavaScript and built courses using LMS (Evolve) as per stakeholder documentation.</li>
+                                <li>Coded the Google Analytics email template from scratch as well as other email templates using HTML, CSS, and FreeMarker Template Language [FTL], HTML, CSS, JavaScript and build courses using LMS [Evolve] as per stakeholder documentation.</li>
                                 <li>Trained teammates and new joiners on processes and best practices. Ensured SLAs were at 100%.</li>
                                 <li>Ensured emails, course design and functionality worked within a variety of browsers, devices, and responsiveness.</li>
                             </ul>
                         </article>
-
                         <article class="pb-5">
                             <h3>Web Designer and Developer</h3>
                             <p>Onetrust Privacy Management Software, Bengaluru</p>
                             <p>Aug 2019 - Aug 2020</p>
                             <ul>
-                                <!-- FIX: Added missing </li>; fixed "Word- Press" → "WordPress"; fixed "thor- ough" → "thorough" -->
-                                <li>Engineered modern and highly responsive web designs. Utilized PHP, Node JS, JavaScript, Angular, jQuery, WordPress, Ajax, Bootstrap, CSS3, HTML5, and SCSS/SASS to achieve this.</li>
-                                <li>Effectively managed project workflows, conducted thorough QA reviews, and carefully prioritized web initiatives, all while maintaining comprehensive documentation.</li>
+                                <li>Engineered modern and highly responsive web designs. Utilized PHP, Node JS, JavaScript, Angular, jQuery, Word- Press, Ajax, Bootstrap, CSS3, HTML5, and SCSS/SASS to achieve this.
+                                <li>Effectively managed project workflows, conducted thor- ough QA reviews, and carefully prioritized web initiatives, all while maintaining comprehensive documentation.</li>
                                 <li>Improved web performance using tools such as Google PageSpeed Insights and Lighthouse, ensuring quick and efficient website loading.</li>
                             </ul>
+                            
                         </article>
-
                         <article class="pb-5">
                             <h3>Web Consultant</h3>
-                            <p>Cognizant Technology Solutions (CTS)</p>
-                            <p>Worked as VENDOR to <strong>Google</strong> — Bengaluru</p>
+                            <p>Congnizant Technology Solutions (CTS)</p>
+                            <p>Worked as VENDOR to <strong>Google</strong> - Bengaluru</p>
                             <p><i>May 2017 - Aug 2019</i></p>
+
                             <ul>
-                                <li>Crafted Accelerated Mobile Pages (AMP) through adept utilization of HTML, CSS, and AMP boilerplate.</li>
+                                <li>Crafted Accelerated Mobile Pages [AMP] through adept utilization of HTML, CSS, and AMP boilerplate.</li>
                                 <li>Collaborated closely with clients to strategize and enhance site functionalities across diverse CMS platforms, encompassing WordPress, Drupal, Shopify, Magento, Wix, and custom PHP sites.</li>
                                 <li>Conducted comprehensive code reviews to ensure structural integrity, security adherence, and compatibility across multiple browsers and devices. Skillfully fine-tuned web applications for optimal speed, performance, scalability, and unwavering security standards.</li>
                             </ul>
-                        </article>
 
+                        </article>
                         <article class="pb-5">
                             <h3>Senior Technical Associate</h3>
                             <p>Dell Technologies, Bangalore</p>
@@ -389,8 +399,8 @@ include_once('inc/header.php');
                                 <li>Installed system updates to address vulnerabilities and reduce security issues.</li>
                                 <li>Investigated system issues and implemented resolutions to reduce downtime.</li>
                             </ul>
+                            
                         </article>
-
                         <article class="pb-5">
                             <h3>Technical Associate</h3>
                             <p>Mphasis Ltd, Bangalore</p>
@@ -399,17 +409,76 @@ include_once('inc/header.php');
                                 <li>Proficiently diagnosed and resolved network-related challenges, including intricate wifi configuration matters, across routers and switches.</li>
                                 <li>Expertly orchestrated LAN/WAN setups and meticulously configured IP protocols to ensure seamless connectivity and robust network performance.</li>
                             </ul>
+                            
                         </article>
-                    </section>
+                    <!-- Include other work history entries here -->
+                </section>
+
+                
                 </div>
+                <div class="col-md-4 sidebar-sticky pb-5">
+                    <div  class="card bg-transparent p-4 align-items-center shadow_l" >
+                        <h2 class="mb-4">Technical Skills</h2>
+                        <div class="d-flex align-items-start justify-content-center ">
+                            <ul>
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>BootStrap</li>
+                                <li>JavaScript</li>
+                                <li>TypeScript</li>
+                                <li>JQuery</li>
+                                <li>Ajax</li>
+                                <li>SCSS/SASS</li>
+                                <li>React JS</li>
+                                <li>Next JS</li>
+                                <li>SEO</li>
+                            </ul>
+                            <ul>
+                                <li>AWS EC2, S3, Lambda, ECS</li>
+                                <li>WordPress</li>
+                                <li>Webflow</li>
+                                <li>Wix & Velo API</li>
+                                <li>JSON</li>
+                                <li>REST API</li>
+                                <li>Node JS</li>
+                                <li>Vercel</li>
+                                <li>PHP</li>
+                                <li>Laravel</li>
+                                <li>MySQL</li>
+                                <li>PostgreSQL</li>
+                                <li>MongoDB</li>
+                                <li>Codex</li>
+                                <li>Claude Code</li>
+                            </ul>
+                        </div>
+                        <div class="py-5">
+                            <h2>Interpersonal Skills</h2>
+                            <ul>
+                                <li>Leadership Skills</li>
+                                <li>Team Management</li>
+                                <li>Planning and Time management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card bg-transparent p-4 align-items-center mt-4 shadow_r d-none">
+                        <h2 class="mb-4">Projects</h2>
+                        <p>Predominantly Worked on many internal tools and applications. Some of the websites list as below:</p>
 
-                <!-- FIX: Removed old duplicate skills sidebar (plain <ul> list) — superseded by the skills card grid above -->
+                        <ul>
 
+                            <li><a href="https://www.sapaad.com">Sapaad</a></li>
+                            <li><a href="https://www.onetrust.com">Onetrust</a></li>
+                            <li><a href="https://www.admissionleap.com">AdmissionLeap</a></li>
+
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <?php include_once('inc/case-studies.php'); ?>
+            </div>
 
     <section id="faq" class="faq-section border-bottom py-5 d-none hidden">
         <div class="container">
@@ -472,6 +541,7 @@ include_once('inc/header.php');
 
     <section class="border-bottom py-5">
         <div class="container">
+            <!-- Education Section -->
             <div class="row">
                 <div class="col-12">
                     <section class="" id="education">
@@ -492,93 +562,4 @@ include_once('inc/header.php');
             </div>
         </div>
     </section>
-
-<!-- Matrix / Math Background Canvas -->
-<canvas id="matrix-bg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.18;"></canvas>
-<style>
-  body > *:not(#matrix-bg) { position: relative; z-index: 1; }
-  [data-theme="light"] #matrix-bg { opacity: 0.07; }
-</style>
-<script>
-(function () {
-    var canvas = document.getElementById('matrix-bg');
-    var ctx = canvas.getContext('2d');
-
-    var mathSymbols = [
-        '∑','∫','∂','∇','∞','π','α','β','γ','δ','λ','μ','σ','θ','φ',
-        '√','≈','≠','≤','≥','∈','∉','∅','∩','∪','⊆','⊂','∀','∃','¬',
-        '⊕','⊗','Δ','Ω','ℝ','ℕ','ℤ','ℚ','f(x)','dx','dy','n²','e^x',
-        '01','10','11','00','1','0'
-    ];
-
-    var streams = [];
-    var W, H;
-
-    function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-        initStreams();
-    }
-
-    function initStreams() {
-        streams = [];
-        var cols = Math.floor(W / 22);
-        for (var i = 0; i < cols; i++) {
-            streams.push({
-                x: i * 22 + 11,
-                y: Math.random() * -H,
-                speed: 0.6 + Math.random() * 1.2,
-                symbols: [],
-                length: 6 + Math.floor(Math.random() * 14),
-                timer: Math.random() * 60
-            });
-        }
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, W, H);
-
-        /* dot grid */
-        ctx.fillStyle = 'rgba(29, 184, 122, 0.35)';
-        var spacing = 38;
-        for (var gx = spacing / 2; gx < W; gx += spacing) {
-            for (var gy = spacing / 2; gy < H; gy += spacing) {
-                ctx.beginPath();
-                ctx.arc(gx, gy, 1.2, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        /* falling symbol streams */
-        for (var s = 0; s < streams.length; s++) {
-            var st = streams[s];
-            st.timer++;
-            if (st.timer % 4 === 0) {
-                st.symbols.unshift(mathSymbols[Math.floor(Math.random() * mathSymbols.length)]);
-                if (st.symbols.length > st.length) st.symbols.pop();
-            }
-            st.y += st.speed;
-            if (st.y > H + 200) {
-                st.y = Math.random() * -300;
-                st.symbols = [];
-            }
-            for (var k = 0; k < st.symbols.length; k++) {
-                var alpha = (1 - k / st.length);
-                ctx.fillStyle = k === 0
-                    ? 'rgba(200, 255, 230, ' + alpha + ')'
-                    : 'rgba(29, 184, 122, ' + (alpha * 0.8) + ')';
-                ctx.font = (k === 0 ? 'bold ' : '') + '11px monospace';
-                ctx.fillText(st.symbols[k], st.x, st.y - k * 18);
-            }
-        }
-
-        requestAnimationFrame(draw);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-    draw();
-})();
-</script>
-
-<?php include_once('inc/footer.php'); ?>
+ <?php include_once('inc/footer.php'); ?>
