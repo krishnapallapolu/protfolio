@@ -1419,6 +1419,7 @@ h1 .name {
         border-bottom: 1.5pt solid #000;
         background: #fff !important;
         background-color: #fff !important;
+        box-shadow: none !important;
     }
 
     .hero-section::before,
@@ -1426,10 +1427,12 @@ h1 .name {
         content: none !important;
         display: none !important;
         background: none !important;
+        box-shadow: none !important;
     }
 
     #hero .row {
         display: block !important;
+        background-color: #fff !important;
     }
 
     #hero .col-lg-7,
@@ -1438,6 +1441,7 @@ h1 .name {
         width: 100% !important;
         flex: none !important;
         padding: 0 !important;
+        background-color: #fff !important;
     }
 
     .hero-greeting { display: none !important; }

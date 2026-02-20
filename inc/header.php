@@ -23,7 +23,9 @@ $structuredData = [
                 'MERN',
                 'LAMP',
                 'Cloudflare Workers',
-                'API integrations'
+                'API integrations',
+                'Scalable web applications',
+                'AWS'
             ],
             'sameAs' => [
                 'https://www.linkedin.com/in/krishna-pallapolu-b4552738/',
