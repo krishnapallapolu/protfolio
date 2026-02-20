@@ -45,6 +45,94 @@ include_once('inc/header.php');
         </div>
     </nav>
 
+<!-- Matrix / Math Background Canvas -->
+<canvas id="matrix-bg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.13;"></canvas>
+<style>
+  main > *:not(#matrix-bg) { position: relative; z-index: 1; }
+  [data-theme="light"] #matrix-bg { opacity: 0.06; }
+</style>
+<script>
+(function () {
+    var canvas = document.getElementById('matrix-bg');
+    var ctx = canvas.getContext('2d');
+
+    var mathSymbols = [
+        '∑','∫','∂','∇','∞','π','α','β','γ','δ','λ','μ','σ','θ','φ',
+        '√','≈','≠','≤','≥','∈','∉','∅','∩','∪','⊆','⊂','∀','∃','¬',
+        '⊕','⊗','Δ','Ω','ℝ','ℕ','ℤ','ℚ','f(x)','dx','dy','n²','e^x',
+        '01','10','11','00','1','0'
+    ];
+
+    var streams = [];
+    var W, H;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        initStreams();
+    }
+
+    function initStreams() {
+        streams = [];
+        var cols = Math.floor(W / 22);
+        for (var i = 0; i < cols; i++) {
+            streams.push({
+                x: i * 22 + 11,
+                y: Math.random() * -H,
+                speed: 0.6 + Math.random() * 1.2,
+                symbols: [],
+                length: 6 + Math.floor(Math.random() * 14),
+                timer: Math.random() * 60
+            });
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        /* dot grid */
+        ctx.fillStyle = 'rgba(29, 184, 122, 0.35)';
+        var spacing = 38;
+        for (var gx = spacing / 2; gx < W; gx += spacing) {
+            for (var gy = spacing / 2; gy < H; gy += spacing) {
+                ctx.beginPath();
+                ctx.arc(gx, gy, 1.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        /* falling symbol streams */
+        for (var s = 0; s < streams.length; s++) {
+            var st = streams[s];
+            st.timer++;
+            if (st.timer % 4 === 0) {
+                st.symbols.unshift(mathSymbols[Math.floor(Math.random() * mathSymbols.length)]);
+                if (st.symbols.length > st.length) st.symbols.pop();
+            }
+            st.y += st.speed;
+            if (st.y > H + 200) {
+                st.y = Math.random() * -300;
+                st.symbols = [];
+            }
+            for (var k = 0; k < st.symbols.length; k++) {
+                var alpha = (1 - k / st.length);
+                ctx.fillStyle = k === 0
+                    ? 'rgba(200, 255, 230, ' + alpha + ')'
+                    : 'rgba(29, 184, 122, ' + (alpha * 0.8) + ')';
+                ctx.font = (k === 0 ? 'bold ' : '') + '11px monospace';
+                ctx.fillText(st.symbols[k], st.x, st.y - k * 18);
+            }
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+})();
+</script>
+
     <section id="hero" class="hero-section py-5 bg-dark text-white">
         <div class="container">
             <div class="row align-items-center">

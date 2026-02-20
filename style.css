@@ -645,8 +645,7 @@ h1 .name {
     -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow);
 }
 
-.shadow_l,
-#skills {
+.shadow_l {
     box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
     -webkit-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
     -moz-box-shadow: 10px 10px 5px 0px var(--accent-shadow) inset;
@@ -693,10 +692,10 @@ h1 .name {
 
 /* ===== Skills Section ===== */
 .skills-section {
-    padding: 50px 15px;
+    padding: 50px 0;
     text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    background-color: var(--bg-secondary);
 }
 
 .section-title {
@@ -849,12 +848,15 @@ h1 .name {
 
 /* ===== Education Section ===== */
 .education-card {
-    background-color: var(--education-bg) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent);
     color: var(--text-primary);
 }
 
 [data-theme="light"] .education-card {
-    border: 2px solid var(--accent);
+    background-color: var(--bg-card) !important;
+    border-left: 4px solid var(--accent);
 }
 
 /* ===== Border Styles ===== */
