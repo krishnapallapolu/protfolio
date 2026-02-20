@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Redirect /v2 (no trailing slash) to /v2/
+RewriteRule ^v2$ /v2/ [L,R=301]
