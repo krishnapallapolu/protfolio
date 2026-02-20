@@ -1396,7 +1396,6 @@ h1 .name {
     #go-top,
     .modal,
     .btn-print,
-    #skills,
     .interpersonal-badges,
     .profile-about,
     .col-lg-5 .pt-2,
@@ -1418,6 +1417,13 @@ h1 .name {
         padding: 0 0 1rem !important;
         margin-bottom: 0.5rem;
         border-bottom: 1.5pt solid #000;
+    }
+
+    .hero-section::before,
+    .hero-section::after {
+        content: none !important;
+        display: none !important;
+        background: none !important;
     }
 
     #hero .row {
