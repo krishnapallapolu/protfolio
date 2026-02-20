@@ -1417,6 +1417,8 @@ h1 .name {
         padding: 0 0 1rem !important;
         margin-bottom: 0.5rem;
         border-bottom: 1.5pt solid #000;
+        background: #fff !important;
+        background-color: #fff !important;
     }
 
     .hero-section::before,
@@ -1444,6 +1446,13 @@ h1 .name {
         font-size: 20pt !important;
         font-weight: 700;
         margin-bottom: 0.15rem;
+        background: none !important;
+        -webkit-background-clip: border-box !important;
+        background-clip: border-box !important;
+        -webkit-text-fill-color: #000 !important;
+        color: #000 !important;
+        animation: none !important;
+        opacity: 1 !important;
     }
 
     .typewriter {
