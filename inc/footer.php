@@ -17,25 +17,9 @@
         // Set explicit data-theme value
         document.documentElement.setAttribute('data-theme', theme);
 
-        // Toggle Bootstrap utility classes to reflect the theme more accurately
-        document.querySelectorAll('.bg-dark').forEach(el => el.classList.toggle('bg-dark', theme !== 'light'));
-        document.querySelectorAll('.text-white').forEach(el => el.classList.toggle('text-white', theme !== 'light'));
-
-        // Navbar adjustments (switch navbar-dark / navbar-light)
-        document.querySelectorAll('.navbar').forEach(nav => {
-            nav.classList.toggle('navbar-dark', theme !== 'light');
-            nav.classList.toggle('navbar-light', theme === 'light');
-        });
-
-        // Footer adjustments
-        document.querySelectorAll('.footer').forEach(f => {
-            f.classList.toggle('bg-dark', theme !== 'light');
-            f.classList.toggle('text-white', theme !== 'light');
-        });
-
         localStorage.setItem('theme', theme);
         if (themeToggle) {
-            themeToggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+            themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
         }
     }
 
@@ -50,7 +34,7 @@
         const saved = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initTheme = saved ? saved : (prefersDark ? 'dark' : 'light');
-        themeToggle.setAttribute('aria-pressed', initTheme === 'light' ? 'true' : 'false');
+        themeToggle.setAttribute('aria-pressed', initTheme === 'dark' ? 'true' : 'false');
         // Apply theme classes immediately so no reload is required
         setTheme(initTheme);
     }
