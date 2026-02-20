@@ -1010,9 +1010,21 @@ h1 .name {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px var(--accent-shadow-light);
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 /* Profile hype text and interpersonal badges */
@@ -1036,19 +1048,6 @@ h1 .name {
     border-radius: 999px;
     font-size: 0.8rem;
     font-weight: 600;
-}
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 18px var(--accent-shadow-light);
-    cursor: pointer;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .go-top.show {
