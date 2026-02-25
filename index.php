@@ -69,7 +69,7 @@ include_once('inc/header.php');
                             <li class="col-sm-6"><i class="fas fa-shield-alt"></i> Security hardening (DDoS, Brute-force mitigation)</li>
                             <li class="col-sm-6"><i class="fas fa-users"></i> Leading cross-functional development teams</li>
                             <li class="col-sm-6"><i class="fas fa-code"></i> Performance optimization & refactoring</li>
-                            <li class="col-sm-6"><i class="fas fa-cloud"></i> Cloud & DevOps: AWS, Docker, GitHub Actions</li>
+                            <li class="col-sm-6"><i class="fas fa-cloud"></i> Cloud & DevOps: AWS, Docker, GitHub Actions, blue-green deployments</li>
                             <li class="col-sm-6"><i class="fas fa-tools"></i> Internal tools & workflows automation</li>
                             <li class="col-sm-6"><i class="fas fa-project-diagram"></i> API integrations and AI automation (Codex, Claude Code)</li>
                         </ul>
@@ -232,6 +232,7 @@ include_once('inc/header.php');
                             <span class="skill-badge">Cloudflare Stack</span>
                             <span class="skill-badge">Docker</span>
                             <span class="skill-badge">GitHub Actions</span>
+                            <span class="skill-badge">Blue-Green Deployments</span>
                             <span class="skill-badge">Vercel</span>
                             <span class="skill-badge">Kubernetes</span>
 
@@ -349,7 +350,7 @@ include_once('inc/header.php');
                                 <li>  Key achievements:
                             Delivered enterprise-level projects with over 30,000 user base on time through cross-functional collaboration.</li>
                             <li></li>Utilized PHP, JavaScript, Node.js, React.js, jQuery, MySQL, AJAX, REST API, and tools like Figma and Photoshop for user-centric, visually appealing applications.</li>
-                            <li>Automated processes with cron jobs and GitHub Actions for Continuous Deployment (CD), increasing release efficiency.</li>
+                            <li>Implemented blue-green deployments using Docker and GitHub Actions to reduce downtime and improve release safety.</li>
                             <li>Established web accessibility standards and used insights from Google Analytics, Clarity, and HubSpot to drive user engagement.</li>
                             <li>Fostered innovation and ensured high-quality, scalable solutions through leadership and process optimization.</li>
                             </ul>
@@ -442,6 +443,7 @@ include_once('inc/header.php');
                                 <li>REST API</li>
                                 <li>Node JS</li>
                                 <li>Vercel</li>
+                                <li>Blue-green deployments</li>
                                 <li>PHP</li>
                                 <li>Laravel</li>
                                 <li>MySQL</li>
