@@ -235,6 +235,7 @@ include_once('inc/header.php');
                             <span class="skill-badge">Blue-Green Deployments</span>
                             <span class="skill-badge">Vercel</span>
                             <span class="skill-badge">Kubernetes</span>
+                            <span class="skill-badge">Sentry</span>
 
                         </div>
                         <div class="skill-list mt-3">
