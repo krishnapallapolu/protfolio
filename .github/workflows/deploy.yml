@@ -33,4 +33,5 @@ jobs:
             .github/**
             CLAUDE.md
             README.md
+            agents.md
             .gitignore
