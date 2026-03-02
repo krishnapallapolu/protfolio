@@ -3,6 +3,8 @@
             <p>&copy; <?php echo date('Y'); ?> Krishna Pallapolu. All rights reserved.</p>
         </div>
     </footer>
+
+    
     <button id="go-top" class="go-top" aria-label="Go to top" title="Go to top">↑</button>
 </main>
 <!-- Bootstrap Bundle with Popper -->
