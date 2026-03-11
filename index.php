@@ -53,7 +53,7 @@ include_once('inc/header.php');
                 <div class="col-lg-7">
                     <h3 class="hero-greeting">Hi, I'm</h3>
                     <h1 class="hero-name">Krishna Pallapolu</h1>
-                    <div class="typewriter">Development Lead • Full-stack Engineer(MERN & LAMP) • AI Integrations</div>
+                    <div class="typewriter">Senior Full-Stack Developer & Tech Lead — MERN, LAMP, Cloud & AI Automation</div>
                     <p class="hero-subtitle mt-3">A decade building scalable web apps, improving uptime and security, and leading high-performing teams. Driving large-scale product delivery with a relentless focus on performance, security, and automation — delivering measurable business outcomes using modern stacks (MERN/LAMP), cloud-native patterns, and AI copilots like Codex and Claude Code.</p>
 
                     <div class="mt-4 d-flex gap-2">
@@ -234,7 +234,6 @@ include_once('inc/header.php');
                             <span class="skill-badge">GitHub Actions</span>
                             <span class="skill-badge">Blue-Green Deployments</span>
                             <span class="skill-badge">Vercel</span>
-                            <span class="skill-badge">Kubernetes</span>
                             <span class="skill-badge">Sentry</span>
 
                         </div>
@@ -317,7 +316,7 @@ include_once('inc/header.php');
                             <p>Meeting Minds Experts - Dubai, Dubai</p>
                             <p><i> 2023 - Present</i></p>
                             <ul class="d-none">
-                                <li>Design, develop, and manage websites, educational platforms, and internal applications specific to the healthcare sector.                                
+                                <li>Design, develop, and manage websites, educational platforms, and internal applications specific to the healthcare sector.</li>
                                 <li>Proficient in integrating websites with third-party applications such as DTCM and Eventsair to retrieve registration and program data, as well as generate barcodes using PHP, cURL, REST API, GraphQl and JSON.</li>
                                 <li>Collaborate closely with stakeholders and project managers to ensure seamless coordination and timely delivery of projects.</li>
                                 <li>Demonstrated ability to lead teams effectively, resulting in the successful and punctual delivery of websites and applications.</li>
@@ -327,7 +326,7 @@ include_once('inc/header.php');
                                 <li>Developed, and managed scalable websites, educational platforms, and internal applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) ensuring high performance, data integrity, and seamless user experiences.</li>
                                 <li>Led the development of internal application, utilizing the MERN stack to ensure efficient data handling, secure authentication, and user-friendly interfaces. </li>
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>
-                                <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON.</li>
+                                <li>Proficiently integrated third-party applications like DTCM and Eventsair to automate data retrieval for registrations and generate barcodes using REST APIs, cURL, and JSON. Built middleware using AWS Lambda, later migrated to Cloudflare Workers and then n8n for improved maintainability.</li>
                                 <li>Leveraged Laravel, PHP, MySQL, JavaScript, jQuery, Ajax, WordPress, Webflow, and Wix Velo API for various web projects, maintaining robust version control using Git/GitHub.</li>
                                 <li>Implemented AI-driven automation using <strong>n8n</strong>, Codex, and Claude Code for data enrichment, content generation, and automated publishing workflows to reduce manual interventions.</li>
                             </ul>
@@ -350,7 +349,7 @@ include_once('inc/header.php');
                                 
                                 <li>  Key achievements:
                             Delivered enterprise-level projects with over 30,000 user base on time through cross-functional collaboration.</li>
-                            <li></li>Utilized PHP, JavaScript, Node.js, React.js, jQuery, MySQL, AJAX, REST API, and tools like Figma and Photoshop for user-centric, visually appealing applications.</li>
+                            <li>Utilized PHP, JavaScript, Node.js, React.js, jQuery, MySQL, AJAX, REST API, and tools like Figma and Photoshop for user-centric, visually appealing applications.</li>
                             <li>Implemented blue-green deployments using Docker and GitHub Actions to reduce downtime and improve release safety.</li>
                             <li>Established web accessibility standards and used insights from Google Analytics, Clarity, and HubSpot to drive user engagement.</li>
                             <li>Fostered innovation and ensured high-quality, scalable solutions through leadership and process optimization.</li>
@@ -373,7 +372,7 @@ include_once('inc/header.php');
                             <p>Onetrust Privacy Management Software, Bengaluru</p>
                             <p>Aug 2019 - Aug 2020</p>
                             <ul>
-                                <li>Engineered modern and highly responsive web designs. Utilized PHP, Node JS, JavaScript, Angular, jQuery, Word- Press, Ajax, Bootstrap, CSS3, HTML5, and SCSS/SASS to achieve this.
+                                <li>Engineered modern and highly responsive web designs. Utilized PHP, Node JS, JavaScript, Angular, jQuery, WordPress, Ajax, Bootstrap, CSS3, HTML5, and SCSS/SASS to achieve this.</li>
                                 <li>Effectively managed project workflows, conducted thor- ough QA reviews, and carefully prioritized web initiatives, all while maintaining comprehensive documentation.</li>
                                 <li>Improved web performance using tools such as Google PageSpeed Insights and Lighthouse, ensuring quick and efficient website loading.</li>
                             </ul>
