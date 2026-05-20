@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p deploy
           cp ai-subdomain/index.php        deploy/
-          cp ai-subdomain/favicon.jpg      deploy/
+          cp ai-subdomain/favicon.png      deploy/
           cp ai-subdomain/.htaccess        deploy/
           cp ai-subdomain/dist/styles.css  deploy/styles.css
           echo "--- deploy contents ---"

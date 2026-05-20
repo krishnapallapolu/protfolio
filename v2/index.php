@@ -74,7 +74,7 @@
                 <div class="col-lg-5">
                     <div class="shadow p-3 profile_card card bg-transparent text-white text-start">
                         <div class="d-flex flex-column align-items-center">
-                            <img class="rounded shadow me-3 profile-about" src="/images/krishna-headshot2.png" alt="Krishna" />
+                            <img class="rounded shadow me-3 profile-about" src="/images/krishna-ava.png" alt="Krishna Pallapolu, Full-Stack Developer" />
                             <div class="pt-2">
                                 <a class="d-inline pe-2" href="https://www.linkedin.com/in/krishna-pallapolu-b4552738/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
