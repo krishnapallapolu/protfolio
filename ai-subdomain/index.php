@@ -95,7 +95,7 @@ function wa(string $number, string $message): string {
 
   <!-- ============== Nav ============== -->
   <nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
         <span class="relative flex h-2.5 w-2.5">
           <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
@@ -122,7 +122,7 @@ function wa(string $number, string $message): string {
     <div aria-hidden="true" class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl animate-pulse-slow pointer-events-none"></div>
     <div aria-hidden="true" class="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl animate-float pointer-events-none"></div>
 
-    <div class="relative max-w-5xl mx-auto px-6 pt-20 pb-24">
+    <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-24">
       <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/5 px-3 py-1 text-xs font-medium text-emerald-300 mb-8">
         <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
         Booking 2 builds for <?= date('F Y', strtotime('+1 month')) ?>
@@ -133,7 +133,7 @@ function wa(string $number, string $message): string {
         <span class="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 bg-clip-text text-transparent">drowning in manual work.</span>
       </h1>
 
-      <p class="mt-8 text-lg md:text-xl text-neutral-400 leading-relaxed max-w-3xl">
+      <p class="mt-8 text-lg md:text-xl text-neutral-400 leading-relaxed max-w-4xl">
         I build AI agents for Dubai SMEs — WhatsApp responders that qualify leads at 2 am, document automations that replace data entry, and weekly reports that turn your data into plain English. <span class="text-neutral-200">Live in your business in 2 weeks.</span>
       </p>
 
@@ -180,7 +180,7 @@ function wa(string $number, string $message): string {
   <section id="services" class="relative">
     <div aria-hidden="true" class="absolute inset-0 bg-dot-grid bg-[length:32px_32px] opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000_15%,#000_85%,transparent)] pointer-events-none"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-24">
+    <div class="relative max-w-7xl mx-auto px-6 py-24">
       <div class="reveal max-w-2xl">
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">What I build</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Four productized AI agents.</h2>
@@ -244,7 +244,7 @@ function wa(string $number, string $message): string {
   <section id="how" class="relative bg-neutral-900/60 border-y border-neutral-800 overflow-hidden">
     <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(16,185,129,0.08),transparent_70%)] pointer-events-none"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-24">
+    <div class="relative max-w-7xl mx-auto px-6 py-24">
       <div class="reveal max-w-2xl">
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">How it works</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">From "this might work" to live in 2 weeks.</h2>
@@ -276,7 +276,7 @@ function wa(string $number, string $message): string {
 
   <!-- ============== Why me ============== -->
   <section class="relative">
-    <div class="max-w-6xl mx-auto px-6 py-24">
+    <div class="max-w-7xl mx-auto px-6 py-24">
       <div class="reveal max-w-2xl">
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">Why me</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">No agencies. No juniors. No surprise invoices.</h2>
@@ -323,7 +323,7 @@ function wa(string $number, string $message): string {
   <!-- ============== FAQ ============== -->
   <section id="faq" class="relative bg-neutral-900/60 border-y border-neutral-800">
     <div aria-hidden="true" class="absolute inset-0 bg-dot-grid bg-[length:28px_28px] opacity-20 pointer-events-none"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-24">
+    <div class="relative max-w-4xl mx-auto px-6 py-24">
       <div class="reveal text-center">
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">FAQ</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Common questions</h2>
@@ -362,7 +362,7 @@ function wa(string $number, string $message): string {
 
   <!-- ============== Final CTA ============== -->
   <section class="relative px-6 py-24">
-    <div class="reveal relative max-w-4xl mx-auto overflow-hidden rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-neutral-900 to-neutral-950 p-10 md:p-16 text-center">
+    <div class="reveal relative max-w-5xl mx-auto overflow-hidden rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-neutral-900 to-neutral-950 p-10 md:p-16 text-center">
       <!-- decorative vector layers -->
       <div aria-hidden="true" class="absolute inset-0 bg-dot-grid bg-[length:24px_24px] opacity-30 pointer-events-none"></div>
       <div aria-hidden="true" class="absolute -top-24 left-1/2 -translate-x-1/2 h-64 w-[36rem] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none"></div>
@@ -399,7 +399,7 @@ function wa(string $number, string $message): string {
 
   <!-- ============== Footer ============== -->
   <footer class="relative border-t border-neutral-800 py-12">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
       <p class="flex items-center gap-2">
         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
         &copy; <?= date('Y') ?> Krishna Pallapolu · Dubai
