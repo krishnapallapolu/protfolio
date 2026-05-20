@@ -145,14 +145,15 @@ function wa(string $number, string $message): string {
           WhatsApp me
           <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="mailto:<?= $EMAIL ?>?subject=<?= rawurlencode('AI agent for my business') ?>"
-           data-cta="hero-email"
-           class="inline-flex items-center justify-center gap-2 border border-neutral-700 hover:border-neutral-500 hover:bg-neutral-900/50 text-neutral-100 px-7 py-3.5 rounded-lg transition">
-          Email instead
+        <a href="/demo"
+           data-cta="hero-demo"
+           class="group inline-flex items-center justify-center gap-2 border border-neutral-700 hover:border-emerald-500/50 hover:bg-neutral-900/60 text-neutral-100 px-7 py-3.5 rounded-lg transition">
+          See it work
+          <svg class="h-4 w-4 text-emerald-400 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <p class="mt-6 text-sm text-neutral-500">Fixed prices · No long contracts · Working demo before you pay · Prices exclude 5% VAT</p>
+      <p class="mt-6 text-sm text-neutral-500">Fixed prices · No long contracts · <a href="/demo" class="underline decoration-emerald-500/40 hover:decoration-emerald-400 hover:text-neutral-300 transition">Live demo on this page</a> · Prices exclude 5% VAT</p>
 
       <!-- Stat row -->
       <dl class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-neutral-800 pt-10">
@@ -193,24 +194,28 @@ function wa(string $number, string $message): string {
             'title' => '24/7 WhatsApp Lead Responder',
             'body'  => 'Every enquiry — WhatsApp, Instagram DM, web form — answered in under 60 seconds, any hour. Qualifies the lead, books a meeting on your calendar, hands hot ones to your sales team.',
             'build' => '4,000', 'monthly' => '500',
+            'demo'  => '/demo#lead-responder',
             'icon'  => '<path d="M19.05 4.91A10 10 0 0 0 12.06 2C6.55 2 2.07 6.48 2.07 11.99c0 1.76.46 3.48 1.34 5L2 22l5.17-1.36a10 10 0 0 0 4.88 1.25h.01c5.5 0 9.98-4.48 9.99-9.99 0-2.67-1.04-5.18-2.93-7.07Z"/>',
           ],
           [
             'title' => 'Document → Data, in seconds',
             'body'  => 'Forward an invoice, Emirates ID, contract, or delivery note to one address. Structured data lands in your system. Stop paying someone to type.',
             'build' => '3,000', 'monthly' => '450',
+            'demo'  => '/demo#doc-data',
             'icon'  => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm-1 7V3.5L18.5 9H13Z"/>',
           ],
           [
             'title' => 'WhatsApp Support Agent',
             'body'  => 'Trained on your products, hours, and FAQs. Answers customers 24/7 in your tone. Escalates to a human only when it genuinely should.',
             'build' => '2,500', 'monthly' => '450',
+            'demo'  => '/demo#support',
             'icon'  => '<path d="M21 12c0 4.97-4.03 9-9 9-1.41 0-2.74-.32-3.93-.9L3 21l1-4a9 9 0 1 1 17-5Zm-13 1.5h2v-2H8v2Zm4 0h2v-2h-2v2Zm4 0h2v-2h-2v2Z"/>',
           ],
           [
             'title' => 'Weekly Auto-Report (in plain English)',
             'body'  => 'Every Monday 8 am, a one-page narrative report on your WhatsApp: revenue, top products, customers you lost, things to look at. No dashboards. No spreadsheets.',
             'build' => '1,500', 'monthly' => '400',
+            'demo'  => '/demo#auto-report',
             'icon'  => '<path d="M3 12h3v9H3v-9Zm6-7h3v16H9V5Zm6 3h3v13h-3V8Zm6 5h-3v8h3v-8Z"/>',
           ],
         ];
@@ -232,6 +237,11 @@ function wa(string $number, string $message): string {
                   <span class="inline-flex items-center rounded-md bg-neutral-800/80 px-2 py-1 text-neutral-200 font-medium">AED <?= $s['build'] ?> <span class="text-neutral-500 ml-1">build</span></span>
                   <span class="inline-flex items-center rounded-md bg-neutral-800/80 px-2 py-1 text-neutral-200 font-medium">AED <?= $s['monthly'] ?>/mo</span>
                 </div>
+                <a href="<?= htmlspecialchars($s['demo']) ?>" data-cta="service-demo-<?= htmlspecialchars($s['demo']) ?>"
+                   class="mt-4 inline-flex items-center gap-1 text-sm text-emerald-400 hover:text-emerald-300 font-medium">
+                  Try the live demo
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
               </div>
             </div>
           </article>

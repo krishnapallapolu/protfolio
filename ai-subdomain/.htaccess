@@ -3,6 +3,11 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Pretty URLs: /demo → /demo.php (and any other top-level .php pages)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^./]+)$ $1.php [L]
+
 # Security headers
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
@@ -30,5 +35,8 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   ExpiresByType font/woff2                "access plus 1 year"
 </IfModule>
 
-# Pretty errors — fall back to index for the SPA-ish feel (single page)
-ErrorDocument 404 /index.html
+# 404 → home
+ErrorDocument 404 /index.php
+
+# Directory index — index.php first
+DirectoryIndex index.php index.html
