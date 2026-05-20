@@ -27,3 +27,7 @@ node_modules/
 # Cache
 *.cache
 .php_cs.cache
+
+# ai-subdomain build artifacts (Tailwind compiles to dist/ in CI)
+ai-subdomain/dist/
+ai-subdomain/package-lock.json

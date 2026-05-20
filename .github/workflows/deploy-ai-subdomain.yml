@@ -1,0 +1,57 @@
+name: Deploy ai.skrishnap.com
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ai-subdomain/**'
+      - '.github/workflows/deploy-ai-subdomain.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build + FTP deploy to ai.skrishnap.com
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ai-subdomain/package.json
+
+      - name: Install Tailwind
+        working-directory: ai-subdomain
+        run: npm install --no-audit --no-fund
+
+      - name: Build Tailwind CSS
+        working-directory: ai-subdomain
+        run: npm run build
+
+      - name: Assemble deploy folder
+        run: |
+          mkdir -p deploy
+          cp ai-subdomain/index.php        deploy/
+          cp ai-subdomain/favicon.jpg      deploy/
+          cp ai-subdomain/.htaccess        deploy/
+          cp ai-subdomain/dist/styles.css  deploy/styles.css
+          echo "--- deploy contents ---"
+          ls -la deploy/
+
+      - name: Sync to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /domains/skrishnap.com/public_html/ai.skrishnap.com/
+          local-dir: ./deploy/
+          port: 21
+          security: loose
+          timeout: 600000
+          log-level: standard
+          dangerous-clean-slate: false

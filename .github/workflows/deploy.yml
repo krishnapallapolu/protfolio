@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'ai-subdomain/**'
+      - 'demo-scripts.md'
+      - 'aamflow.md'
+      - 'landing-page.html'
+      - '**.md'
   workflow_dispatch:
 
 jobs:
@@ -35,5 +41,13 @@ jobs:
             README.md
             agents.md
             .gitignore
+            ai-subdomain/**
+            demo-scripts.md
+            aamflow.md
+            landing-page.html
+            index-v2.php
+            index-tobefixed.php
+            .DS_Store
+            **/.DS_Store
 
 
