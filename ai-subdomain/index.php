@@ -74,8 +74,10 @@ function wa(string $number, string $message): string {
         "acceptedAnswer": { "@type": "Answer", "text": "You cancel. No notice period, no penalty. I'll hand over what's been built if you want to keep it." } },
       { "@type": "Question", "name": "How is this different from hiring a developer?",
         "acceptedAnswer": { "@type": "Answer", "text": "A developer builds; they don't run. The monthly retainer keeps the automation working, adapts it, and adds new ones over time." } },
+      { "@type": "Question", "name": "Why are the prices so much lower than agencies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because you're paying the builder, not the people coordinating the builders. No account managers, salespeople, or junior devs. Two years building AI agents specifically, ten-plus years in full-stack engineering before that." } },
       { "@type": "Question", "name": "What about data privacy?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Your data stays in your accounts. NDA before any demo. Architecture walk-through available on a call." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "Your data stays in your operational accounts. AI processing routes through vetted providers like OpenAI and Anthropic. NDA before any demo, architecture walk-through available on a call." } }
     ]
   }
   </script>
@@ -186,6 +188,10 @@ function wa(string $number, string $message): string {
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">What I build</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Four productized AI agents.</h2>
         <p class="mt-3 text-neutral-400">Pick the one that hurts most. Fixed scope, fixed price, working demo before you commit. Builds from <span class="text-neutral-200 font-medium">AED 1,500</span>.</p>
+        <p class="mt-3 inline-flex items-center gap-2 text-xs text-emerald-300 bg-emerald-500/5 border border-emerald-500/20 rounded-full px-3 py-1">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          Why the prices look low: no agency overhead. You pay the builder, not a sales team.
+        </p>
       </div>
 
       <?php
@@ -318,13 +324,42 @@ function wa(string $number, string $message): string {
         <?php endforeach; ?>
       </div>
 
-      <!-- About strip with avatar -->
-      <div class="reveal mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
-        <img src="/favicon.png" alt="Krishna Pallapolu" class="h-16 w-16 rounded-full ring-2 ring-emerald-500/40 object-cover">
-        <div>
-          <p class="text-sm uppercase tracking-wider text-neutral-500">You're talking to</p>
-          <p class="mt-1 text-lg font-semibold">Krishna Pallapolu</p>
-          <p class="mt-1 text-neutral-400 text-sm">Full-stack developer based in Dubai. I build the agents myself — no outsourcing, no resellers.</p>
+      <!-- About + reassurance strip -->
+      <div class="reveal mt-16 relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-neutral-900/60 via-neutral-900/40 to-emerald-500/5 p-8">
+        <div aria-hidden="true" class="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="relative flex flex-col sm:flex-row items-start gap-6">
+          <img src="/favicon.png" alt="Krishna Pallapolu" class="h-20 w-20 rounded-full ring-2 ring-emerald-500/40 object-cover shrink-0">
+          <div class="min-w-0">
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold">You're not hiring an agency</p>
+            <p class="mt-2 text-2xl font-semibold tracking-tight">You're hiring Krishna — directly.</p>
+            <p class="mt-3 text-neutral-300 leading-relaxed">
+              Full-stack developer based in Dubai. I've been building AI agents — RAG chatbots, WhatsApp automations, document pipelines — for the last <span class="text-emerald-300 font-semibold">two years</span>, ever since LLMs were good enough to ship. Before that, ten-plus years in web and platform engineering.
+            </p>
+            <p class="mt-4 text-neutral-300 leading-relaxed">
+              <span class="text-neutral-100 font-medium">Why the prices look low:</span> agencies bill AED 25–80k for the same builds because they have account managers, salespeople, project managers, and junior devs to feed. I have none of that. You pay the person writing the code, not the people coordinating the people writing the code. Same quality, a fraction of the cost — that's the whole pitch.
+            </p>
+
+            <div class="mt-6 grid sm:grid-cols-3 gap-3">
+              <div class="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                <div class="text-2xl font-bold text-neutral-100">2 yrs</div>
+                <div class="text-xs text-neutral-500 mt-0.5">Building AI agents specifically</div>
+              </div>
+              <div class="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                <div class="text-2xl font-bold text-neutral-100">10+ yrs</div>
+                <div class="text-xs text-neutral-500 mt-0.5">Full-stack engineering</div>
+              </div>
+              <div class="rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3">
+                <div class="text-2xl font-bold text-neutral-100">0</div>
+                <div class="text-xs text-neutral-500 mt-0.5">Salespeople, juniors, handoffs</div>
+              </div>
+            </div>
+
+            <p class="mt-6 text-sm text-neutral-500">
+              See the wider work →
+              <a href="https://skrishnap.com/" class="underline decoration-emerald-500/40 hover:decoration-emerald-400 hover:text-neutral-300 transition">skrishnap.com</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -347,8 +382,10 @@ function wa(string $number, string $message): string {
            "You cancel. No notice period, no penalty. I'll hand over what's been built if you want to keep it."],
           ["How is this different from hiring a developer?",
            "A developer builds; they don't run. The monthly retainer keeps the automation working, adapts it to your business, and adds new ones over time. Closer to \"AI on staff\" than \"buy software.\""],
+          ["Why are the prices so much lower than agencies?",
+           "Because you're paying the person writing the code, not the people coordinating the people writing the code. No account managers, no salespeople, no project managers, no junior devs learning on your build. I've been doing this specifically for two years and have ten-plus years in full-stack engineering before that. Agencies quote AED 25,000–80,000 for the same scope because their overhead demands it; my overhead is a laptop and an internet connection."],
           ["What about data privacy?",
-           "Your data stays in your accounts. NDA before any demo. Happy to walk through the architecture in detail on a call."],
+           "Your data stays in your operational accounts (your CRM, your sheet, your WhatsApp Business). AI processing routes through vetted providers (OpenAI, Anthropic) — happy to name them and walk through the architecture on a call. NDA before any demo if you want one."],
           ["What if my problem isn't on the list?",
            "Message me on WhatsApp and describe it. If it's a fit, we'll talk. If it isn't, I'll say so — I only take on builds I'm confident will work."],
         ];
