@@ -19,21 +19,21 @@ function wa(string $number, string $message): string {
   <meta name="theme-color" content="#0a0a0a">
 
   <title>AI Agents for Dubai SMEs — Krishna Pallapolu</title>
-  <meta name="description" content="Voice agents, WhatsApp responders, document automations for Dubai SMEs. Live in 2 weeks. Fixed prices. Working demo before you pay.">
+  <meta name="description" content="WhatsApp responders and document automations for Dubai SMEs. Live in 2 weeks. Fixed prices from AED 1,500. Working demo before you pay anything.">
   <link rel="canonical" href="<?= htmlspecialchars($SITE_URL) ?>">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="<?= htmlspecialchars($SITE_URL) ?>">
   <meta property="og:title" content="AI Agents for Dubai SMEs — Krishna Pallapolu">
-  <meta property="og:description" content="Voice agents, WhatsApp responders, document automations for Dubai SMEs. Live in 2 weeks. Fixed prices.">
+  <meta property="og:description" content="WhatsApp responders and document automations for Dubai SMEs. Live in 2 weeks. Fixed prices from AED 1,500.">
   <meta property="og:image" content="<?= htmlspecialchars($SITE_URL) ?>favicon.png">
   <meta property="og:locale" content="en_AE">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Agents for Dubai SMEs — Krishna Pallapolu">
-  <meta name="twitter:description" content="Voice agents, WhatsApp responders, document automations for Dubai SMEs. Live in 2 weeks.">
+  <meta name="twitter:description" content="WhatsApp responders and document automations for Dubai SMEs. Live in 2 weeks. From AED 1,500.">
   <meta name="twitter:image" content="<?= htmlspecialchars($SITE_URL) ?>favicon.png">
 
   <!-- Favicon -->
@@ -55,9 +55,9 @@ function wa(string $number, string $message): string {
     "@type": "ProfessionalService",
     "name": "Krishna Pallapolu — AI Agents",
     "url": "<?= $SITE_URL ?>",
-    "description": "AI agents for Dubai SMEs: voice agents, WhatsApp responders, document automations.",
+    "description": "AI agents for Dubai SMEs: WhatsApp responders and document automations.",
     "areaServed": { "@type": "Place", "name": "Dubai, United Arab Emirates" },
-    "priceRange": "AED 6,000 – AED 12,000 build + monthly retainer",
+    "priceRange": "AED 1,500 – AED 4,000 build + AED 400–500/month retainer",
     "telephone": "+<?= $WHATSAPP_NUMBER ?>",
     "email": "<?= $EMAIL ?>",
     "founder": { "@type": "Person", "name": "Krishna Pallapolu" }
@@ -134,7 +134,7 @@ function wa(string $number, string $message): string {
       </h1>
 
       <p class="mt-8 text-lg md:text-xl text-neutral-400 leading-relaxed max-w-3xl">
-        I build AI agents for Dubai SMEs — voice agents that answer your phone, WhatsApp responders that qualify leads at 2 am, and document automations that replace data entry. <span class="text-neutral-200">Live in your business in 2 weeks.</span>
+        I build AI agents for Dubai SMEs — WhatsApp responders that qualify leads at 2 am, document automations that replace data entry, and weekly reports that turn your data into plain English. <span class="text-neutral-200">Live in your business in 2 weeks.</span>
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row gap-3">
@@ -183,8 +183,8 @@ function wa(string $number, string $message): string {
     <div class="relative max-w-6xl mx-auto px-6 py-24">
       <div class="reveal max-w-2xl">
         <p class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold mb-3">What I build</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Five productized AI agents.</h2>
-        <p class="mt-3 text-neutral-400">Pick the one that hurts most. Fixed scope, fixed price, working demo before you commit.</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Four productized AI agents.</h2>
+        <p class="mt-3 text-neutral-400">Pick the one that hurts most. Fixed scope, fixed price, working demo before you commit. Builds from <span class="text-neutral-200 font-medium">AED 1,500</span>.</p>
       </div>
 
       <?php
@@ -192,33 +192,26 @@ function wa(string $number, string $message): string {
           [
             'title' => '24/7 WhatsApp Lead Responder',
             'body'  => 'Every enquiry — WhatsApp, Instagram DM, web form — answered in under 60 seconds, any hour. Qualifies the lead, books a meeting on your calendar, hands hot ones to your sales team.',
-            'build' => '10,000', 'monthly' => '2,000',
+            'build' => '4,000', 'monthly' => '500',
             'icon'  => '<path d="M19.05 4.91A10 10 0 0 0 12.06 2C6.55 2 2.07 6.48 2.07 11.99c0 1.76.46 3.48 1.34 5L2 22l5.17-1.36a10 10 0 0 0 4.88 1.25h.01c5.5 0 9.98-4.48 9.99-9.99 0-2.67-1.04-5.18-2.93-7.07Z"/>',
-          ],
-          [
-            'title' => 'AI Voice Agent for Your Phone',
-            'body'  => 'Picks up calls your team misses. Books appointments. Answers FAQs in a natural voice. Sends a WhatsApp confirmation before the customer hangs up.',
-            'build' => '12,000', 'monthly' => '2,500',
-            'icon'  => '<path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6a1 1 0 0 0-1 .2l-2.2 2.2a15 15 0 0 1-6.6-6.6l2.2-2.2a1 1 0 0 0 .2-1A11.4 11.4 0 0 1 8.4 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3.4a1 1 0 0 0-1-1Z"/>',
           ],
           [
             'title' => 'Document → Data, in seconds',
             'body'  => 'Forward an invoice, Emirates ID, contract, or delivery note to one address. Structured data lands in your system. Stop paying someone to type.',
-            'build' => '10,000', 'monthly' => '1,500',
+            'build' => '3,000', 'monthly' => '450',
             'icon'  => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm-1 7V3.5L18.5 9H13Z"/>',
           ],
           [
             'title' => 'WhatsApp Support Agent',
             'body'  => 'Trained on your products, hours, and FAQs. Answers customers 24/7 in your tone. Escalates to a human only when it genuinely should.',
-            'build' => '10,000', 'monthly' => '2,000',
+            'build' => '2,500', 'monthly' => '450',
             'icon'  => '<path d="M21 12c0 4.97-4.03 9-9 9-1.41 0-2.74-.32-3.93-.9L3 21l1-4a9 9 0 1 1 17-5Zm-13 1.5h2v-2H8v2Zm4 0h2v-2h-2v2Zm4 0h2v-2h-2v2Z"/>',
           ],
           [
             'title' => 'Weekly Auto-Report (in plain English)',
             'body'  => 'Every Monday 8 am, a one-page narrative report on your WhatsApp: revenue, top products, customers you lost, things to look at. No dashboards. No spreadsheets.',
-            'build' => '6,000',  'monthly' => '1,500',
+            'build' => '1,500', 'monthly' => '400',
             'icon'  => '<path d="M3 12h3v9H3v-9Zm6-7h3v16H9V5Zm6 3h3v13h-3V8Zm6 5h-3v8h3v-8Z"/>',
-            'wide'  => true,
           ],
         ];
       ?>
