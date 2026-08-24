@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Preparation Guide — Frontend & Backend Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0F12;
+    --bg-soft: #15171C;
+    --surface: #181B21;
+    --surface-2: #1F232B;
+    --surface-3: #262B35;
+    --border: #2A2F3A;
+    --border-soft: #21252D;
+    --ink: #ECEEF2;
+    --ink-soft: #A9B1C0;
+    --ink-faint: #6B7385;
+    --amber: #E8A34A;
+    --amber-soft: rgba(232, 163, 74, 0.12);
+
+    /* topic accents */
+    --js: #F0DB4F;
+    --js-soft: rgba(240, 219, 79, 0.12);
+    --react: #61DAFB;
+    --react-soft: rgba(97, 218, 251, 0.10);
+    --next: #FFFFFF;
+    --next-soft: rgba(255, 255, 255, 0.07);
+    --node: #6BBF59;
+    --node-soft: rgba(107, 191, 89, 0.12);
+    --ts: #4FA3E8;
+    --ts-soft: rgba(79, 163, 232, 0.12);
+
+    --easy: #5BBF73;
+    --medium: #E8A34A;
+    --hard: #E0607E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--amber-soft); color: var(--amber); }
+
+  /* ---------- Layout ---------- */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border-right: 1px solid var(--border-soft);
+    padding: 36px 24px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+
+  .brand {
+    margin-bottom: 40px;
+  }
+  .brand-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .brand h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+  .brand p {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+  }
+
+  .nav-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 28px 0 12px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: all 0.18s ease;
+    margin-bottom: 4px;
+    border: 1px solid transparent;
+    width: 100%;
+    text-align: left;
+    background: none;
+    font-family: inherit;
+  }
+  .nav-item:hover { background: var(--surface); color: var(--ink); }
+  .nav-item.active {
+    background: var(--surface-2);
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  .nav-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .nav-item .count {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    background: var(--surface-2);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .nav-item.active .count { background: var(--surface-3); }
+
+  .progress-box {
+    margin-top: 32px;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+  }
+  .progress-box .ptitle {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .progress-box .pcount {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .progress-track {
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amber), #F0C674);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  .reset-btn {
+    margin-top: 14px;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .reset-btn:hover { color: var(--ink-soft); }
+
+  /* ---------- Main ---------- */
+  .main {
+    flex: 1;
+    min-width: 0;
+  }
+  .main-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 48px 120px;
+  }
+
+  /* Hero */
+  .hero {
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .hero h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+  .hero h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--amber);
+  }
+  .hero-lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-soft);
+    flex-wrap: wrap;
+  }
+  .hero-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .hero-stat .lbl {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.5px;
+  }
+
+  /* Filter bar */
+  .filterbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 48px 0 28px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(var(--bg) 70%, transparent);
+    padding: 16px 0;
+    z-index: 20;
+  }
+  .filter-chip {
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .filter-chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+  .filter-chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+  .filter-chip .cdot { width: 7px; height: 7px; border-radius: 50%; }
+  .filter-spacer { flex: 1; }
+  .search-box {
+    position: relative;
+  }
+  .search-box input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 16px 8px 36px;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    width: 200px;
+    transition: all 0.18s;
+  }
+  .search-box input:focus { outline: none; border-color: var(--amber); width: 240px; }
+  .search-box input::placeholder { color: var(--ink-faint); }
+  .search-box svg {
+    position: absolute;
+    left: 13px; top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    stroke: var(--ink-faint);
+  }
+
+  /* Topic section header */
+  .topic-section { margin-bottom: 56px; scroll-margin-top: 80px; }
+  .topic-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .topic-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .topic-head h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  .topic-head .topic-desc {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  /* Question card */
+  .qcard {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .qcard:hover { border-color: var(--border); }
+  .qcard.open { border-color: var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.25); }
+
+  .qhead {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 22px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .qcheck {
+    width: 22px; height: 22px;
+    border-radius: 7px;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.18s;
+    background: var(--surface-2);
+  }
+  .qcheck svg { width: 13px; height: 13px; stroke: var(--bg); stroke-width: 3; opacity: 0; transition: opacity 0.15s; }
+  .qcard.done .qcheck { background: var(--easy); border-color: var(--easy); }
+  .qcard.done .qcheck svg { opacity: 1; }
+  .qcard.done .qtext { color: var(--ink-faint); }
+
+  .qbody { flex: 1; min-width: 0; }
+  .qtext {
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .qmeta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .badge.easy { background: rgba(91,191,115,0.12); color: var(--easy); }
+  .badge.medium { background: rgba(232,163,74,0.12); color: var(--medium); }
+  .badge.hard { background: rgba(224,96,126,0.12); color: var(--hard); }
+  .qtag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  .qchevron {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.25s;
+    stroke: var(--ink-faint);
+  }
+  .qcard.open .qchevron { transform: rotate(180deg); }
+
+  .qanswer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .qanswer-inner {
+    padding: 0 22px 24px 60px;
+  }
+  .qanswer-divider {
+    height: 1px;
+    background: var(--border-soft);
+    margin-bottom: 18px;
+  }
+  .qanswer p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.7; }
+  .qanswer p:last-child { margin-bottom: 0; }
+  .qanswer strong { color: var(--ink); font-weight: 600; }
+  .qanswer .keyline {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--amber-soft);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .qanswer .keyline .kl-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .qanswer ul { margin: 8px 0 12px; padding-left: 4px; list-style: none; }
+  .qanswer li {
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .qanswer li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--amber);
+  }
+  .qanswer code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: var(--surface-3);
+    padding: 1.5px 6px;
+    border-radius: 5px;
+    color: #E6B873;
+  }
+  .qanswer pre {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 14px 0;
+  }
+  .qanswer pre code {
+    background: none;
+    padding: 0;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .qanswer pre::-webkit-scrollbar { height: 6px; }
+  .qanswer pre::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-faint);
+    font-size: 15px;
+  }
+
+  /* Mobile */
+  .menu-toggle { display: none; }
+  @media (max-width: 940px) {
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      z-index: 100;
+      box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    }
+    .sidebar.mobile-open { transform: translateX(0); }
+    .menu-toggle {
+      display: flex;
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 90;
+      width: 44px; height: 44px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-toggle svg { width: 20px; height: 20px; stroke: var(--ink); }
+    .main-inner { padding: 70px 22px 80px; }
+    .hero h2 { font-size: 38px; }
+    .hero-lede { font-size: 16px; }
+    .filterbar { position: static; }
+    .filter-spacer, .search-box { display: none; }
+    .qanswer-inner { padding-left: 22px; }
+    .scrim {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 99;
+    }
+    .scrim.show { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="menu-toggle" id="menuToggle">
+  <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/></svg>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">Prep Guide</div>
+      <h1>Engineering<br>Interview</h1>
+      <p>JS · React · TypeScript · Next.js 16 · Node.js<br>Lead / Principal level</p>
+    </div>
+
+    <div class="nav-label">Topics</div>
+    <button class="nav-item active" data-nav="all">
+      <span class="nav-dot" style="background:var(--amber)"></span>
+      All Questions
+      <span class="count" id="count-all">0</span>
+    </button>
+    <button class="nav-item" data-nav="javascript">
+      <span class="nav-dot" style="background:var(--js)"></span>
+      JavaScript
+      <span class="count" id="count-javascript">0</span>
+    </button>
+    <button class="nav-item" data-nav="react">
+      <span class="nav-dot" style="background:var(--react)"></span>
+      React
+      <span class="count" id="count-react">0</span>
+    </button>
+    <button class="nav-item" data-nav="typescript">
+      <span class="nav-dot" style="background:var(--ts)"></span>
+      TypeScript
+      <span class="count" id="count-typescript">0</span>
+    </button>
+    <button class="nav-item" data-nav="nextjs">
+      <span class="nav-dot" style="background:var(--next)"></span>
+      Next.js
+      <span class="count" id="count-nextjs">0</span>
+    </button>
+    <button class="nav-item" data-nav="nodejs">
+      <span class="nav-dot" style="background:var(--node)"></span>
+      Node.js
+      <span class="count" id="count-nodejs">0</span>
+    </button>
+
+    <div class="progress-box">
+      <div class="ptitle"><span>Your progress</span><span class="pcount" id="progressText">0 / 0</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <button class="reset-btn" id="resetBtn">Reset progress</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="hero">
+        <div class="hero-eyebrow">// backend + frontend · MERN focus</div>
+        <h2>Master the questions<br>that <em>actually</em> get asked.</h2>
+        <p class="hero-lede">A curated set of senior-level interview questions across the JavaScript ecosystem — each with a precise, interview-ready answer. Expand a card, study the answer, check it off when it's locked in.</p>
+        <div class="hero-meta">
+          <div class="hero-stat"><div class="num" id="statTotal">0</div><div class="lbl">Questions</div></div>
+          <div class="hero-stat"><div class="num">5</div><div class="lbl">Topics</div></div>
+          <div class="hero-stat"><div class="num">3</div><div class="lbl">Difficulty Tiers</div></div>
+          <div class="hero-stat"><div class="num">∞</div><div class="lbl">Re-reads</div></div>
+        </div>
+      </div>
+
+      <div class="filterbar">
+        <button class="filter-chip active" data-diff="all">All Levels</button>
+        <button class="filter-chip" data-diff="easy"><span class="cdot" style="background:var(--easy)"></span>Easy</button>
+        <button class="filter-chip" data-diff="medium"><span class="cdot" style="background:var(--medium)"></span>Medium</button>
+        <button class="filter-chip" data-diff="hard"><span class="cdot" style="background:var(--hard)"></span>Hard</button>
+        <div class="filter-spacer"></div>
+        <div class="search-box">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+          <input type="text" id="searchInput" placeholder="Search questions...">
+        </div>
+      </div>
+
+      <div id="content"></div>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+const TOPICS = {
+  javascript: { name: 'JavaScript', icon: 'JS', color: 'var(--js)', soft: 'var(--js-soft)', desc: 'Language internals, async, memory, and the engine' },
+  react: { name: 'React', icon: '⚛', color: 'var(--react)', soft: 'var(--react-soft)', desc: 'Rendering, hooks, performance, and patterns' },
+  typescript: { name: 'TypeScript', icon: 'TS', color: 'var(--ts)', soft: 'var(--ts-soft)', desc: 'Typing patterns for large, safe codebases' },
+  nextjs: { name: 'Next.js', icon: 'N', color: 'var(--next)', soft: 'var(--next-soft)', desc: 'Next.js 16: Cache Components, RSC, and the edge' },
+  nodejs: { name: 'Node.js', icon: '⬢', color: 'var(--node)', soft: 'var(--node-soft)', desc: 'Runtime, event loop, streams, and scaling' },
+};
+
+const QUESTIONS = [
+  // ============================================================
+  // JAVASCRIPT
+  // ============================================================
+  // --- Easy ---
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'scope',
+    q: "Explain the difference between var, let, and const.",
+    a: `<p><code>var</code> is <strong>function-scoped</strong> and hoisted (accessible before declaration as <code>undefined</code>). <code>let</code> and <code>const</code> are <strong>block-scoped</strong> and sit in the Temporal Dead Zone, so early access throws a <code>ReferenceError</code>.</p>
+    <p><code>const</code> blocks <strong>reassignment</strong> of the binding, but the value can still mutate — a <code>const</code> array can be pushed to.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>var is function-scoped and hoisted; let/const are block-scoped with TDZ; const blocks reassignment, not mutation. Default to const.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'equality',
+    q: "What's the difference between == and ===?",
+    a: `<p><code>===</code> is strict equality — no coercion. <code>==</code> coerces types first, which causes surprises (<code>'' == 0</code> → true, <code>null == undefined</code> → true).</p>
+    <p>Default to <code>===</code>. The one pragmatic <code>==</code>: <code>x == null</code> checks for both null and undefined in one shot.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>=== never coerces; == does. Use === everywhere except x == null to catch null and undefined together.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'types',
+    q: "What are the primitive types in JavaScript, and how is typeof null a known bug?",
+    a: `<p>Seven primitives: <strong>string, number, bigint, boolean, undefined, symbol, null</strong>. Everything else is an object (including arrays and functions).</p>
+    <p><code>typeof null</code> returns <code>"object"</code> — a bug preserved since 1995 for backward compatibility. To check for null, use <code>value === null</code>.</p>
+    <div class="keyline"><span class="kl-label">Watch out</span>typeof NaN is "number", typeof [] is "object" (use Array.isArray), and typeof function is "function".</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'types',
+    q: "null vs undefined — what's the difference?",
+    a: `<p><code>undefined</code> means a variable has been declared but not assigned — it's the engine's default. <code>null</code> is an <strong>intentional</strong> "no value" you assign yourself.</p>
+    <p>A function with no return gives <code>undefined</code>; a missing object property is <code>undefined</code>; you'd set <code>null</code> to deliberately empty something.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>undefined = absence by default; null = absence on purpose.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'coercion',
+    q: "What are truthy and falsy values?",
+    a: `<p>There are exactly <strong>eight falsy values</strong>: <code>false</code>, <code>0</code>, <code>-0</code>, <code>0n</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, and <code>NaN</code>. Everything else is truthy — including <code>"0"</code>, <code>[]</code>, and <code>{}</code>.</p>
+    <div class="keyline"><span class="kl-label">Watch out</span>Empty array and empty object are truthy. Use <code>arr.length</code> to test emptiness, not the array itself.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'functions',
+    q: "Arrow functions vs regular functions — what differs beyond syntax?",
+    a: `<p>Arrow functions: <strong>no own <code>this</code></strong> (lexically inherited), no <code>arguments</code> object, can't be used as constructors (no <code>new</code>), and no <code>prototype</code> property.</p>
+    <p>Regular functions get <code>this</code> from the call site, have <code>arguments</code>, and can be constructors.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Arrows inherit this lexically and can't be constructors; regular functions bind this at the call site.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'arrays',
+    q: "Explain map, filter, and reduce.",
+    a: `<ul>
+      <li><strong>map</strong> — transforms each element, returns a new array of the same length.</li>
+      <li><strong>filter</strong> — keeps elements that pass a test, returns a new (possibly shorter) array.</li>
+      <li><strong>reduce</strong> — folds the array into a single accumulated value.</li>
+    </ul>
+    <p>All three are non-mutating and chainable. <code>reduce</code> is the most general — you can build map and filter from it.</p>
+    <pre><code>const paidTotal = orders
+  .filter(o => o.paid)
+  .reduce((sum, o) => sum + o.amount, 0);</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>map transforms, filter selects, reduce aggregates — all return new arrays without mutating the original.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'es6',
+    q: "What do the spread and rest operators do?",
+    a: `<p>Same <code>...</code> syntax, opposite jobs. <strong>Spread</strong> expands an iterable into elements: <code>[...arr1, ...arr2]</code>, <code>{...obj}</code>, <code>fn(...args)</code>. <strong>Rest</strong> collects remaining items into one: <code>function f(...args)</code>, <code>const [first, ...rest] = arr</code>.</p>
+    <div class="keyline"><span class="kl-label">Watch out</span>Spread is a shallow copy — nested objects/arrays still share references.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'strings',
+    q: "What are template literals and tagged templates?",
+    a: `<p>Template literals use backticks for interpolation (<code>\${expr}</code>) and multi-line strings without concatenation.</p>
+    <p><strong>Tagged templates</strong> pass the literal to a function: the tag receives the string parts and interpolated values separately — used by libraries like styled-components and for safe SQL/HTML escaping.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Tagged templates enable safe interpolation — you can sanitize values before they're injected, e.g. preventing injection in a query builder.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'easy', tag: 'es6',
+    q: "Explain optional chaining and nullish coalescing.",
+    a: `<p><strong>Optional chaining</strong> <code>?.</code> short-circuits to <code>undefined</code> if a reference is null/undefined, instead of throwing: <code>user?.profile?.email</code>.</p>
+    <p><strong>Nullish coalescing</strong> <code>??</code> returns the right side only when the left is <code>null</code> or <code>undefined</code> — unlike <code>||</code>, which also triggers on <code>0</code>, <code>""</code>, and <code>false</code>.</p>
+    <pre><code>const count = data.count ?? 10;  // 0 stays 0
+const count2 = data.count || 10; // 0 becomes 10 (bug!)</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>?. safely accesses nested values; ?? defaults only on null/undefined, not on all falsy values.</div>`
+  },
+
+  // --- Medium ---
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'closures',
+    q: "What is a closure, and what's a real-world use case?",
+    a: `<p>A closure is a function that <strong>remembers variables from its outer scope after that scope has returned</strong>. The inner function holds a live reference, so those variables aren't garbage collected.</p>
+    <p>Uses: private state, function factories, memoization, and event-handler state.</p>
+    <pre><code>function counter() {
+  let count = 0;            // private
+  return () => ++count;
+}
+const next = counter();
+next(); next(); // 2</code></pre>
+    <div class="keyline"><span class="kl-label">Watch out</span>Closures over large objects in long-running Node processes can leak memory — the captured data never gets collected while the closure lives.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'this',
+    q: "How does `this` bind in regular vs arrow functions?",
+    a: `<p><strong>Regular function:</strong> <code>this</code> depends on the <strong>call site</strong> — the object before the dot, or <code>undefined</code>/global when called standalone. <strong>Arrow:</strong> no own <code>this</code>, it's lexically inherited from where it was defined.</p>
+    <p>The four binding rules for regular functions: default, implicit (method call), explicit (<code>call</code>/<code>apply</code>/<code>bind</code>), and <code>new</code>.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Regular function: this is the call site. Arrow: this is the definition site.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'this',
+    q: "What do call, apply, and bind do?",
+    a: `<p>All three set <code>this</code> explicitly. <strong>call</strong> invokes immediately with comma-separated args; <strong>apply</strong> invokes immediately with an args array; <strong>bind</strong> returns a <strong>new function</strong> with <code>this</code> permanently fixed, called later.</p>
+    <pre><code>greet.call(user, 'hi');
+greet.apply(user, ['hi']);
+const bound = greet.bind(user);</code></pre>
+    <div class="keyline"><span class="kl-label">Mnemonic</span>call = Comma args, Apply = Array args, Bind = returns Bound function for later.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'prototypes',
+    q: "How does prototypal inheritance work? Is `class` real inheritance?",
+    a: `<p>Every object links to a prototype via <code>[[Prototype]]</code>. Property lookups walk this <strong>prototype chain</strong> until found or <code>null</code>.</p>
+    <p><code>class</code> is <strong>syntactic sugar</strong> — there's no classical inheritance. Methods live on <code>Class.prototype</code>, shared across instances; <code>extends</code> just wires the chain.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Objects delegate lookups up a prototype chain; class is sugar over constructor functions and Object.create.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'async',
+    q: "Promise.all vs allSettled vs race vs any?",
+    a: `<ul>
+      <li><strong>all</strong> — resolves when all succeed; rejects immediately on first failure (fail-fast).</li>
+      <li><strong>allSettled</strong> — always waits for all; returns each result's status. Use for partial-success pipelines.</li>
+      <li><strong>race</strong> — settles on the first to settle, success or failure.</li>
+      <li><strong>any</strong> — resolves on first success; rejects only if all fail.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">One-liner</span>all = all-or-nothing; allSettled = wait and report each; race = first to settle; any = first to succeed.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'async',
+    q: "How does async/await work under the hood?",
+    a: `<p><code>async</code> functions always return a Promise. <code>await</code> pauses the function, schedules the rest as a <strong>microtask</strong> continuation, and yields control back to the event loop until the awaited promise settles.</p>
+    <p>It's built on Promises — not a new concurrency model. Errors propagate as rejections, caught with <code>try/catch</code>.</p>
+    <pre><code>// Sequential (slow):
+const a = await getA();
+const b = await getB();
+// Parallel (fast):
+const [a, b] = await Promise.all([getA(), getB()]);</code></pre>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Awaiting in a loop serializes calls. Map to promises and Promise.all when operations are independent.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'event-loop',
+    q: "Explain the event loop: call stack, task queue, and microtasks.",
+    a: `<p>JS runs synchronous code on the single <strong>call stack</strong>. Async callbacks wait in queues. When the stack empties, the loop drains the <strong>entire microtask queue</strong> (Promise callbacks, <code>queueMicrotask</code>), then takes <strong>one macrotask</strong> (setTimeout, I/O), re-draining microtasks after each.</p>
+    <pre><code>console.log(1);
+setTimeout(() => console.log(2));
+Promise.resolve().then(() => console.log(3));
+console.log(4);
+// 1, 4, 3, 2</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>Sync first, then all microtasks, then one macrotask at a time. Microtasks always beat macrotasks.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'es6',
+    q: "ES Modules vs CommonJS — what are the differences?",
+    a: `<p><strong>CommonJS</strong> (<code>require</code>/<code>module.exports</code>) is synchronous, dynamic, and the Node legacy default — loaded at runtime. <strong>ES Modules</strong> (<code>import</code>/<code>export</code>) are static, asynchronous-friendly, and analyzable at build time (enabling <strong>tree-shaking</strong>).</p>
+    <p>ESM imports are <strong>live read-only bindings</strong>; CJS exports a copy of the value at require time. ESM is hoisted and strict-mode by default.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>CJS is dynamic and synchronous; ESM is static, tree-shakeable, with live bindings. ESM is the modern standard.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'es6',
+    q: "Explain destructuring with defaults and renaming.",
+    a: `<p>Destructuring unpacks arrays/objects into variables, with defaults and renaming:</p>
+    <pre><code>const { name, age = 18, role: userRole } = user;
+const [first, , third] = arr;        // skip elements
+const { data: { items = [] } = {} } = res; // nested + default</code></pre>
+    <p>Nested destructuring with a default object (<code>= {}</code>) guards against undefined intermediates.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Destructuring function parameters with defaults makes options objects clean and self-documenting.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'copy',
+    q: "Shallow copy vs deep copy — how do you do each?",
+    a: `<p>A <strong>shallow copy</strong> (<code>{...obj}</code>, <code>Object.assign</code>, <code>arr.slice</code>) copies top-level values; nested objects are still shared by reference.</p>
+    <p><strong>Deep copy</strong> clones everything recursively: <code>structuredClone(obj)</code> (modern, handles cycles, Dates, Maps), or <code>JSON.parse(JSON.stringify(obj))</code> (loses functions, Dates become strings, breaks on cycles).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Shallow copies share nested references; use structuredClone for a true deep copy.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'patterns',
+    q: "What is currying and partial application?",
+    a: `<p><strong>Currying</strong> transforms a function of N args into N chained single-arg functions: <code>f(a)(b)(c)</code>. <strong>Partial application</strong> fixes some arguments now and the rest later.</p>
+    <pre><code>const add = a => b => c => a + b + c;
+add(1)(2)(3); // 6
+const add5 = add(5); // partial</code></pre>
+    <p>Useful for building specialized functions from general ones and for point-free composition.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Currying breaks a multi-arg function into a chain of unary calls; partial application pre-fills some args.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'iterators',
+    q: "What are generators and iterators?",
+    a: `<p>An <strong>iterator</strong> implements <code>next()</code> returning <code>{value, done}</code>. A <strong>generator</strong> (<code>function*</code>) is a factory for iterators — <code>yield</code> pauses and resumes execution, preserving local state.</p>
+    <pre><code>function* idGen() {
+  let id = 1;
+  while (true) yield id++;
+}
+const gen = idGen();
+gen.next().value; // 1</code></pre>
+    <p>Generators enable lazy/infinite sequences and were the basis for async patterns before async/await.</p>
+    <div class="keyline"><span class="kl-label">Use case</span>Lazy evaluation of large/infinite sequences without materializing them in memory.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'patterns',
+    q: "Implement debounce. When debounce vs throttle?",
+    a: `<pre><code>function debounce(fn, delay) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), delay);
+  };
+}</code></pre>
+    <p><strong>Debounce</strong> fires once after activity stops (search-as-you-type, resize). <strong>Throttle</strong> fires at most once per interval during continuous activity (scroll tracking).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Debounce = fire after it stops; throttle = fire at a steady rate while it happens.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'dom',
+    q: "What is event delegation and why use it?",
+    a: `<p>Instead of attaching listeners to many child elements, you attach <strong>one listener to a common ancestor</strong> and use <code>event.target</code> to determine which child triggered it — leveraging event <strong>bubbling</strong>.</p>
+    <p>Benefits: fewer listeners (less memory), and it works for <strong>dynamically added elements</strong> without re-binding.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Listen once on a parent and dispatch by event.target — fewer handlers and it covers dynamically added children.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'medium', tag: 'async',
+    q: "What's the difference between setTimeout, setImmediate, and requestAnimationFrame?",
+    a: `<ul>
+      <li><strong>setTimeout(fn, 0)</strong> — schedules a macrotask after at least the given delay (clamped to ~4ms minimum in browsers when nested).</li>
+      <li><strong>setImmediate</strong> (Node only) — runs in the check phase, after I/O polling.</li>
+      <li><strong>requestAnimationFrame</strong> (browser) — runs before the next repaint, ~60fps, ideal for animations.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">One-liner</span>setTimeout = delayed macrotask; setImmediate = after I/O (Node); rAF = synced to the browser's paint cycle.</div>`
+  },
+
+  // --- Hard ---
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'memory',
+    q: "What causes memory leaks, and how do you detect them?",
+    a: `<p>Causes: <strong>un-removed event listeners</strong>, closures capturing large objects, accidental <strong>globals</strong>, <strong>detached DOM nodes</strong> still referenced, and unbounded caches/Maps.</p>
+    <p>Detect via Chrome DevTools heap snapshots (diff snapshots to find growing retainers), the Memory timeline, and in Node <code>--inspect</code> heap profiling or trending <code>process.memoryUsage()</code>.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Use WeakMap/WeakRef for object-keyed caches — entries are collected automatically when the key is no longer referenced elsewhere.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'memory',
+    q: "How does garbage collection work in V8?",
+    a: `<p>V8 uses a <strong>generational, mark-and-sweep</strong> collector. New objects go into a small <strong>young generation</strong> collected frequently with a fast scavenge (Cheney's algorithm). Survivors are promoted to the <strong>old generation</strong>, collected less often with mark-sweep-compact.</p>
+    <p>GC reachability is root-based: anything reachable from the call stack/globals stays alive. The young/old split exploits the <strong>generational hypothesis</strong> — most objects die young.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>V8 splits the heap into young (fast, frequent) and old (slower, rarer) generations; objects reachable from roots survive.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'meta',
+    q: "What are Proxy and Reflect used for?",
+    a: `<p>A <strong>Proxy</strong> wraps an object and intercepts fundamental operations (get, set, has, deleteProperty) via <strong>traps</strong>. <strong>Reflect</strong> provides the default behavior for those operations, so traps can delegate cleanly.</p>
+    <pre><code>const observed = new Proxy(target, {
+  set(obj, key, val) {
+    console.log(\`\${key} = \${val}\`);
+    return Reflect.set(obj, key, val);
+  }
+});</code></pre>
+    <p>Powers reactivity systems (Vue 3), validation, logging, and virtual/lazy objects.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Vue 3's reactivity is built on Proxy — it's how it tracks reads and triggers updates on writes without explicit setters.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'memory',
+    q: "WeakMap and WeakRef — when and why?",
+    a: `<p><strong>WeakMap</strong> holds keys <strong>weakly</strong> — if the key object has no other references, the entry is garbage collected. Keys must be objects; it's not iterable. Perfect for attaching private metadata to objects without preventing their collection.</p>
+    <p><strong>WeakRef</strong> holds a weak reference to a single object, dereferenced with <code>.deref()</code> (may return undefined if collected). Used for caches where you don't want to pin memory.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Weak references let the GC reclaim objects even while they're cached/keyed — ideal for memory-safe caches and metadata.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'immutability',
+    q: "How do you achieve immutability, and why does it matter?",
+    a: `<p>Immutability means never mutating data in place — you create new copies. It enables cheap change detection (reference equality), predictable state (React/Redux), and safer concurrency.</p>
+    <p>Techniques: spread/<code>Object.freeze</code> for shallow, <strong>structural sharing</strong> libraries (Immer, Immutable.js) for deep updates without full copies. Immer lets you write "mutating" code that produces immutable results via a Proxy draft.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Reference equality on immutable data is what makes React.memo and Redux selectors fast — a changed reference signals a change in O(1).</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'event-loop',
+    q: "Can a flood of microtasks block the UI or starve I/O? Explain.",
+    a: `<p>Yes. The loop drains the <strong>entire microtask queue</strong> before rendering or processing the next macrotask. If a microtask schedules another microtask recursively, the queue never empties — rendering, timers, and I/O are <strong>starved</strong>.</p>
+    <pre><code>function loop() { Promise.resolve().then(loop); }
+loop(); // freezes the page — paint never runs</code></pre>
+    <p>In Node, recursive <code>process.nextTick</code> does the same, blocking the event loop's progression.</p>
+    <div class="keyline"><span class="kl-label">Fix</span>Break heavy work into macrotasks (setTimeout/setImmediate) or chunk it so the loop can paint and handle I/O between batches.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'types',
+    q: "What are Symbols and what problems do they solve?",
+    a: `<p><code>Symbol()</code> creates a <strong>unique, immutable</strong> primitive — every symbol is distinct even with the same description. Used as <strong>non-colliding object keys</strong> and to define language behavior via <strong>well-known symbols</strong> (<code>Symbol.iterator</code>, <code>Symbol.asyncIterator</code>, <code>Symbol.toPrimitive</code>).</p>
+    <p>Implementing <code>Symbol.iterator</code> makes an object work with <code>for...of</code> and spread.</p>
+    <div class="keyline"><span class="kl-label">Use case</span>Library metadata keys that can't clash with user properties, and customizing iteration/coercion via well-known symbols.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'patterns',
+    q: "Implement a memoize function. What are the trade-offs?",
+    a: `<pre><code>function memoize(fn) {
+  const cache = new Map();
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) return cache.get(key);
+    const result = fn(...args);
+    cache.set(key, result);
+    return result;
+  };
+}</code></pre>
+    <p>Trades memory for speed. Caveats: the key strategy (<code>JSON.stringify</code> fails on functions/cycles and is order-sensitive), <strong>unbounded growth</strong> (add LRU eviction), and it only suits <strong>pure</strong> functions.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Mention LRU eviction and that memoizing impure or rarely-repeated calls wastes memory for no gain.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'async',
+    q: "How would you implement a concurrency-limited async queue?",
+    a: `<p>Run at most N promises at once — essential for not overwhelming a downstream API or DB.</p>
+    <pre><code>async function pool(items, limit, worker) {
+  const results = [];
+  const executing = new Set();
+  for (const item of items) {
+    const p = Promise.resolve(worker(item)).then(r => {
+      executing.delete(p); return r;
+    });
+    results.push(p);
+    executing.add(p);
+    if (executing.size >= limit) await Promise.race(executing);
+  }
+  return Promise.all(results);
+}</code></pre>
+    <div class="keyline"><span class="kl-label">Senior signal</span>This is the pattern behind libraries like p-limit — Promise.race on the in-flight set gates new work until a slot frees.</div>`
+  },
+  {
+    topic: 'javascript', difficulty: 'hard', tag: 'engine',
+    q: "How does the JS engine optimize code (JIT, hidden classes)?",
+    a: `<p>V8 compiles JS through tiers: an interpreter (Ignition) produces bytecode, and a JIT (TurboFan) optimizes <strong>hot</strong> functions to machine code based on runtime type feedback.</p>
+    <p>Objects with the same shape share a <strong>hidden class</strong> (map), enabling fast property access via inline caches. Changing an object's shape (adding properties in different orders, deleting props) causes <strong>deoptimization</strong> and slower paths.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Keep object shapes consistent (initialize all props in the constructor, same order) so V8 keeps the optimized hidden class and inline caches.</div>`
+  },
+
+  // ============================================================
+  // REACT
+  // ============================================================
+  // --- Easy ---
+  {
+    topic: 'react', difficulty: 'easy', tag: 'fundamentals',
+    q: "What is the virtual DOM and how does reconciliation work?",
+    a: `<p>The virtual DOM is an in-memory tree describing the UI. On a state change, React builds a new tree, <strong>diffs it against the previous</strong>, and applies the minimal real DOM mutations.</p>
+    <p>Heuristics keep diffing O(n): different element types are replaced wholesale, and <strong>keys</strong> match children across renders.</p>
+    <div class="keyline"><span class="kl-label">Why keys matter</span>Array-index keys break identity on reorder/insert, sticking wrong state to wrong rows. Use stable IDs.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'jsx',
+    q: "What is JSX and how does it compile?",
+    a: `<p>JSX is syntactic sugar that compiles to function calls — historically <code>React.createElement(type, props, children)</code>, now the automatic <code>jsx()</code> runtime (React 17+), which is why you no longer need to import React in every file.</p>
+    <p>It returns plain objects (React elements) describing what to render — not actual DOM.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>JSX compiles to element-creation calls that return descriptor objects; it's not HTML and not DOM.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'fundamentals',
+    q: "Props vs state — what's the difference?",
+    a: `<p><strong>Props</strong> are passed in from a parent, read-only, and make a component reusable. <strong>State</strong> is owned and managed internally, mutable via setters, and triggers re-renders when changed.</p>
+    <p>Data flows down via props; changes flow up via callbacks (one-way data flow).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Props are read-only inputs from the parent; state is internal, mutable data that triggers re-renders.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'forms',
+    q: "Controlled vs uncontrolled components?",
+    a: `<p><strong>Controlled</strong>: value driven by React state (<code>value</code> + <code>onChange</code>) — React is the source of truth, enabling live validation. <strong>Uncontrolled</strong>: the DOM owns the value, read via a <code>ref</code> when needed — less code, no live control.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Controlled = React state owns the value; uncontrolled = the DOM owns it. Prefer controlled for validation.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'hooks',
+    q: "Explain useState and the rules of hooks.",
+    a: `<p><code>useState</code> returns a value and a setter; calling the setter schedules a re-render. Setters can take a function for updates based on prior state: <code>setCount(c => c + 1)</code>.</p>
+    <p><strong>Rules of hooks:</strong> only call hooks at the <strong>top level</strong> (never in conditions/loops) and only from <strong>React functions</strong>. React relies on consistent call order to associate state with each hook.</p>
+    <div class="keyline"><span class="kl-label">Why the rules</span>Hooks are matched by call order, not name — conditional calls would misalign state between renders.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'rendering',
+    q: "Why do React lists need keys?",
+    a: `<p>Keys give list items a <strong>stable identity</strong> across renders so React can match, reorder, and reuse DOM nodes instead of recreating them. Without stable keys, React falls back to index matching, which corrupts state and input focus on reorder/insert/delete.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Use stable, unique IDs as keys — never array index for lists that can change order or length.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'patterns',
+    q: "What is lifting state up?",
+    a: `<p>When two sibling components need to share state, you move that state to their <strong>closest common parent</strong> and pass it down as props, with callbacks to update it. This keeps a single source of truth.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Move shared state to the nearest common ancestor and pass it down — one source of truth, no duplication.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'jsx',
+    q: "What are Fragments and why use them?",
+    a: `<p>A <strong>Fragment</strong> (<code>&lt;&gt;...&lt;/&gt;</code> or <code>React.Fragment</code>) groups children without adding an extra DOM node. Useful when returning multiple elements or when an extra wrapper <code>div</code> would break layout (flex/grid) or semantics (table rows).</p>
+    <div class="keyline"><span class="kl-label">Note</span>Use the long form <code>&lt;React.Fragment key=...&gt;</code> when you need a key in a list of fragments.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'hooks',
+    q: "What is useRef used for?",
+    a: `<p><code>useRef</code> holds a <strong>mutable value that persists across renders without triggering re-renders</strong>. Two main uses: accessing DOM nodes (<code>ref={myRef}</code>) and storing instance-like values (timers, previous values, flags).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>useRef is a persistent mutable box that doesn't cause re-renders — for DOM access and cross-render values.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'easy', tag: 'rendering',
+    q: "How do you conditionally render in React?",
+    a: `<p>Common patterns: ternary (<code>cond ? &lt;A/&gt; : &lt;B/&gt;</code>), logical AND (<code>cond && &lt;A/&gt;</code>), early return, or mapping to a lookup object for many cases.</p>
+    <div class="keyline"><span class="kl-label">Watch out</span><code>count && &lt;A/&gt;</code> renders <code>0</code> when count is 0 — use <code>count > 0 &&</code> or a ternary to avoid leaking falsy values into the DOM.</div>`
+  },
+
+  // --- Medium ---
+  {
+    topic: 'react', difficulty: 'medium', tag: 'hooks',
+    q: "Explain useEffect's dependency array and common pitfalls.",
+    a: `<p><code>[]</code> runs once on mount; <code>[a,b]</code> re-runs when those change; omitting it runs every render. Return a cleanup function for subscriptions/timers.</p>
+    <p>Pitfalls: <strong>missing deps</strong> capture stale closures; <strong>object/function deps</strong> recreated each render cause loops; <strong>forgotten cleanup</strong> leaks and double-fires.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Effects are for syncing with external systems. Derived state belongs in render, not an effect.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'hooks',
+    q: "useMemo vs useCallback — when do you actually need them?",
+    a: `<p><code>useMemo</code> caches a <strong>computed value</strong>; <code>useCallback</code> caches a <strong>function reference</strong> (it's <code>useMemo</code> for functions). Both recompute only when dependencies change.</p>
+    <p>Use them to: stabilize references passed to <code>React.memo</code> children or dependency arrays, and skip genuinely expensive computations. They are <strong>not free</strong> — overuse adds memory and complexity.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Profile first. Memoize the proven hot path, not everything. React Compiler (React 19) automates much of this.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'state',
+    q: "When should you use Context, and when is it wrong?",
+    a: `<p>Context fits <strong>low-frequency global values</strong>: theme, user, locale, feature flags. It avoids prop-drilling for rarely-changing data.</p>
+    <p>It's wrong for <strong>high-frequency updates</strong> — every consumer re-renders on any value change (no selectors). Use a selector-based store (Zustand, Redux Toolkit, Jotai) or split into smaller contexts.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Context for stable global state read by many; a selector store for frequently-changing state needing fine-grained subscriptions.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'hooks',
+    q: "What is a custom hook and what problem does it solve?",
+    a: `<p>A custom hook is a function starting with <code>use</code> that <strong>extracts reusable stateful logic</strong> by composing built-in hooks. It shares behavior (not UI) across components without wrapper nesting.</p>
+    <pre><code>function useDebounce(value, delay) {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const t = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(t);
+  }, [value, delay]);
+  return debounced;
+}</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>Custom hooks extract stateful logic into reusable, composable functions — the modern replacement for HOCs and render props.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'hooks',
+    q: "useState vs useReducer — when to choose which?",
+    a: `<p><code>useState</code> suits independent, simple values. <code>useReducer</code> suits <strong>complex state with related transitions</strong>, where the next state depends on the previous and actions describe intent.</p>
+    <p>Reducers centralize update logic, make it testable in isolation, and pair well with Context for app-level state.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>useState for simple independent values; useReducer when transitions are complex, interrelated, or action-driven.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'patterns',
+    q: "Compare render props, HOCs, and custom hooks.",
+    a: `<ul>
+      <li><strong>HOCs</strong> — wrap a component to inject props; suffer wrapper hell and prop collisions.</li>
+      <li><strong>Render props</strong> — pass a function child to share state; creates nesting pyramids.</li>
+      <li><strong>Custom hooks</strong> — extract logic with no wrapper nodes; composable and explicit. The default today.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>HOCs still appear for error boundaries (can't be hooks yet) and legacy code.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'error',
+    q: "What are error boundaries and their limitations?",
+    a: `<p>Error boundaries are class components implementing <code>componentDidCatch</code> / <code>getDerivedStateFromError</code> that <strong>catch render-phase errors</strong> in their subtree and show a fallback instead of crashing the whole app.</p>
+    <p>Limitations: they don't catch errors in <strong>event handlers</strong>, <strong>async code</strong>, SSR, or the boundary itself. Those need try/catch.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Error boundaries catch render/lifecycle errors in their subtree — not event handlers, async, or SSR errors.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'performance',
+    q: "How does React.lazy and Suspense enable code splitting?",
+    a: `<p><code>React.lazy(() => import('./X'))</code> defers loading a component until it renders, splitting it into a separate bundle. <code>&lt;Suspense fallback={...}&gt;</code> shows a placeholder while the chunk loads.</p>
+    <p>This shrinks the initial bundle — route-level lazy loading is the highest-impact win for first-load performance.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>lazy + Suspense split heavy components into on-demand chunks, cutting initial bundle size.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'rendering',
+    q: "What is reconciliation and the role of Fiber?",
+    a: `<p><strong>Reconciliation</strong> is React's diffing process. <strong>Fiber</strong> is the reimplemented engine (React 16+) that makes rendering <strong>interruptible</strong> — it breaks work into units that can be paused, prioritized, and resumed, enabling concurrent features.</p>
+    <p>Fiber splits work into a render phase (interruptible, no side effects) and a commit phase (synchronous DOM updates).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Fiber turns rendering into interruptible, prioritizable units of work — the foundation for concurrent React.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'refs',
+    q: "What is useImperativeHandle and forwardRef?",
+    a: `<p><code>forwardRef</code> lets a component <strong>forward a ref to a child DOM node or component</strong>. <code>useImperativeHandle</code> customizes what that ref exposes — surfacing specific imperative methods (<code>focus()</code>, <code>scrollTo()</code>) instead of the raw node.</p>
+    <div class="keyline"><span class="kl-label">Note</span>In React 19, ref can be passed as a regular prop — forwardRef is becoming optional.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'medium', tag: 'dom',
+    q: "What are portals and when do you use them?",
+    a: `<p><code>createPortal(children, domNode)</code> renders children into a <strong>different part of the DOM tree</strong> while keeping them in the React tree (so context and events still propagate logically).</p>
+    <p>Used for modals, tooltips, and toasts that must escape parent <code>overflow:hidden</code> or <code>z-index</code> stacking contexts.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Portals render outside the parent DOM hierarchy but stay in the React tree — ideal for modals and overlays.</div>`
+  },
+
+  // --- Hard ---
+  {
+    topic: 'react', difficulty: 'hard', tag: 'performance',
+    q: "How do you diagnose and fix unnecessary re-renders?",
+    a: `<p>Diagnose with the <strong>React DevTools Profiler</strong> (highlight updates, flame graph) to see what rendered and why — usually new object/array/function references passed as props.</p>
+    <p>Fixes in order: <strong>restructure</strong> (move state down, lift children out) → <strong>useMemo/useCallback</strong> to stabilize references → <strong>React.memo</strong> for expensive components → state colocation.</p>
+    <div class="keyline"><span class="kl-label">Senior nuance</span>Composition often beats memoization. Profile first; don't memoize everything — it has its own cost.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'concurrency',
+    q: "What problems do useTransition and useDeferredValue solve?",
+    a: `<p>They keep the UI responsive by marking updates <strong>non-urgent</strong> in concurrent React. <strong>useTransition</strong> wraps a state update in <code>startTransition</code> and exposes <code>isPending</code>; urgent input stays live while the heavy update renders in the background. <strong>useDeferredValue</strong> lags a value during heavy work when you don't own the setter.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Both deprioritize expensive updates — useTransition wraps the setter, useDeferredValue wraps the value.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'react19',
+    q: "What's new in React 19 (use, Actions, the Compiler)?",
+    a: `<ul>
+      <li><strong>use()</strong> — read a promise or context conditionally; integrates with Suspense for data fetching.</li>
+      <li><strong>Actions & useActionState</strong> — built-in pending/error/optimistic handling for form submissions and mutations.</li>
+      <li><strong>useOptimistic</strong> — show optimistic UI while a mutation is in flight.</li>
+      <li><strong>React Compiler</strong> — auto-memoizes components, reducing the need for manual useMemo/useCallback.</li>
+      <li><strong>ref as a prop</strong> and document metadata hoisting.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The Compiler shifts memoization from manual to automatic — but understanding why re-renders happen still matters for debugging.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'server-components',
+    q: "Explain React Server Components and the server/client boundary.",
+    a: `<p>Server Components render on the server, ship <strong>zero JS to the client</strong>, can access data/secrets directly, and stream HTML. They can't use state, effects, or browser APIs. <code>'use client'</code> marks the boundary where hydration and interactivity begin.</p>
+    <p>The skill is drawing that boundary to minimize shipped JS: keep the tree server-heavy, push <code>'use client'</code> to the leaves, pass server data down as props.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Server Components reduce bundle size and fetch data without an API layer; client components add interactivity at the leaves.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'state',
+    q: "Compare Redux, Zustand, Jotai, and React Query.",
+    a: `<ul>
+      <li><strong>Redux Toolkit</strong> — predictable, centralized, great devtools/middleware; more boilerplate. For large apps with complex shared state.</li>
+      <li><strong>Zustand</strong> — minimal store with selectors, no provider, tiny API. Great default for client state.</li>
+      <li><strong>Jotai</strong> — atomic, bottom-up state; fine-grained reactivity.</li>
+      <li><strong>React Query / TanStack Query</strong> — not general state; it's <strong>server-state</strong> management (caching, refetching, invalidation). Often the only "state library" you need.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Separate server state (React Query) from client/UI state (Zustand/Redux). Conflating them is a common architecture mistake.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'hydration',
+    q: "What causes hydration errors and how do you fix them?",
+    a: `<p>Hydration attaches event listeners to server-rendered HTML. Errors occur when the <strong>client's first render differs from the server's HTML</strong> — caused by <code>Date.now()</code>/<code>Math.random()</code>, <code>typeof window</code> checks, locale/timezone differences, or invalid HTML nesting.</p>
+    <p>Fixes: render deterministically, defer client-only content with a mounted flag or <code>useEffect</code>, or use <code>suppressHydrationWarning</code> for intentionally dynamic values like timestamps.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Hydration errors mean server and client rendered different markup — make the first render deterministic, defer client-only bits.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'performance',
+    q: "How do you render a list of 100,000 rows performantly?",
+    a: `<p>Use <strong>virtualization (windowing)</strong> — render only the rows in/near the viewport (react-window, react-virtual). The DOM holds ~20 nodes regardless of list size, with absolute positioning to simulate full scroll height.</p>
+    <p>Combine with stable keys, memoized rows, and pagination/infinite scroll for data fetching.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Virtualize: render only visible rows and recycle DOM nodes, so cost is bounded by viewport, not data size.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'patterns',
+    q: "Explain the compound component pattern.",
+    a: `<p>Compound components share implicit state via Context so a parent and its sub-components work together while the consumer controls composition:</p>
+    <pre><code>&lt;Tabs&gt;
+  &lt;Tabs.List&gt;
+    &lt;Tabs.Tab&gt;One&lt;/Tabs.Tab&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Panel&gt;...&lt;/Tabs.Panel&gt;
+&lt;/Tabs&gt;</code></pre>
+    <p>It gives a flexible, declarative API without prop explosion — the pattern behind Radix UI and Headless UI.</p>
+    <div class="keyline"><span class="kl-label">Use case</span>Reusable, flexible component libraries where consumers arrange parts but shared state stays encapsulated.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'rendering',
+    q: "How does batching work, and what changed in React 18?",
+    a: `<p>React <strong>batches</strong> multiple state updates into a single re-render. Before 18, batching only happened inside React event handlers. React 18's <strong>automatic batching</strong> extends it to promises, setTimeout, and native event handlers too.</p>
+    <p>To force a synchronous flush (rare), use <code>flushSync</code>.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>React 18 batches all updates (even in async callbacks) into one render; flushSync opts out when you truly need a sync DOM update.</div>`
+  },
+  {
+    topic: 'react', difficulty: 'hard', tag: 'testing',
+    q: "How do you test React components effectively?",
+    a: `<p>Use <strong>React Testing Library</strong> — test behavior from the user's perspective (query by role/text, fire events, assert on output) rather than implementation details. Mock network with MSW, not by stubbing fetch.</p>
+    <p>Pyramid: many fast unit/component tests, fewer integration tests, a thin layer of E2E (Playwright/Cypress) for critical flows.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Testing implementation details (state, internals) makes tests brittle. Test what the user sees and does.</div>`
+  },
+
+  // ============================================================
+  // NEXT.JS
+  // ============================================================
+  // --- Easy ---
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'routing',
+    q: "How does file-based routing and layouts work in the App Router?",
+    a: `<p>Folders define routes; <code>page.tsx</code> makes a route public. Special files: <code>layout.tsx</code> (persistent nested shell), <code>loading.tsx</code> (Suspense fallback), <code>error.tsx</code> (error boundary), <code>not-found.tsx</code>.</p>
+    <p>Layouts nest and <strong>don't re-render on navigation</strong> within their segment, preserving state like a sidebar.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Folders are routes, page.tsx exposes them, layouts are persistent nested shells that survive navigation.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'navigation',
+    q: "How does navigation work with Link and useRouter?",
+    a: `<p><code>&lt;Link href&gt;</code> does client-side navigation with automatic <strong>prefetching</strong> of the route in the viewport, making transitions instant. <code>useRouter</code> (from <code>next/navigation</code> in the App Router) gives programmatic navigation: <code>router.push</code>, <code>replace</code>, <code>back</code>, <code>refresh</code>.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Link prefetches and navigates client-side; useRouter handles programmatic navigation. Import from next/navigation in App Router.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'optimization',
+    q: "What does next/image do for you?",
+    a: `<p><code>next/image</code> automatically optimizes images: <strong>lazy loading</strong>, responsive <code>srcset</code> generation, modern formats (WebP/AVIF), and <strong>layout-shift prevention</strong> via required width/height or fill. It serves correctly sized images per device.</p>
+    <div class="keyline"><span class="kl-label">Why it matters</span>It directly improves Core Web Vitals — LCP (faster images) and CLS (no layout shift).</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'metadata',
+    q: "How do you handle SEO metadata?",
+    a: `<p>Export a static <code>metadata</code> object or a dynamic <code>generateMetadata()</code> function from a layout or page. Next.js renders title, description, Open Graph, and Twitter tags into the <code>&lt;head&gt;</code>. <code>generateMetadata</code> can fetch data to build per-page titles.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Export metadata (static) or generateMetadata (dynamic) — Next handles head tags, OG, and titles for SEO.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'config',
+    q: "How do environment variables work in Next.js?",
+    a: `<p>Server-side env vars are read from <code>process.env</code> and stay private. To expose a var to the <strong>browser</strong>, it must be prefixed <code>NEXT_PUBLIC_</code> — these are inlined at build time and visible to anyone.</p>
+    <div class="keyline"><span class="kl-label">Security</span>Never put secrets in NEXT_PUBLIC_ vars — they ship to the client. Keep API keys server-only.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'optimization',
+    q: "What does next/font provide?",
+    a: `<p><code>next/font</code> self-hosts fonts (Google or local) at build time, removing external requests, and applies <code>font-display</code> and size-adjust to <strong>eliminate layout shift</strong> from font swapping. No render-blocking font fetches.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>next/font self-hosts and optimizes fonts to remove external requests and prevent layout shift (CLS).</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'routing',
+    q: "What are dynamic route segments?",
+    a: `<p>A folder named <code>[id]</code> creates a dynamic segment; its value is available via params. <code>[...slug]</code> is a catch-all, <code>[[...slug]]</code> an optional catch-all. Server pages receive <code>params</code> (a promise in Next 15) to read the value.</p>
+    <div class="keyline"><span class="kl-label">Note</span>In Next 15, params and searchParams are async — you await them in server components.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'fundamentals',
+    q: "What problems does Next.js solve over plain React?",
+    a: `<p>Plain React is client-side only. Next.js adds <strong>server rendering (SSR/SSG/ISR)</strong> for SEO and fast first paint, file-based routing, API/route handlers, image/font/script optimization, code splitting, and a deployment-ready production build — a full framework rather than a view library.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Next.js gives React a server, routing, rendering strategies, and optimizations out of the box.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'routing',
+    q: "What's the difference between page.tsx and route.ts?",
+    a: `<p><code>page.tsx</code> renders <strong>UI</strong> for a route. <code>route.ts</code> defines an <strong>API endpoint</strong> (Route Handler) exporting HTTP-method functions (GET, POST) that return <code>Response</code> objects. They can't coexist at the same segment.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>page.tsx = UI; route.ts = API handler. One segment is either a page or an endpoint, not both.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'easy', tag: 'rendering',
+    q: "What are loading.tsx and error.tsx?",
+    a: `<p><code>loading.tsx</code> is an automatic <strong>Suspense fallback</strong> shown instantly while a route's server work completes — enabling streaming. <code>error.tsx</code> is a client-side <strong>error boundary</strong> for its segment, with a <code>reset()</code> to retry rendering.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>loading.tsx streams an instant fallback; error.tsx catches segment errors with a retry.</div>`
+  },
+
+  // --- Medium ---
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'rendering',
+    q: "Compare SSR, SSG, ISR, and CSR. When do you choose each?",
+    a: `<ul>
+      <li><strong>SSG</strong> — built at deploy, CDN-cached, fastest. For rarely-changing content.</li>
+      <li><strong>SSR</strong> — rendered per request. For personalized/always-fresh pages.</li>
+      <li><strong>ISR</strong> — static pages that revalidate in the background. Static speed + periodic freshness.</li>
+      <li><strong>CSR</strong> — render in the browser. For interactive, behind-auth UIs where SEO doesn't matter.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Decision rule</span>Default static; add ISR for known-cadence changes; SSR only when fresh + personalized per request.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'data',
+    q: "How does data fetching and caching work in the App Router?",
+    a: `<p>Fetch directly in async Server Components. Next extends <code>fetch</code>: <code>{ next: { revalidate: 60 } }</code> for time-based ISR, <code>{ cache: 'no-store' }</code> for always-fresh, and <code>{ next: { tags: [...] } }</code> + <code>revalidateTag()</code> for on-demand invalidation. Requests are deduplicated per render.</p>
+    <div class="keyline"><span class="kl-label">Note</span>Next 15 changed defaults — fetches and route handlers are no longer cached by default. Verify per version.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'mutations',
+    q: "What are Server Actions and their trade-offs?",
+    a: `<p>Async functions marked <code>'use server'</code> that run on the server, callable directly from components and form <code>action</code> attributes — no manual API route. They support progressive enhancement and pair with <code>revalidatePath</code>/<code>revalidateTag</code>.</p>
+    <p>They're exposed as <strong>POST endpoints</strong>, so you must authenticate, authorize, and validate input inside every action.</p>
+    <div class="keyline"><span class="kl-label">Security note</span>Treat every Server Action like a public API route — validate, authenticate, authorize.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'middleware',
+    q: "What is Next.js middleware used for?",
+    a: `<p><code>middleware.ts</code> runs <strong>before a request completes</strong>, on the Edge runtime, for every matched path. Uses: auth gating/redirects, A/B testing, geolocation, locale routing, and setting headers/cookies.</p>
+    <p>It should be fast and lightweight — no heavy compute or DB calls (limited runtime). Use a <code>matcher</code> to scope it.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Middleware runs at the edge before the request resolves — ideal for auth redirects, locale, and headers; keep it light.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'data',
+    q: "How do you handle streaming and Suspense in Next.js?",
+    a: `<p>Next streams HTML progressively: the shell renders immediately and slower data-dependent parts stream in as they resolve. Wrap slow components in <code>&lt;Suspense fallback&gt;</code> (or use <code>loading.tsx</code>) so the user sees content fast while sections fill in.</p>
+    <div class="keyline"><span class="kl-label">Why it matters</span>Streaming improves TTFB and perceived performance — fast parts don't wait on slow ones.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'routing',
+    q: "What are parallel and intercepting routes?",
+    a: `<p><strong>Parallel routes</strong> (<code>@slot</code> folders) render multiple independent pages in the same layout simultaneously — e.g. a dashboard with separate analytics and team panels each with their own loading/error states.</p>
+    <p><strong>Intercepting routes</strong> (<code>(.)</code>) load a route in the current context — classically showing a photo in a modal on navigation, but the full page on direct load/refresh.</p>
+    <div class="keyline"><span class="kl-label">Use case</span>Modals that are shareable URLs: intercept for the in-app modal, fall back to the full page on direct visit.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'data',
+    q: "How do you revalidate cached data after a mutation?",
+    a: `<p>After a write (in a Server Action or route handler), call <code>revalidatePath('/products')</code> to refresh a specific route's cache, or <code>revalidateTag('products')</code> to invalidate all fetches tagged <code>products</code>. On-demand revalidation keeps static pages fresh without waiting for a time interval.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>revalidatePath targets a route; revalidateTag targets all fetches with that tag — call after mutations for instant freshness.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'api',
+    q: "When do you use Route Handlers vs Server Actions?",
+    a: `<p><strong>Route Handlers</strong> (<code>route.ts</code>) build a real REST/HTTP API — for external consumers, webhooks, third-party callbacks, or when you need an explicit contract and HTTP semantics.</p>
+    <p><strong>Server Actions</strong> are for internal mutations tied to your own UI/forms, with less ceremony.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Route Handlers for public/external APIs and webhooks; Server Actions for internal form-driven mutations.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'optimization',
+    q: "How does Next.js code-split and optimize the bundle?",
+    a: `<p>Next automatically splits by route, so each page loads only its code. <code>next/dynamic</code> adds component-level lazy loading (with optional <code>ssr: false</code>). Server Components ship no JS. The bundle analyzer helps find heavy dependencies to lazy-load or replace.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Automatic route-based splitting + next/dynamic + Server Components keep the client bundle minimal.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'rendering',
+    q: "What forces a route into dynamic rendering?",
+    a: `<p>Next renders statically when it can, but switches to <strong>dynamic (per-request) rendering</strong> when you use dynamic APIs: <code>cookies()</code>, <code>headers()</code>, <code>searchParams</code>, or <code>fetch</code> with <code>cache: 'no-store'</code>. You can also force it with <code>export const dynamic = 'force-dynamic'</code>.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Accidentally reading cookies/headers high in the tree can opt an entire route out of static optimization — scope dynamic APIs carefully.</div>`
+  },
+
+  // --- Hard ---
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'app-router',
+    q: "Explain Server vs Client Components and how to draw the boundary.",
+    a: `<p>Server Components (default) render on the server, ship <strong>zero JS</strong>, access data/secrets directly, and stream. They can't use state/effects/browser APIs. <code>'use client'</code> marks where hydration begins; everything imported below becomes client too.</p>
+    <p>Pattern: keep the tree server-heavy, push <code>'use client'</code> to leaves, pass server data as props, and render client components inside server ones (or pass server components as children).</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The skill is minimizing the client boundary — interactivity at the leaves, data and rendering on the server.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'runtime',
+    q: "Edge runtime vs Node.js runtime — how do you choose?",
+    a: `<p><strong>Edge</strong>: lightweight V8 isolate, globally distributed, near-zero cold starts, low latency — but no full Node APIs, limited filesystem, and many TCP DB drivers won't work. <strong>Node</strong>: full ecosystem, native modules, persistent DB connections.</p>
+    <p>Edge for middleware, auth checks, geo, lightweight HTTP-API routes. Node for heavy compute and direct DB work.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Edge = global, fast cold starts, restricted APIs; Node = full capabilities, regional. Middleware on edge, DB work on Node.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'caching',
+    q: "Explain the caching layers in Next.js (and what Next 15 changed).",
+    a: `<p>Four layers: <strong>Request Memoization</strong> (dedupe identical fetches within a render), <strong>Data Cache</strong> (persistent fetch results across requests, revalidatable), <strong>Full Route Cache</strong> (cached rendered HTML/RSC payload), and the <strong>Router Cache</strong> (client-side navigation cache).</p>
+    <p>Next 15 made fetches and Route Handlers <strong>uncached by default</strong> (previously cached), and made the client Router Cache less aggressive — opt into caching explicitly now.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Know which layer you're fighting when data looks stale — and that Next 15 flipped the default from cached to fresh.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'rendering',
+    q: "What is Partial Prerendering (PPR)?",
+    a: `<p>PPR combines static and dynamic in a <strong>single route</strong>: a static shell is prerendered and served instantly from the CDN, while dynamic holes (wrapped in Suspense) stream in per request. You get static speed for the shell and personalization where needed — no all-or-nothing choice between SSG and SSR.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>PPR prerenders a static shell and streams dynamic parts in the same route — static speed with dynamic content.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'auth',
+    q: "How do you architect authentication in the App Router?",
+    a: `<p>Validate sessions in a central place. Use middleware for coarse route gating/redirects (fast, edge). Verify the session again in <strong>Server Components / Server Actions / Route Handlers</strong> close to data access — middleware alone isn't a security boundary.</p>
+    <p>Store sessions in httpOnly secure cookies; use a library (Auth.js/NextAuth, Clerk, Lucia). Re-check authorization per data operation, not just at the route edge.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Defense in depth: middleware redirects for UX, but authorize at the data layer because Server Actions are public endpoints.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'performance',
+    q: "How do you optimize Core Web Vitals in a Next.js app?",
+    a: `<ul>
+      <li><strong>LCP</strong> — next/image with priority on the hero, preload critical assets, server-render above-the-fold, fast TTFB via caching/CDN.</li>
+      <li><strong>CLS</strong> — set image/font dimensions, reserve space, use next/font.</li>
+      <li><strong>INP</strong> — minimize client JS (Server Components), code-split, defer non-critical scripts via next/script strategies, useTransition for heavy updates.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The biggest lever is shipping less client JS — Server Components and careful boundaries beat micro-optimizations.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'deployment',
+    q: "How do you deploy Next.js outside Vercel (self-hosted/AWS)?",
+    a: `<p>Options: <strong>standalone output</strong> (<code>output: 'standalone'</code>) in a Docker container on ECS/EKS behind a load balancer; or <strong>OpenNext</strong> to map Next features onto AWS Lambda + CloudFront + S3. You must replicate Vercel's behaviors yourself: ISR cache storage, image optimization, and edge middleware.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Self-hosting means owning the ISR cache (shared store across instances), image optimizer, and CDN config that Vercel handles automatically.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'data',
+    q: "How do you prevent request waterfalls in the App Router?",
+    a: `<p>Waterfalls happen when sequential awaits or nested components each fetch in turn. Fixes: <strong>parallel fetching</strong> with <code>Promise.all</code>, <strong>preloading</strong> data (start the fetch before you await it and pass the promise down), and using Suspense boundaries so independent sections load concurrently rather than blocking each other.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Kick off independent fetches in parallel (Promise.all / preload pattern) and isolate them behind Suspense to avoid serial waterfalls.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'monorepo',
+    q: "How do you structure a large Next.js codebase / monorepo?",
+    a: `<p>Use a monorepo (Turborepo/Nx) with shared packages: <code>ui</code>, <code>config</code>, <code>types</code>, <code>api-client</code>. Turborepo caches and parallelizes builds across packages. Within the app, organize by feature/domain, colocate components with their routes, and keep the server/client boundary explicit per feature.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Turborepo's remote caching is the big win at scale — unchanged packages aren't rebuilt across CI runs.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'rendering',
+    q: "How does generateStaticParams work with ISR for dynamic routes?",
+    a: `<p><code>generateStaticParams</code> returns the set of dynamic params to <strong>prerender at build time</strong>. Combined with <code>dynamicParams = true</code> (default), params not in the list are rendered <strong>on-demand on first request</strong> and then cached (ISR), so you prebuild popular pages and lazily generate the long tail.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Prebuild known/popular params via generateStaticParams; let the rest generate on-demand and cache via ISR.</div>`
+  },
+
+  // ============================================================
+  // NODE.JS
+  // ============================================================
+  // --- Easy ---
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'fundamentals',
+    q: "What is Node.js and what is it good (and bad) at?",
+    a: `<p>Node is a runtime that runs JavaScript outside the browser on V8, with a <strong>non-blocking, event-driven I/O model</strong>. It excels at <strong>I/O-bound, concurrent</strong> workloads — APIs, real-time apps, proxies — handling many connections on one thread.</p>
+    <p>It's poor for <strong>CPU-bound</strong> work, which blocks the single JS thread (offload to worker threads/services).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Node shines at high-concurrency I/O; CPU-heavy work blocks the event loop and needs workers.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'modules',
+    q: "require vs import in Node?",
+    a: `<p><code>require</code> is CommonJS — synchronous, dynamic, runtime resolution. <code>import</code> is ES Modules — static, hoisted, tree-shakeable. Node supports ESM via <code>"type": "module"</code> in package.json or <code>.mjs</code> files.</p>
+    <p>You can't <code>require</code> an ESM module directly; interop has rules (default exports, no named exports from CJS in some cases).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>require = CommonJS (sync, dynamic); import = ESM (static, tree-shakeable). ESM is the modern default.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'npm',
+    q: "What's the difference between dependencies, devDependencies, and npx?",
+    a: `<p><strong>dependencies</strong> ship to production (runtime needs). <strong>devDependencies</strong> are build/test-only (bundlers, linters, test runners). <strong>peerDependencies</strong> declare a host package the consumer must provide.</p>
+    <p><code>npx</code> runs a package binary without globally installing it — great for one-off tools like <code>create-next-app</code>.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>dependencies = runtime, devDependencies = build/test only; npx runs a binary without installing it globally.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'async',
+    q: "What is the error-first callback convention?",
+    a: `<p>Node's classic async pattern: callbacks take <code>(err, result)</code> where <code>err</code> is the first argument and is <code>null</code> on success. Always check <code>err</code> first.</p>
+    <pre><code>fs.readFile('f.txt', (err, data) => {
+  if (err) return handle(err);
+  use(data);
+});</code></pre>
+    <p>Modern code prefers promises/async-await; <code>util.promisify</code> converts callback APIs.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Error-first callbacks put err first; check it before using the result. Promisify to modernize.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'http',
+    q: "How do you create a basic HTTP server, and why use Express?",
+    a: `<p>Node's core <code>http</code> module can create a server, but it's low-level. <strong>Express</strong> adds routing, middleware, request/response helpers, and error handling — far less boilerplate. Alternatives: Fastify (faster, schema-based), Koa, NestJS (structured/opinionated).</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>http is the low-level primitive; Express/Fastify add routing and middleware so you don't hand-roll everything.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'process',
+    q: "What is the process object and how do you read config?",
+    a: `<p><code>process</code> is the global for the running Node process: <code>process.env</code> (environment variables), <code>process.argv</code> (CLI args), <code>process.exit()</code>, and lifecycle events (<code>SIGTERM</code>, <code>uncaughtException</code>). Config comes from env vars (12-factor), often loaded with dotenv in development and validated at startup.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Validate env vars at boot (e.g. with Zod) and fail fast — a missing DB URL should crash on start, not mid-request.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'fundamentals',
+    q: "Is Node single-threaded? Explain precisely.",
+    a: `<p><strong>JavaScript execution</strong> is single-threaded — one call stack. But Node uses <strong>libuv's thread pool</strong> (default 4) for blocking operations (file I/O, DNS, crypto, zlib), and network I/O uses OS async primitives. So Node handles concurrency without you managing threads.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>One JS thread, but libuv offloads blocking I/O to a thread pool — concurrency without manual threading.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'fs',
+    q: "Sync vs async file operations — why does it matter?",
+    a: `<p><code>fs.readFileSync</code> <strong>blocks the event loop</strong> until done — no other request is served meanwhile. <code>fs.readFile</code> / <code>fs.promises</code> are async and let the loop keep working. Sync APIs are only acceptable at <strong>startup</strong> (loading config) where blocking is harmless.</p>
+    <div class="keyline"><span class="kl-label">Rule</span>Never use *Sync I/O in a request path — it blocks every concurrent request on that thread.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'express',
+    q: "What is middleware in Express?",
+    a: `<p>Middleware are <code>(req, res, next)</code> functions that run in order. Each ends the response or calls <code>next()</code> to continue. They power logging, parsing, auth, and CORS. Order matters — body parsers and auth must run before route handlers.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Middleware is an ordered (req, res, next) chain; call next() to pass control or respond to stop it.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'easy', tag: 'api',
+    q: "What makes a good REST API design?",
+    a: `<p>Noun-based resource URLs (<code>/users/:id/orders</code>), correct HTTP verbs (GET/POST/PUT/PATCH/DELETE) and status codes, statelessness, consistent JSON envelopes, pagination, filtering, and versioning (<code>/v1</code>). Idempotency for PUT/DELETE; meaningful errors with codes.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Resources as nouns, verbs as HTTP methods, correct status codes, stateless, paginated, versioned.</div>`
+  },
+
+  // --- Medium ---
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'event-loop',
+    q: "Describe the Node event loop phases and how microtasks fit.",
+    a: `<p>Six phases cycle in order: <strong>timers</strong> (setTimeout) → <strong>pending callbacks</strong> → <strong>idle/prepare</strong> → <strong>poll</strong> (I/O) → <strong>check</strong> (setImmediate) → <strong>close callbacks</strong>. Between every phase, microtasks drain — and <code>process.nextTick</code> runs <strong>before</strong> Promise microtasks.</p>
+    <p>Inside an I/O callback, <code>setImmediate</code> fires before <code>setTimeout(…,0)</code> (check follows poll).</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Recursive process.nextTick starves the loop — it runs before the loop can advance to I/O.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'streams',
+    q: "What are streams and explain backpressure.",
+    a: `<p>Streams process data in <strong>chunks</strong> to bound memory — Readable, Writable, Transform, Duplex. <strong>Backpressure</strong>: when <code>writable.write()</code> returns <code>false</code>, the buffer is full; pause the readable and resume on <code>'drain'</code>. <code>pipe</code>/<code>pipeline()</code> handle this automatically.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Streams chunk data to bound memory; backpressure pauses the source when the destination lags. Use pipeline().</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'express',
+    q: "How do you handle errors correctly in Express?",
+    a: `<p>Error middleware has <strong>four args</strong> <code>(err, req, res, next)</code> and is registered <strong>last</strong>. In Express 4, async errors must be passed via <code>next(err)</code> (wrap handlers); Express 5 auto-forwards rejected promises. Centralize logging and a safe error response there.</p>
+    <pre><code>app.use((err, req, res, next) => {
+  logger.error(err);
+  res.status(err.status || 500).json({ error: err.message });
+});</code></pre>
+    <div class="keyline"><span class="kl-label">Senior note</span>Unhandled promise rejections crash the process — wrap async handlers in Express 4 or upgrade to 5.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'patterns',
+    q: "What is EventEmitter and where is it used?",
+    a: `<p><code>EventEmitter</code> is Node's core pub/sub primitive: <code>emit()</code> fires named events, <code>on()</code>/<code>once()</code> subscribe. HTTP servers, streams, and many core modules extend it. It decouples producers from consumers, like Laravel events.</p>
+    <div class="keyline"><span class="kl-label">Watch out</span>Always remove listeners (or use once) in long-running processes — leaked listeners cause memory growth and the >10 listener warning.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'auth',
+    q: "How do you implement JWT authentication in Node?",
+    a: `<p>On login, verify credentials and sign a <strong>short-lived access token</strong> (claims: sub, role, exp) plus a longer <strong>refresh token</strong>. Send tokens in httpOnly secure cookies. Middleware verifies the access token's signature/expiry on each request and attaches the user. Rotate refresh tokens and keep a revocation list for logout.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Short access token + rotating refresh token + revocation list balances statelessness with the ability to revoke.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'database',
+    q: "Why is connection pooling important?",
+    a: `<p>Opening a DB connection is expensive (TCP + auth handshake). A <strong>pool</strong> reuses a fixed set of connections across requests, bounding load on the database and removing per-request setup cost. <code>pg.Pool</code> manages this; tune max size to your DB's connection limit.</p>
+    <p>Under high concurrency, add <strong>PgBouncer/RDS Proxy</strong> so thousands of app connections multiplex onto a safe number of DB connections.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Pools reuse connections to avoid handshake cost and protect the DB from connection exhaustion.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'async',
+    q: "How do you avoid callback hell and handle async cleanly?",
+    a: `<p>Use <strong>async/await</strong> with try/catch over nested callbacks. <code>util.promisify</code> wraps callback APIs. Run independent work with <code>Promise.all</code>; limit concurrency with a pool for bulk operations. Avoid awaiting inside loops when calls are independent.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>async/await + promisify for readability; Promise.all for parallelism; concurrency limits for bulk work.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'logging',
+    q: "How should you do logging and observability in production Node?",
+    a: `<p>Use <strong>structured JSON logging</strong> (pino, winston) with levels and correlation/request IDs so logs are queryable. Ship to a centralized system (CloudWatch, ELK, Datadog). Add metrics (Prometheus) and distributed tracing (OpenTelemetry) to follow a request across services.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Correlation IDs threaded through logs and traces are what make debugging distributed systems tractable.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'caching',
+    q: "How and where do you use Redis in a Node API?",
+    a: `<p>Redis is an in-memory store for: <strong>caching</strong> hot reads (cache-aside), <strong>session</strong> storage, <strong>rate-limit</strong> counters, <strong>pub/sub</strong>, distributed <strong>locks</strong>, and lightweight queues. Set TTLs and an eviction policy; design keys with clear namespaces.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Redis handles caching, sessions, rate limits, pub/sub, and locks — anything needing fast shared state with TTLs.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'queues',
+    q: "Why use a message queue, and what does it give you?",
+    a: `<p>Queues (SQS, RabbitMQ, BullMQ on Redis) <strong>decouple</strong> producers from consumers and move slow work off the request path: email, exports, webhooks, image processing. Benefits: smoothing traffic spikes, retries/dead-letter queues, and independent scaling of workers.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Queues decouple and absorb load — offload slow tasks, retry failures, and scale workers independently of the API.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'medium', tag: 'testing',
+    q: "How do you test a Node/Express API?",
+    a: `<p>Unit-test pure logic in isolation. Integration-test routes with <strong>supertest</strong> against the app, using a real test database (or testcontainers) and seeding/teardown per test. Mock external HTTP with nock/MSW. Keep tests deterministic and independent.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Prefer a real (containerized) DB for integration tests over mocking the query layer — mocks hide real SQL bugs.</div>`
+  },
+
+  // --- Hard ---
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'concurrency',
+    q: "Worker Threads vs Cluster vs child_process — when each?",
+    a: `<ul>
+      <li><strong>Worker Threads</strong> — in-process CPU parallelism with shared memory (SharedArrayBuffer); for heavy computation (parsing, crypto, image work) without blocking the loop.</li>
+      <li><strong>Cluster</strong> — fork multiple Node processes sharing a port to use all CPU cores for handling more requests.</li>
+      <li><strong>child_process</strong> — spawn separate programs/scripts (e.g. ffmpeg), communicating via stdio/IPC.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Production note</span>In containers you usually run one process per container and scale horizontally (ECS/K8s) instead of the cluster module.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'postgres',
+    q: "How do you optimize a slow PostgreSQL query?",
+    a: `<p>Start with <strong>EXPLAIN ANALYZE</strong> — look for seq scans on big tables, bad row estimates, expensive sorts. Then: add the right <strong>indexes</strong> (composite matching query order, partial for selective filters, GIN for JSONB/full-text); fix <strong>N+1</strong> with JOINs or <code>ANY($1)</code>; use <strong>keyset pagination</strong> over OFFSET; avoid <code>SELECT *</code> and index-defeating casts; analyze/vacuum for fresh stats.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Indexes speed reads but slow writes and cost storage — index for the query patterns that matter, verify with EXPLAIN ANALYZE.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'database',
+    q: "Explain database transactions, isolation levels, and deadlocks.",
+    a: `<p>Transactions group operations atomically (ACID). <strong>Isolation levels</strong> trade consistency for concurrency: Read Committed (default), Repeatable Read, Serializable — higher levels prevent anomalies (dirty/non-repeatable/phantom reads) but increase locking and retry rates.</p>
+    <p><strong>Deadlocks</strong> occur when transactions lock resources in opposing orders; mitigate by acquiring locks in a consistent order, keeping transactions short, and retrying on deadlock errors.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Use Serializable for correctness-critical flows and handle serialization-failure retries; default Read Committed for throughput.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'security',
+    q: "What are the essential security practices for a Node API?",
+    a: `<ul>
+      <li><strong>Validate</strong> all input (Zod/Joi); <strong>parameterize</strong> queries (no string-built SQL).</li>
+      <li><strong>helmet</strong> headers, strict <strong>CORS</strong> allowlist, <strong>rate limiting</strong>.</li>
+      <li>Short-lived JWTs with refresh rotation; hashed passwords (argon2/bcrypt); httpOnly secure cookies.</li>
+      <li>Secrets in a manager; least-privilege IAM/DB roles; <code>npm audit</code>; no stack traces in prod responses.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">One-liner</span>Validate input, parameterize queries, lock headers/CORS/rate limits, rotate short tokens, manage secrets and deps.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'aws',
+    q: "Design a scalable Node API deployment on AWS.",
+    a: `<ul>
+      <li><strong>Compute</strong> — containers on ECS Fargate/EKS behind an ALB, autoscaled; Lambda + API Gateway for spiky/event-driven.</li>
+      <li><strong>DB</strong> — RDS PostgreSQL (Multi-AZ failover, read replicas), RDS Proxy/PgBouncer for pooling.</li>
+      <li><strong>Cache</strong> — ElastiCache Redis for sessions, hot reads, rate limits.</li>
+      <li><strong>Async</strong> — SQS for background jobs.</li>
+      <li><strong>Edge/assets</strong> — CloudFront + S3 (versioned).</li>
+      <li><strong>Observability</strong> — CloudWatch, alarms, X-Ray/OpenTelemetry.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Name trade-offs: Fargate removes node ops but costs more at steady scale; Multi-AZ doubles DB cost for failover. Fit it to traffic and budget.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'resilience',
+    q: "How do you make external API calls resilient?",
+    a: `<ul>
+      <li><strong>Timeouts</strong> on every call — a hung upstream shouldn't pin resources.</li>
+      <li><strong>Retries</strong> with exponential backoff + jitter, only for idempotent ops, capped.</li>
+      <li><strong>Circuit breaker</strong> — trip open after N failures, fail fast, half-open to test recovery.</li>
+      <li><strong>Idempotency keys</strong>, <strong>bulkheads</strong> (isolated pools), and <strong>graceful degradation</strong> (stale cache/fallback).</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">One-liner</span>Timeout everything, retry idempotent calls with backoff, wrap flaky upstreams in a circuit breaker, isolate with bulkheads.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'reliability',
+    q: "How do you implement graceful shutdown?",
+    a: `<p>On <code>SIGTERM</code>/<code>SIGINT</code>: stop accepting new connections (<code>server.close()</code>), finish in-flight requests within a timeout, drain queues, close DB pools and Redis, then exit. This prevents dropped requests and connection leaks during deploys/scaling.</p>
+    <pre><code>process.on('SIGTERM', async () => {
+  server.close();
+  await pool.end();
+  process.exit(0);
+});</code></pre>
+    <div class="keyline"><span class="kl-label">Why it matters</span>Kubernetes/ECS send SIGTERM before killing a pod — graceful shutdown is what makes rolling deploys zero-downtime.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'performance',
+    q: "How do you profile and fix performance issues in Node?",
+    a: `<p>Profile CPU with <code>--prof</code> or clinic.js/0x (flame graphs) to find hot paths and event-loop blocking. Watch <strong>event loop lag</strong> (perf_hooks) and memory via heap snapshots for leaks. Fixes: move CPU work to workers, stream large payloads, add caching, fix N+1 queries, and avoid synchronous APIs.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Event-loop lag is the key Node-specific metric — rising lag means something is blocking the single JS thread.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'architecture',
+    q: "Monolith vs microservices — how do you decide?",
+    a: `<p>Start with a <strong>well-structured monolith</strong> — simpler to build, deploy, and debug. Move to microservices when you have clear bounded contexts, independent scaling needs, separate team ownership, or differing tech requirements. The cost: network failure modes, distributed transactions, eventual consistency, and operational overhead.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Microservices trade local complexity for distributed complexity. Don't adopt them for a problem you don't have yet.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'architecture',
+    q: "How do you propagate identity and authorize across services?",
+    a: `<p>An <strong>API gateway</strong> validates the JWT once, then forwards verified <strong>claims</strong> (as signed headers or a re-minted internal token) to downstream services — they trust the gateway, not the raw client token. Use mTLS or a service mesh for service-to-service trust, and authorize at each service close to its data.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Gateway validates once and forwards claims; services authorize locally and trust the gateway via mTLS/internal tokens.</div>`
+  },
+  {
+    topic: 'nodejs', difficulty: 'hard', tag: 'patterns',
+    q: "How do you ensure idempotency for payment/write endpoints?",
+    a: `<p>The client sends an <strong>idempotency key</strong> (UUID) with the request. The server stores the key with the result; a retry with the same key returns the stored result instead of re-executing. Combine with a unique DB constraint so concurrent duplicates can't both succeed.</p>
+    <div class="keyline"><span class="kl-label">Why it matters</span>Networks retry — without idempotency keys, a retried "charge" or "create order" double-executes.</div>`
+  },
+  // ============================================================
+  // TYPESCRIPT
+  // ============================================================
+  // --- Easy ---
+  {
+    topic: 'typescript', difficulty: 'easy', tag: 'basics',
+    q: "type vs interface — when do you use each?",
+    a: `<p>Both describe object shapes. <strong>interface</strong> is open — it supports <strong>declaration merging</strong> and is idiomatic for public object/class contracts. <strong>type</strong> is more flexible: it can express unions, intersections, tuples, mapped and conditional types, and primitives — things interfaces can't.</p>
+    <p>Rule of thumb: <code>interface</code> for object/class shapes you might extend or merge; <code>type</code> for unions, function types, and anything composed.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>interface for extendable object contracts (and library types); type for unions, tuples, and composed/derived types.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'easy', tag: 'safety',
+    q: "any vs unknown vs never — what's the difference?",
+    a: `<p><code>any</code> opts out of type checking entirely — avoid it; it spreads unsafety. <code>unknown</code> is the <strong>type-safe top type</strong>: you can hold anything but must <strong>narrow it</strong> before use. <code>never</code> is the bottom type — no value is assignable; it marks impossible states and exhaustiveness.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>any disables checking; unknown forces you to narrow before use; never represents the impossible. Prefer unknown over any.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'easy', tag: 'unions',
+    q: "What are union and intersection types?",
+    a: `<p>A <strong>union</strong> <code>A | B</code> is "either" — a value is one of the types; you can only access members common to all members until you narrow. An <strong>intersection</strong> <code>A & B</code> is "both" — the value has all properties of both types, used to compose shapes.</p>
+    <pre><code>type Status = 'active' | 'archived';      // union of literals
+type Admin = User & { permissions: string[] }; // intersection</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>Union = one of several; intersection = combination of all. Union narrows down, intersection builds up.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'easy', tag: 'enums',
+    q: "Enums vs union of string literals — which is better?",
+    a: `<p>Union string literals (<code>type Role = 'admin' | 'user'</code>) are usually preferred: zero runtime cost, simple, and they work directly with string values. <strong>Enums</strong> generate runtime objects (numeric enums especially can be surprising) and add bundle weight. <code>const enum</code> is inlined but has caveats with isolated modules.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Favor string-literal unions or <code>as const</code> objects over enums in modern codebases — less runtime, better tree-shaking, clearer intent.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'easy', tag: 'basics',
+    q: "What do readonly and optional modifiers do?",
+    a: `<p><code>readonly</code> prevents reassignment of a property after construction (compile-time only). <code>?</code> marks a property optional, so it may be <code>undefined</code>. Combine for immutable, partial shapes. <code>ReadonlyArray&lt;T&gt;</code> and <code>readonly T[]</code> protect arrays from mutation.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>readonly blocks reassignment at compile time; ? makes a property possibly-undefined. Neither exists at runtime.</div>`
+  },
+
+  // --- Medium ---
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'generics',
+    q: "Explain generics and generic constraints.",
+    a: `<p>Generics make types reusable across types while preserving relationships. <strong>Constraints</strong> (<code>extends</code>) restrict what a type parameter can be, unlocking property access.</p>
+    <pre><code>function getProp&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K] {
+  return obj[key];
+}
+// return type is precisely the property's type</code></pre>
+    <p>This is how you write reusable, fully-typed utilities (data fetchers, repositories) without losing type information.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Generics preserve type relationships across a function/type; constraints (extends) bound the parameter so you can safely use it.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'utility-types',
+    q: "Explain the key built-in utility types.",
+    a: `<ul>
+      <li><code>Partial&lt;T&gt;</code> — all properties optional (patch/update inputs).</li>
+      <li><code>Required&lt;T&gt;</code> — all properties required.</li>
+      <li><code>Pick&lt;T,K&gt;</code> / <code>Omit&lt;T,K&gt;</code> — select or exclude keys.</li>
+      <li><code>Record&lt;K,V&gt;</code> — a map type with known keys.</li>
+      <li><code>Readonly&lt;T&gt;</code>, <code>Exclude</code>, <code>Extract</code>, <code>NonNullable</code>, <code>ReturnType</code>, <code>Parameters</code>, <code>Awaited</code>.</li>
+    </ul>
+    <p>They let you <strong>derive</strong> types from a single source of truth instead of duplicating shapes.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>In large codebases, derive types (Pick/Omit/ReturnType) from one canonical model so changes propagate automatically — no drift between duplicated interfaces.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'narrowing',
+    q: "What are type guards and discriminated unions?",
+    a: `<p><strong>Type guards</strong> narrow a union to a specific type: <code>typeof</code>, <code>instanceof</code>, <code>in</code>, or a custom predicate (<code>function isCat(a): a is Cat</code>).</p>
+    <p>A <strong>discriminated union</strong> gives each variant a common literal "tag" so a <code>switch</code> narrows exhaustively:</p>
+    <pre><code>type Result =
+  | { status: 'ok'; data: User }
+  | { status: 'error'; message: string };
+// switch (r.status) narrows each branch precisely</code></pre>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Discriminated unions + a never default case give compile-time exhaustiveness — add a variant and the compiler flags every unhandled switch.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'inference',
+    q: "What does the `satisfies` operator do?",
+    a: `<p><code>satisfies</code> checks that a value conforms to a type <strong>without widening or losing the literal inference</strong>. Unlike a type annotation, it keeps the precise inferred type while validating the constraint.</p>
+    <pre><code>const config = {
+  port: 3000,
+  env: 'prod',
+} satisfies Record&lt;string, string | number&gt;;
+// config.env is 'prod' (literal), still validated</code></pre>
+    <div class="keyline"><span class="kl-label">One-liner</span>satisfies validates a value against a type while preserving its narrow inferred type — best of annotation and inference.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'operators',
+    q: "Explain keyof, typeof, and indexed access types.",
+    a: `<p><code>keyof T</code> produces a union of T's keys. <code>typeof value</code> lifts a runtime value into its type. <strong>Indexed access</strong> <code>T[K]</code> reads a property's type.</p>
+    <pre><code>const roles = { admin: 1, user: 2 } as const;
+type Role = keyof typeof roles;   // 'admin' | 'user'
+type Value = (typeof roles)[Role]; // 1 | 2</code></pre>
+    <div class="keyline"><span class="kl-label">Senior signal</span>keyof + typeof + as const derive types from runtime constants — one source of truth for both values and types.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'mapped-types',
+    q: "What are mapped types and what is `as const`?",
+    a: `<p><strong>Mapped types</strong> transform each property of a type: <code>{ [K in keyof T]: ... }</code> — the mechanism behind Partial, Readonly, etc. You can add/remove modifiers (<code>-readonly</code>, <code>-?</code>) and remap keys with <code>as</code>.</p>
+    <p><code>as const</code> freezes a literal into its narrowest readonly form (literal types, readonly arrays/tuples) — essential for deriving precise types from data.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Mapped types iterate keys to transform a type; as const freezes a value to its most specific readonly literal type.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'medium', tag: 'react',
+    q: "How do you type React components, props, and hooks well?",
+    a: `<p>Type props with an <code>interface</code>; prefer explicit return types only where helpful. Type <code>useState</code> when inference can't (e.g. <code>useState&lt;User | null&gt;(null)</code>), and reducers via a discriminated union of actions. For generic components, use generic function components. Avoid <code>React.FC</code> in modern code — type props directly and infer children.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Type the reducer's action as a discriminated union so every dispatch is checked and the reducer switch is exhaustive.</div>`
+  },
+
+  // --- Hard ---
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'conditional-types',
+    q: "Explain conditional types and the `infer` keyword.",
+    a: `<p>Conditional types branch on assignability: <code>T extends U ? X : Y</code>. <code>infer</code> captures a type within the condition for reuse.</p>
+    <pre><code>type ElementType&lt;T&gt; = T extends (infer U)[] ? U : T;
+type Awaited&lt;T&gt; = T extends Promise&lt;infer R&gt; ? R : T;</code></pre>
+    <p>Over unions, conditional types <strong>distribute</strong> over each member — a key behavior to understand (wrap in <code>[T]</code> to prevent it).</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>infer extracts inner types (return types, element types, promise results) — the engine behind ReturnType, Awaited, and Parameters.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'template-literals',
+    q: "What are template literal types and where are they useful?",
+    a: `<p>Template literal types build string types from other types: <code>type Route = \`/api/\${string}\`</code>. Combined with unions and mapped types, they generate precise string keys — e.g. event names (<code>on\${Capitalize&lt;K&gt;}</code>), CSS units, or typed API paths.</p>
+    <pre><code>type EventName&lt;T extends string&gt; = \`on\${Capitalize&lt;T&gt;}\`;
+type Click = EventName&lt;'click'&gt;; // 'onClick'</code></pre>
+    <div class="keyline"><span class="kl-label">Use case</span>Type-safe string APIs — route builders, event maps, i18n keys — validated at compile time instead of runtime.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'architecture',
+    q: "What typing patterns keep a large codebase maintainable?",
+    a: `<ul>
+      <li><strong>Single source of truth</strong> — derive types (Pick/Omit/ReturnType/infer) from canonical models; never duplicate shapes.</li>
+      <li><strong>Discriminated unions</strong> for state/results with exhaustive never checks.</li>
+      <li><strong>Branded/nominal types</strong> for IDs so a <code>UserId</code> can't be passed where an <code>OrderId</code> is expected.</li>
+      <li><strong>Validate at boundaries</strong> with Zod and <code>z.infer</code> so runtime and static types share one schema.</li>
+      <li><strong>strict mode on</strong>, no <code>any</code>, prefer <code>unknown</code> at edges.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The big win is deriving both runtime validation and static types from one schema (Zod) — eliminating drift between what you check and what you type.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'nominal',
+    q: "What are branded (nominal) types and why use them?",
+    a: `<p>TypeScript is structural — two types with the same shape are interchangeable. <strong>Branding</strong> adds a phantom marker to make types nominally distinct:</p>
+    <pre><code>type UserId = string & { readonly __brand: 'UserId' };
+type OrderId = string & { readonly __brand: 'OrderId' };
+// passing a UserId where OrderId is expected now errors</code></pre>
+    <p>Prevents whole classes of bugs where IDs, currencies, or units get swapped.</p>
+    <div class="keyline"><span class="kl-label">Use case</span>Distinguish same-shaped values (IDs, money, validated vs raw input) so the compiler rejects accidental mix-ups.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'modules',
+    q: "What are declaration merging and module augmentation?",
+    a: `<p><strong>Declaration merging</strong> lets multiple declarations with the same name combine (interfaces merge, namespaces extend). <strong>Module augmentation</strong> uses <code>declare module</code> to add types to existing modules — e.g. extending Express's <code>Request</code> with a <code>user</code>, or augmenting a library's types.</p>
+    <pre><code>declare module 'express' {
+  interface Request { user?: AuthUser }
+}</code></pre>
+    <div class="keyline"><span class="kl-label">Use case</span>Adding typed properties to third-party objects (Express Request, window, process.env) without forking their types.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'config',
+    q: "Which strict-mode flags matter, and what does strictNullChecks change?",
+    a: `<p><code>strict: true</code> enables a bundle: <code>strictNullChecks</code> (null/undefined no longer assignable to every type — you must handle them), <code>noImplicitAny</code>, <code>strictFunctionTypes</code>, <code>strictBindCallApply</code>, and more. Add <code>noUncheckedIndexedAccess</code> (index access may be undefined) and <code>exactOptionalPropertyTypes</code> for extra safety in large codebases.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>strictNullChecks is the highest-value flag — it surfaces the "cannot read property of undefined" bug class at compile time. Enable strict from day one; retrofitting is painful.</div>`
+  },
+  {
+    topic: 'typescript', difficulty: 'hard', tag: 'generics',
+    q: "How do you design a fully-typed generic API client or repository?",
+    a: `<p>Parameterize over the resource and its shape, and use a schema map so each endpoint returns its own type:</p>
+    <pre><code>interface Endpoints {
+  '/users': User;
+  '/orders': Order;
+}
+function get&lt;P extends keyof Endpoints&gt;(path: P): Promise&lt;Endpoints[P]&gt; { /* ... */ }
+// get('/users') is Promise&lt;User&gt;, fully inferred</code></pre>
+    <p>Pair with Zod schemas to validate responses and infer the same types, so the contract is enforced at runtime and compile time.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>A keyed endpoint map gives per-route return types with zero casts — the consumer gets precise types from the path alone.</div>`
+  },
+
+  // ============================================================
+  // NEXT.JS 16 (additions to the Next.js category)
+  // ============================================================
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'next16',
+    q: "What are the headline changes in Next.js 16?",
+    a: `<p>Next.js 16 (released October 2025, LTS) is a refinement release centered on <strong>explicit caching</strong>:</p>
+    <ul>
+      <li><strong>Cache Components</strong> with the <code>'use cache'</code> directive — caching is now opt-in; everything is dynamic by default.</li>
+      <li><strong>Turbopack</strong> is the default bundler (Webpack no longer default) — much faster builds and Fast Refresh.</li>
+      <li><strong>proxy.ts</strong> replaces <code>middleware.ts</code>.</li>
+      <li><strong>Partial Prerendering on by default</strong>, new <code>updateTag</code> / refined <code>revalidateTag</code>.</li>
+      <li><strong>Async request APIs</strong> (params, searchParams, cookies, headers) and bundled React 19.2.</li>
+    </ul>
+    <div class="keyline"><span class="kl-label">One-liner</span>Next 16 makes caching explicit (Cache Components / 'use cache'), defaults to Turbopack and PPR, and renames middleware to proxy.ts.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'next16',
+    q: "Explain Cache Components and the `use cache` directive.",
+    a: `<p>Before 16, App Router caching was <strong>implicit</strong> — fetches and routes were cached by default, causing stale-data confusion. <strong>Cache Components</strong> flip this: everything is <strong>dynamic by default</strong>, and you <strong>opt specific functions or components into caching</strong> with the <code>'use cache'</code> directive (it replaces <code>unstable_cache</code>).</p>
+    <pre><code>async function getProducts() {
+  'use cache';
+  cacheLife('hours');
+  cacheTag('products');
+  return db.products.findMany();
+}</code></pre>
+    <p>It's built on PPR — cached parts prerender into the static shell, dynamic parts stream as holes.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Cache Components make caching explicit: dynamic by default, opt in with 'use cache' plus cacheLife/cacheTag for TTL and invalidation.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'next16',
+    q: "updateTag vs revalidateTag in Next.js 16 — when each?",
+    a: `<p>Both invalidate tagged caches but with different semantics. <strong>revalidateTag(tag, profile)</strong> now <strong>requires a cacheLife profile</strong> (e.g. <code>'max'</code>) and uses <strong>stale-while-revalidate</strong> — the next visitor gets stale data instantly while fresh data loads in the background. Ideal for blogs, catalogs, CMS content.</p>
+    <p><strong>updateTag(tag)</strong> solves <strong>read-your-writes</strong>: it expires the cache immediately and fetches fresh data in the same request, so a user sees their own change right after submitting. Use it in Server Actions.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>revalidateTag = eventual, background refresh (SWR); updateTag = immediate, read-your-writes for Server Actions. Note revalidateTag now needs a cacheLife profile.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'next16',
+    q: "What is proxy.ts and how does it differ from middleware.ts?",
+    a: `<p>Next.js 16 renames <code>middleware.ts</code> to <code>proxy.ts</code> (export <code>proxy</code> instead of <code>middleware</code>). <strong>Same primitive</strong> — same matcher API, same request/response shapes. The rename clarifies its real job: intercepting requests at the network boundary (redirects, auth gates, request shaping), not acting like Express middleware.</p>
+    <p><code>proxy.ts</code> runs on the <strong>Node runtime by default</strong>; <code>middleware.ts</code> is deprecated but kept for now for edge-runtime cases. A codemod handles the rename.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>Keep proxy.ts thin — boundary concerns only (redirects, auth gates). Business logic belongs in Server Components and Route Handlers.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'next16',
+    q: "What are cacheLife and cacheTag?",
+    a: `<p>Both are now stable (no <code>unstable_</code> prefix), used inside a <code>'use cache'</code> scope. <strong>cacheLife</strong> sets lifetime via a profile (<code>'seconds'</code>, <code>'hours'</code>, <code>'days'</code>, <code>'max'</code>) or a custom object with <code>stale</code> / <code>revalidate</code> / <code>expire</code>. <strong>cacheTag</strong> tags the cached entry so you can invalidate it later with <code>revalidateTag</code> or <code>updateTag</code>.</p>
+    <div class="keyline"><span class="kl-label">Note</span>A short-lived cache (seconds profile, revalidate 0, or expire under ~5 min) is excluded from prerender and becomes a dynamic hole instead.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'next16',
+    q: "Why did Next.js 16 make params, cookies, and headers async?",
+    a: `<p>In Next.js 16, request APIs — <code>params</code>, <code>searchParams</code>, <code>cookies()</code>, <code>headers()</code> — are <strong>async and must be awaited</strong>. This lets Next start rendering a page <strong>before</strong> these values resolve, improving streaming, concurrent rendering, and TTFB, and aligns with the async nature of RSC.</p>
+    <pre><code>export default async function Page({ params }) {
+  const { id } = await params; // now async
+}</code></pre>
+    <div class="keyline"><span class="kl-label">Migration note</span>A codemod converts sync access; reading these high in the tree without awaiting was a common Next 15→16 break.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'routing',
+    q: "What are route groups and how do they differ from regular folders?",
+    a: `<p>A <strong>route group</strong> is a folder wrapped in parentheses, e.g. <code>(marketing)</code> or <code>(shop)</code>. It organizes routes and lets you apply <strong>different layouts to different sections</strong> <em>without affecting the URL</em> — the group name is omitted from the path.</p>
+    <p>Use them to give, say, marketing and dashboard areas separate root layouts, or to colocate related routes without nesting URLs.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Route groups (folder) organize routes and scope layouts without adding a URL segment.</div>`
+  },
+
+  // ============================================================
+  // TOOLING / BUILD (added to Next.js category)
+  // ============================================================
+  {
+    topic: 'nextjs', difficulty: 'medium', tag: 'tooling',
+    q: "What is Turbopack and why did it replace Webpack as default?",
+    a: `<p><strong>Turbopack</strong> is Next.js's Rust-based bundler, the <strong>default in Next 16</strong>. It uses fine-grained incremental computation and caching to deliver roughly <strong>2–5× faster production builds</strong> and up to <strong>10× faster Fast Refresh</strong> on large apps, plus filesystem caching for faster cold starts.</p>
+    <p>It's designed for the scale where Webpack's full-graph rebuilds became the bottleneck during development.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Turbopack is Next's Rust bundler — incremental, cached, far faster HMR and builds; the Next 16 default over Webpack.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'tooling',
+    q: "How do you analyze and reduce bundle size?",
+    a: `<p>Measure first: <code>@next/bundle-analyzer</code> (or the build output's per-route sizes) to find heavy modules. Then: <strong>code-split</strong> with <code>next/dynamic</code>, move logic into <strong>Server Components</strong> (zero client JS), replace heavy libs with lighter ones (e.g. date-fns over moment, import only what you use), tree-shake by importing specific paths, and lazy-load below-the-fold/interaction-gated components.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The biggest lever in the App Router is shifting work to Server Components so it never ships to the client at all — then analyze what's left.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'performance',
+    q: "How do you debug hydration mismatches systematically?",
+    a: `<p>A mismatch means the server HTML differs from the client's first render. Find the cause: non-deterministic values (<code>Date</code>, <code>Math.random</code>, locale/timezone), <code>typeof window</code> branches, invalid HTML nesting, or browser-extension DOM edits.</p>
+    <p>Fix: render deterministically; defer client-only content with a mounted flag or <code>useEffect</code>; use <code>suppressHydrationWarning</code> only for genuinely dynamic leaf values like timestamps. The console error usually points to the diverging element — isolate by component.</p>
+    <div class="keyline"><span class="kl-label">One-liner</span>Server and client rendered different markup — make the first render deterministic, defer client-only bits, and suppress only intentional dynamic values.</div>`
+  },
+  {
+    topic: 'nextjs', difficulty: 'hard', tag: 'state',
+    q: "How do you architect state in a large Next.js App Router app?",
+    a: `<p>Separate the kinds of state. <strong>Server state</strong> (data from APIs/DB) belongs in Server Components or a server-cache layer (or TanStack Query for client-fetched data) — not a global store. <strong>URL state</strong> (filters, tabs, pagination) lives in searchParams so it's shareable and server-readable. <strong>Client UI state</strong> (modals, form drafts) uses local state or a light store (Zustand/Jotai). Keep <code>'use client'</code> boundaries small so most of the tree stays server-rendered.</p>
+    <div class="keyline"><span class="kl-label">Senior signal</span>The common mistake is putting server data in a global client store. In the App Router, prefer server components + URL state, and reserve client stores for genuinely client-only UI.</div>`
+  },
+];
+
+// ---------- Render ----------
+const content = document.getElementById('content');
+let state = { topic: 'all', diff: 'all', search: '' };
+let done = loadDone();
+
+function loadDone() {
+  try {
+    const raw = localStorage.getItem('prep_done');
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+function saveDone() {
+  try { localStorage.setItem('prep_done', JSON.stringify(done)); } catch {}
+}
+
+function qId(q) { return q.topic + ':' + q.q.slice(0, 40); }
+
+function matches(q) {
+  if (state.topic !== 'all' && q.topic !== state.topic) return false;
+  if (state.diff !== 'all' && q.difficulty !== state.diff) return false;
+  if (state.search) {
+    const s = state.search.toLowerCase();
+    if (!q.q.toLowerCase().includes(s) && !q.tag.toLowerCase().includes(s) && !q.a.toLowerCase().includes(s)) return false;
+  }
+  return true;
+}
+
+function render() {
+  const visible = QUESTIONS.filter(matches);
+  content.innerHTML = '';
+
+  if (visible.length === 0) {
+    content.innerHTML = '<div class="empty">No questions match your filters. Try clearing the search or difficulty.</div>';
+    updateProgress();
+    return;
+  }
+
+  const order = state.topic === 'all' ? Object.keys(TOPICS) : [state.topic];
+
+  order.forEach(topicKey => {
+    const topicQs = visible.filter(q => q.topic === topicKey);
+    if (topicQs.length === 0) return;
+    const t = TOPICS[topicKey];
+
+    const section = document.createElement('section');
+    section.className = 'topic-section';
+    section.id = 'sec-' + topicKey;
+
+    section.innerHTML = `
+      <div class="topic-head">
+        <div class="topic-icon" style="background:${t.soft};color:${t.color};border:1px solid ${t.color}33">${t.icon}</div>
+        <div>
+          <h3>${t.name}</h3>
+          <div class="topic-desc">${t.desc}</div>
+        </div>
+      </div>
+    `;
+
+    topicQs.forEach(q => {
+      const id = qId(q);
+      const isDone = !!done[id];
+      const card = document.createElement('div');
+      card.className = 'qcard' + (isDone ? ' done' : '');
+      card.innerHTML = `
+        <div class="qhead">
+          <div class="qcheck" role="checkbox" aria-checked="${isDone}">
+            <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+          </div>
+          <div class="qbody">
+            <div class="qtext">${q.q}</div>
+            <div class="qmeta">
+              <span class="badge ${q.difficulty}">${q.difficulty}</span>
+              <span class="qtag">#${q.tag}</span>
+            </div>
+          </div>
+          <svg class="qchevron" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </div>
+        <div class="qanswer">
+          <div class="qanswer-inner">
+            <div class="qanswer-divider"></div>
+            ${q.a}
+          </div>
+        </div>
+      `;
+
+      const head = card.querySelector('.qhead');
+      const answer = card.querySelector('.qanswer');
+      const check = card.querySelector('.qcheck');
+
+      head.addEventListener('click', (e) => {
+        if (e.target.closest('.qcheck')) return;
+        const isOpen = card.classList.toggle('open');
+        answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0';
+      });
+
+      check.addEventListener('click', (e) => {
+        e.stopPropagation();
+        done[id] = !done[id];
+        card.classList.toggle('done', done[id]);
+        check.setAttribute('aria-checked', done[id]);
+        saveDone();
+        updateProgress();
+      });
+
+      section.appendChild(card);
+    });
+
+    content.appendChild(section);
+  });
+
+  updateProgress();
+}
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = QUESTIONS.length;
+  Object.keys(TOPICS).forEach(k => {
+    document.getElementById('count-' + k).textContent = QUESTIONS.filter(q => q.topic === k).length;
+  });
+  document.getElementById('statTotal').textContent = QUESTIONS.length;
+}
+
+function updateProgress() {
+  const total = QUESTIONS.length;
+  const completed = QUESTIONS.filter(q => done[qId(q)]).length;
+  document.getElementById('progressText').textContent = `${completed} / ${total}`;
+  document.getElementById('progressFill').style.width = (completed / total * 100) + '%';
+}
+
+// Nav
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.topic = btn.dataset.nav;
+    render();
+    closeMobile();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Difficulty filter
+document.querySelectorAll('.filter-chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.diff = btn.dataset.diff;
+    render();
+  });
+});
+
+// Search
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { state.search = e.target.value.trim(); render(); }, 200);
+});
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', () => {
+  done = {};
+  saveDone();
+  render();
+});
+
+// Mobile menu
+const sidebar = document.getElementById('sidebar');
+const scrim = document.getElementById('scrim');
+function closeMobile() { sidebar.classList.remove('mobile-open'); scrim.classList.remove('show'); }
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('mobile-open');
+  scrim.classList.toggle('show');
+});
+scrim.addEventListener('click', closeMobile);
+
+updateCounts();
+render();
+</script>
+
+</body>
+</html>
