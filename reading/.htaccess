@@ -1,0 +1,4 @@
+# Keep the whole /reading/ section out of search engines
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

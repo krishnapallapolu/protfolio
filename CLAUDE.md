@@ -20,6 +20,9 @@ Personal portfolio website for Krishna Pallapolu, a Full Stack Developer based i
 ├── inc/
 │   ├── header.php      # Shared header component
 │   └── footer.php      # Shared footer component
+├── reading/            # Internal reading pages (noindex, auto-listed)
+│   ├── index.php       # "The Reading Room" — auto-scans *.html in this folder
+│   └── *.html          # Self-contained reading pages (need a <title>)
 ├── itenary/
 │   ├── index.php       # Itinerary index
 │   └── mauritius-itenary.php

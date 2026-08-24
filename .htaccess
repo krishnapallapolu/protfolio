@@ -2,3 +2,7 @@ RewriteEngine On
 
 # Redirect /v2 (no trailing slash) to /v2/
 RewriteRule ^v2$ /v2/ [L,R=301]
+
+# Reading pages moved into /reading/
+RewriteRule ^rls\.html$ /reading/rls.html [L,R=301]
+RewriteRule ^interview-preparation-guide\.html$ /reading/interview-preparation-guide.html [L,R=301]

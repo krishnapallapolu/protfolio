@@ -1,0 +1,545 @@
+<title>React Lifecycle &amp; Hooks</title>
+<meta name="description" content="How a React component is born, re-renders, and dies — and how useState and useEffect give a plain function memory and chores.">
+<meta name="topic" content="React">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFFFF;
+    --ink: #2B2620;
+    --muted: #8A7F70;
+    --line: #E6DECF;
+    --blue: #0E7FB0;
+    --blue-bg: #DCEFF8;
+    --pink: #BE4E8E;
+    --pink-bg: #F7E2EE;
+    --danger: #CE4A44;
+    --ok: #3F9B57;
+    --code-bg: #F1EADC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A1712;
+      --surface: #23201A;
+      --ink: #F0EAE0;
+      --muted: #9C9284;
+      --line: #3B352B;
+      --blue: #55C4EE;
+      --blue-bg: #11333F;
+      --pink: #E884BD;
+      --pink-bg: #3A1A2C;
+      --danger: #F07B72;
+      --ok: #6CC584;
+      --code-bg: #2C2820;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1A1712;
+    --surface: #23201A;
+    --ink: #F0EAE0;
+    --muted: #9C9284;
+    --line: #3B352B;
+    --blue: #55C4EE;
+    --blue-bg: #11333F;
+    --pink: #E884BD;
+    --pink-bg: #3A1A2C;
+    --danger: #F07B72;
+    --ok: #6CC584;
+    --code-bg: #2C2820;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+    font-size: 1.04rem;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 22px 72px;
+  }
+
+  h1, h2 {
+    font-family: "Baloo 2", "Atkinson Hyperlegible", sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+  header { margin-bottom: 40px; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+  }
+  .dek {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 36em;
+    margin: 10px 0 20px;
+  }
+  .motif { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: .74rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 99px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 99px; }
+  .chip.b { color: var(--blue); border-color: var(--blue); background: var(--blue-bg); }
+  .chip.b .dot { background: var(--blue); }
+  .chip.p { color: var(--pink); border-color: var(--pink); background: var(--pink-bg); }
+  .chip.p .dot { background: var(--pink); }
+  .chip.n { color: var(--muted); }
+  .chip.n .dot { background: var(--muted); }
+
+  section { margin: 44px 0; }
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .num {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--blue);
+    background: var(--blue-bg);
+    border: 1.5px solid var(--blue);
+    border-radius: 12px;
+  }
+  h2 { font-weight: 700; font-size: 1.55rem; line-height: 1.2; }
+  p { margin: 10px 0; max-width: 46em; }
+  strong { font-weight: 700; }
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: .84em;
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre code { background: none; border: none; padding: 0; font-size: .88rem; line-height: 1.6; }
+  .c-note { color: var(--muted); }
+  .c-blue { color: var(--blue); }
+  .c-pink { color: var(--pink); }
+
+  figure {
+    margin: 20px 0;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 18px 14px;
+    overflow-x: auto;
+  }
+  figure svg { width: 100%; height: auto; display: block; min-width: 560px; }
+  figcaption {
+    font-size: .86rem;
+    color: var(--muted);
+    max-width: 46em;
+    margin-top: 10px;
+  }
+  svg text {
+    font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    fill: currentColor;
+  }
+  svg text.m { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+  svg text.sm { font-size: 12.5px; fill: var(--muted); }
+  svg text.big { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 17px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .card .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .card p { margin: 0; font-size: .92rem; color: var(--muted); }
+  .card.hl { border-color: var(--pink); }
+  .card.hl .k { color: var(--pink); }
+
+  .recap {
+    background: var(--blue-bg);
+    border: 1.5px solid var(--blue);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .recap .f {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 4vw, 1.7rem);
+    margin: 0 0 8px;
+  }
+  .recap ul { margin: 8px 0 0; padding-left: 20px; }
+  .recap li { margin: 4px 0; }
+
+  .colophon {
+    margin-top: 52px;
+    background: var(--code-bg);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 22px;
+    font-size: .92rem;
+    color: var(--muted);
+  }
+  .colophon strong { color: var(--ink); }
+  .colophon table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+  .colophon td {
+    padding: 6px 14px 6px 0;
+    border-top: 1px dashed var(--line);
+    font-family: "JetBrains Mono", monospace;
+    font-size: .8rem;
+    white-space: nowrap;
+  }
+  .colophon td:last-child { color: var(--blue); }
+  .colophon .tbl-wrap { overflow-x: auto; }
+
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color .15s ease; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">ELI5 · React</p>
+    <h1>React Lifecycle &amp; Hooks</h1>
+    <p class="dek">A component is just a function that runs over and over. Hooks are how a function that keeps getting thrown away manages to remember things and get chores done.</p>
+    <div class="motif" aria-hidden="true">
+      <span class="chip b"><span class="dot"></span>mount</span>
+      <span class="chip p"><span class="dot"></span>update &times;97</span>
+      <span class="chip n"><span class="dot"></span>unmount</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="num">1</span><h2>A component is a function</h2></div>
+    <p>No magic. Props go in, a description of the UI comes out. React calls it whenever the picture might need to change.</p>
+    <figure>
+      <svg viewBox="0 0 760 200" role="img" aria-label="Props flow into a component function, which returns UI for the screen">
+        <defs>
+          <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="20" y="60" width="160" height="84" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="100" y="88" text-anchor="middle" class="sm">props</text>
+        <text x="100" y="116" text-anchor="middle" class="m">name: "Ada"</text>
+
+        <line x1="184" y1="102" x2="272" y2="102" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar1)"/>
+        <text x="228" y="90" text-anchor="middle" class="sm">goes in</text>
+
+        <rect x="280" y="42" width="220" height="120" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="390" y="92" text-anchor="middle" class="m" fill="var(--blue)" font-weight="600">Greeting(props)</text>
+        <text x="390" y="120" text-anchor="middle" class="sm">a plain function</text>
+
+        <line x1="504" y1="102" x2="592" y2="102" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar1)"/>
+        <text x="548" y="90" text-anchor="middle" class="sm">comes out</text>
+
+        <rect x="600" y="42" width="140" height="120" rx="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="600" y1="70" x2="740" y2="70" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="616" cy="56" r="4" fill="none" stroke="currentColor"/>
+        <circle cx="632" cy="56" r="4" fill="none" stroke="currentColor"/>
+        <text x="670" y="122" text-anchor="middle" class="big">Hi, Ada!</text>
+      </svg>
+      <figcaption>Same props in, same picture out. The screen is whatever the function returned last.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">2</span><h2>Three moments in a life</h2></div>
+    <p>Every component lives the same story: it appears, it updates a bunch of times, it disappears. That whole story is the <strong>lifecycle</strong>.</p>
+    <figure>
+      <svg viewBox="0 0 760 230" role="img" aria-label="Lifecycle: mount, then repeated updates, then unmount">
+        <defs>
+          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ar2b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--pink)"/>
+          </marker>
+        </defs>
+        <rect x="30" y="80" width="170" height="84" rx="12" fill="none" stroke="var(--ok)" stroke-width="2"/>
+        <text x="115" y="115" text-anchor="middle" class="big">Mount</text>
+        <text x="115" y="142" text-anchor="middle" class="sm">born — first render</text>
+
+        <line x1="204" y1="122" x2="291" y2="122" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <text x="248" y="110" text-anchor="middle" class="sm">change!</text>
+
+        <rect x="295" y="80" width="170" height="84" rx="12" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="380" y="115" text-anchor="middle" class="big">Update</text>
+        <text x="380" y="142" text-anchor="middle" class="sm">re-renders</text>
+        <path d="M 340 80 C 340 28, 420 28, 420 80" fill="none" stroke="var(--pink)" stroke-width="1.5" marker-end="url(#ar2b)"/>
+        <text x="380" y="36" text-anchor="middle" class="sm" fill="var(--pink)">again and again</text>
+
+        <line x1="469" y1="122" x2="556" y2="122" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <text x="513" y="110" text-anchor="middle" class="sm">removed</text>
+
+        <rect x="560" y="80" width="170" height="84" rx="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="645" y="115" text-anchor="middle" class="big">Unmount</text>
+        <text x="645" y="142" text-anchor="middle" class="sm">cleanup — gone</text>
+
+        <text x="380" y="205" text-anchor="middle" class="sm">Most of a component's life is spent in the middle box.</text>
+      </svg>
+      <figcaption>Mount once, update many times, unmount once. Hooks let you plug into each moment.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">3</span><h2>What makes it re-render</h2></div>
+    <p>Two things only: its <strong>state changed</strong>, or its <strong>parent re-rendered</strong> and handed it new props. React never edits the screen by hand — it just runs your function again.</p>
+    <figure>
+      <svg viewBox="0 0 760 300" role="img" aria-label="The re-render loop: function runs, screen updates, user clicks, setCount triggers a re-render">
+        <defs>
+          <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ar3p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--pink)"/>
+          </marker>
+        </defs>
+        <rect x="60" y="40" width="240" height="56" rx="12" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="180" y="74" text-anchor="middle" class="m" fill="var(--blue)" font-weight="600">1 · Counter() runs</text>
+
+        <line x1="304" y1="68" x2="456" y2="68" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar3)"/>
+        <text x="380" y="56" text-anchor="middle" class="sm">returns JSX</text>
+
+        <rect x="460" y="40" width="240" height="56" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="580" y="74" text-anchor="middle" class="m">2 · screen shows 0</text>
+
+        <line x1="580" y1="100" x2="580" y2="200" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar3)"/>
+
+        <rect x="460" y="204" width="240" height="56" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="580" y="238" text-anchor="middle" class="m">3 · you click "+1"</text>
+
+        <line x1="456" y1="232" x2="304" y2="232" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar3)"/>
+        <text x="380" y="256" text-anchor="middle" class="sm">handler runs</text>
+
+        <rect x="60" y="204" width="240" height="56" rx="12" fill="var(--pink-bg)" stroke="var(--pink)" stroke-width="2"/>
+        <text x="180" y="238" text-anchor="middle" class="m" fill="var(--pink)" font-weight="600">4 · setCount(0 + 1)</text>
+
+        <line x1="180" y1="200" x2="180" y2="100" stroke="var(--pink)" stroke-width="1.5" marker-end="url(#ar3p)"/>
+        <text x="168" y="154" text-anchor="end" class="sm" fill="var(--pink)">re-render!</text>
+
+        <text x="380" y="156" text-anchor="middle" class="sm">…back to 1, and now the screen shows 1</text>
+      </svg>
+      <figcaption>Calling the state setter is what spins the loop. Changing a normal variable does nothing — React isn't watching it.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">4</span><h2>useState — memory that survives</h2></div>
+    <p>Every run throws away the function's local variables. So where does <code>count</code> live? On a shelf <strong>outside</strong> your function, kept by React. <code>useState</code> just reads your slot on that shelf.</p>
+    <figure>
+      <svg viewBox="0 0 760 300" role="img" aria-label="State lives on React's shelf outside the function, so it survives between runs">
+        <defs>
+          <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ar4p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--pink)"/>
+          </marker>
+        </defs>
+        <rect x="40" y="28" width="680" height="84" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="60" y="56" class="sm" fill="var(--blue)">React's shelf — lives outside your function</text>
+        <rect x="60" y="66" width="180" height="36" rx="8" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="150" y="90" text-anchor="middle" class="m">count: 0 → 1</text>
+
+        <rect x="70" y="180" width="270" height="92" rx="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="205" y="210" text-anchor="middle" class="big">run #1</text>
+        <text x="205" y="236" text-anchor="middle" class="m">useState() → 0</text>
+        <text x="205" y="258" text-anchor="middle" class="sm">(locals thrown away after)</text>
+
+        <rect x="420" y="180" width="270" height="92" rx="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="555" y="210" text-anchor="middle" class="big">run #2</text>
+        <text x="555" y="236" text-anchor="middle" class="m">useState() → 1</text>
+        <text x="555" y="258" text-anchor="middle" class="sm">(fresh run, same shelf)</text>
+
+        <line x1="205" y1="176" x2="205" y2="120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar4)"/>
+        <text x="216" y="152" class="sm">reads 0</text>
+        <line x1="555" y1="176" x2="555" y2="120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar4)"/>
+        <text x="566" y="152" class="sm">reads 1</text>
+
+        <line x1="344" y1="226" x2="416" y2="226" stroke="var(--pink)" stroke-width="1.5" marker-end="url(#ar4p)"/>
+        <text x="380" y="214" text-anchor="middle" class="sm" fill="var(--pink)">setCount(1)</text>
+      </svg>
+      <figcaption>setCount does two jobs: it writes the new value to the shelf, and it asks React for a re-render.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">5</span><h2>useEffect — chores after the paint</h2></div>
+    <p>Rendering must stay pure: props and state in, JSX out, nothing else. Fetching data, starting timers, talking to the outside world — those are <strong>side effects</strong>, and they run <em>after</em> the screen is painted.</p>
+    <figure>
+      <svg viewBox="0 0 760 190" role="img" aria-label="Timeline: function runs, DOM updates, browser paints, then the effect runs">
+        <defs>
+          <marker id="ar5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <line x1="40" y1="100" x2="716" y2="100" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar5)"/>
+
+        <circle cx="120" cy="100" r="7" fill="var(--surface)" stroke="currentColor" stroke-width="2"/>
+        <text x="120" y="66" text-anchor="middle">your function runs</text>
+
+        <circle cx="300" cy="100" r="7" fill="var(--surface)" stroke="currentColor" stroke-width="2"/>
+        <text x="300" y="140" text-anchor="middle">React updates the DOM</text>
+
+        <circle cx="480" cy="100" r="7" fill="var(--surface)" stroke="currentColor" stroke-width="2"/>
+        <text x="480" y="66" text-anchor="middle">browser paints</text>
+
+        <circle cx="650" cy="100" r="9" fill="var(--blue)" stroke="var(--blue)"/>
+        <text x="650" y="140" text-anchor="middle" fill="var(--blue)" font-weight="700">your effect runs</text>
+        <text x="650" y="162" text-anchor="middle" class="sm">after — never during</text>
+      </svg>
+      <figcaption>The effect never blocks the picture. First the user sees the screen, then the chore runs.</figcaption>
+    </figure>
+    <p>The second argument decides <strong>when the chore repeats</strong>:</p>
+    <div class="cards">
+      <div class="card"><span class="k">useEffect(fn)</span><p>after <strong>every</strong> render. Rarely what you want.</p></div>
+      <div class="card"><span class="k">useEffect(fn, [])</span><p>once, after the first render. "On mount."</p></div>
+      <div class="card"><span class="k">useEffect(fn, [count])</span><p>after any render where <code>count</code> changed.</p></div>
+    </div>
+    <p>And if your chore leaves a mess, return a <strong>cleanup</strong> function. React runs it before the next effect — and at unmount.</p>
+    <pre><code><span class="c-blue">useEffect</span>(() =&gt; {
+  <span class="c-note">// the chore</span>
+  const id = setInterval(tick, 1000);
+  <span class="c-note">// the cleanup</span>
+  <span class="c-pink">return</span> () =&gt; clearInterval(id);
+}, []);</code></pre>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">6</span><h2>The one rule of hooks</h2></div>
+    <p>React has no idea which <code>useState</code> is which. It only knows the <strong>order</strong> you called them in. So: hooks at the top level only — never inside an <code>if</code>, a loop, or after an early <code>return</code>.</p>
+    <figure>
+      <svg viewBox="0 0 760 280" role="img" aria-label="Comparison: calling hooks in the same order every render works; a conditional hook shifts the slots and breaks the match">
+        <text x="200" y="34" text-anchor="middle" class="big" fill="var(--ok)">top level ✓</text>
+        <text x="560" y="34" text-anchor="middle" class="big" fill="var(--danger)">inside an if ✗</text>
+        <text x="560" y="56" text-anchor="middle" class="m" fill="var(--danger)">if (loggedIn) useState(…)</text>
+
+        <text x="95" y="76" text-anchor="middle" class="sm">render #1</text>
+        <text x="305" y="76" text-anchor="middle" class="sm">render #2</text>
+        <text x="455" y="76" text-anchor="middle" class="sm">render #1</text>
+        <text x="665" y="76" text-anchor="middle" class="sm">render #2</text>
+
+        <rect x="35" y="86" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="95" y="108" text-anchor="middle" class="m">1 name</text>
+        <rect x="35" y="130" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="95" y="152" text-anchor="middle" class="m">2 count</text>
+        <rect x="35" y="174" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="95" y="196" text-anchor="middle" class="m">3 effect</text>
+
+        <rect x="245" y="86" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="305" y="108" text-anchor="middle" class="m">1 name</text>
+        <rect x="245" y="130" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="305" y="152" text-anchor="middle" class="m">2 count</text>
+        <rect x="245" y="174" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="305" y="196" text-anchor="middle" class="m">3 effect</text>
+
+        <line x1="155" y1="103" x2="245" y2="103" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="155" y1="147" x2="245" y2="147" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="155" y1="191" x2="245" y2="191" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="200" y="238" text-anchor="middle" class="sm" fill="var(--ok)">same slots, every time</text>
+
+        <rect x="395" y="86" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="455" y="108" text-anchor="middle" class="m">1 name</text>
+        <rect x="395" y="130" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="455" y="152" text-anchor="middle" class="m">2 count</text>
+        <rect x="395" y="174" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="455" y="196" text-anchor="middle" class="m">3 effect</text>
+
+        <rect x="605" y="86" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="665" y="108" text-anchor="middle" class="m">1 name</text>
+        <rect x="605" y="130" width="120" height="34" rx="8" fill="var(--pink-bg)" stroke="var(--danger)" stroke-width="1.5"/>
+        <text x="665" y="152" text-anchor="middle" class="m" fill="var(--danger)">2 effect ?!</text>
+        <rect x="605" y="174" width="120" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="665" y="196" text-anchor="middle" class="sm">skipped</text>
+
+        <line x1="515" y1="103" x2="605" y2="103" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="515" y1="147" x2="605" y2="147" stroke="var(--danger)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="560" y="238" text-anchor="middle" class="sm" fill="var(--danger)">slot 2 now holds the wrong memory</text>
+      </svg>
+      <figcaption>Skip one hook on one render and every hook after it reads a stranger's slot on the shelf.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">7</span><h2>The rest of the toolbox</h2></div>
+    <p>Same shelf, different jobs:</p>
+    <div class="cards">
+      <div class="card"><span class="k">useRef</span><p>a pocket. Survives re-renders like state, but changing it is <strong>silent</strong> — no re-render.</p></div>
+      <div class="card"><span class="k">useContext</span><p>the building's PA system. Read a value from far above without passing props down every floor.</p></div>
+      <div class="card"><span class="k">useMemo</span><p>a sticky note with a remembered answer. Skip redoing expensive math if the inputs didn't change.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">8</span><h2>If you remember one thing</h2></div>
+    <div class="recap">
+      <p class="f">ui = f(props, state)</p>
+      <ul>
+        <li>Your component is a function that React runs again and again.</li>
+        <li><code>useState</code> is memory that survives the runs — and its setter spins the loop.</li>
+        <li><code>useEffect</code> is a chore that runs after the paint, with a cleanup for the mess.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <strong>If you meet old class code:</strong> the class lifecycle methods map almost one-to-one onto hooks.
+    <div class="tbl-wrap"><table>
+      <tr><td>componentDidMount</td><td>useEffect(fn, [])</td></tr>
+      <tr><td>componentDidUpdate</td><td>useEffect(fn, [dep])</td></tr>
+      <tr><td>componentWillUnmount</td><td>return cleanup from useEffect</td></tr>
+      <tr><td>this.state / setState</td><td>useState</td></tr>
+    </table></div>
+  </div>
+
+</div>
