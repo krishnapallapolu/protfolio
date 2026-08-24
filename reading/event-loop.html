@@ -1,0 +1,456 @@
+<title>The Event Loop</title>
+<meta name="description" content="JavaScript runs one thing at a time — so how does it juggle clicks, timers, and network calls without freezing? One chef, many helpers, and a queue of tickets.">
+<meta name="topic" content="JavaScript">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFFFF;
+    --ink: #2B2620;
+    --muted: #8A7F70;
+    --line: #E6DECF;
+    --gold: #B97B0B;
+    --gold-bg: #F7E9CE;
+    --node: #4E9141;
+    --node-bg: #E2F0DC;
+    --danger: #CE4A44;
+    --danger-bg: #F8E1DF;
+    --ok: #3F9B57;
+    --code-bg: #F1EADC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A1712;
+      --surface: #23201A;
+      --ink: #F0EAE0;
+      --muted: #9C9284;
+      --line: #3B352B;
+      --gold: #F0B449;
+      --gold-bg: #3B2D13;
+      --node: #82CC70;
+      --node-bg: #1C351A;
+      --danger: #F07B72;
+      --danger-bg: #3E1B18;
+      --ok: #6CC584;
+      --code-bg: #2C2820;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1A1712;
+    --surface: #23201A;
+    --ink: #F0EAE0;
+    --muted: #9C9284;
+    --line: #3B352B;
+    --gold: #F0B449;
+    --gold-bg: #3B2D13;
+    --node: #82CC70;
+    --node-bg: #1C351A;
+    --danger: #F07B72;
+    --danger-bg: #3E1B18;
+    --ok: #6CC584;
+    --code-bg: #2C2820;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+    font-size: 1.04rem;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 22px 72px;
+  }
+
+  h1, h2 {
+    font-family: "Baloo 2", "Atkinson Hyperlegible", sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+  header { margin-bottom: 40px; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+  }
+  .dek {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 36em;
+    margin: 10px 0 20px;
+  }
+  .motif { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: .74rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 99px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 99px; }
+  .chip.g { color: var(--gold); border-color: var(--gold); background: var(--gold-bg); }
+  .chip.g .dot { background: var(--gold); }
+  .chip.n { color: var(--node); border-color: var(--node); background: var(--node-bg); }
+  .chip.n .dot { background: var(--node); }
+  .chip.m { color: var(--muted); }
+  .chip.m .dot { background: var(--muted); }
+
+  section { margin: 44px 0; }
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .num {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--gold);
+    background: var(--gold-bg);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+  }
+  h2 { font-weight: 700; font-size: 1.55rem; line-height: 1.2; }
+  p { margin: 10px 0; max-width: 46em; }
+  strong { font-weight: 700; }
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: .84em;
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre code { background: none; border: none; padding: 0; font-size: .88rem; line-height: 1.6; }
+  .c-note { color: var(--muted); }
+  .c-gold { color: var(--gold); }
+  .c-node { color: var(--node); }
+
+  figure {
+    margin: 20px 0;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 18px 14px;
+    overflow-x: auto;
+  }
+  figure svg { width: 100%; height: auto; display: block; min-width: 560px; }
+  figcaption {
+    font-size: .86rem;
+    color: var(--muted);
+    max-width: 46em;
+    margin-top: 10px;
+  }
+  svg text {
+    font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    fill: currentColor;
+  }
+  svg text.m { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+  svg text.sm { font-size: 12.5px; fill: var(--muted); }
+  svg text.big { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 17px; }
+
+  .recap {
+    background: var(--gold-bg);
+    border: 1.5px solid var(--gold);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .recap .f {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin: 0 0 8px;
+  }
+  .recap ul { margin: 8px 0 0; padding-left: 20px; }
+  .recap li { margin: 4px 0; }
+
+  .colophon {
+    margin-top: 52px;
+    background: var(--code-bg);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 22px;
+    font-size: .92rem;
+    color: var(--muted);
+  }
+  .colophon strong { color: var(--ink); }
+  .colophon table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+  .colophon td {
+    padding: 6px 14px 6px 0;
+    border-top: 1px dashed var(--line);
+    font-family: "JetBrains Mono", monospace;
+    font-size: .8rem;
+    white-space: nowrap;
+  }
+  .colophon td:last-child { color: var(--gold); white-space: normal; }
+  .colophon .tbl-wrap { overflow-x: auto; }
+
+  a { color: var(--gold); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">ELI5 · JavaScript &amp; Node.js</p>
+    <h1>The Event Loop</h1>
+    <p class="dek">JavaScript can only do one thing at a time. So how does it handle clicks, timers, and network calls all at once without freezing? One chef, many helpers, and a tray of tickets.</p>
+    <div class="motif" aria-hidden="true">
+      <span class="chip g"><span class="dot"></span>one thread</span>
+      <span class="chip n"><span class="dot"></span>helpers</span>
+      <span class="chip m"><span class="dot"></span>ticket queue</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="num">1</span><h2>One chef, one pan</h2></div>
+    <p>JavaScript has a <strong>single thread</strong>: one call stack, one job at a time. Every click, timer, and response becomes a ticket waiting its turn.</p>
+    <figure>
+      <svg viewBox="0 0 760 220" role="img" aria-label="Tickets queue up and pass one at a time through the single JavaScript thread">
+        <defs>
+          <marker id="el1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="30" y="66" width="110" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="85" y="90" text-anchor="middle" class="m">fetch done</text>
+        <rect x="30" y="112" width="110" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="85" y="136" text-anchor="middle" class="m">timer done</text>
+        <rect x="30" y="158" width="110" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="85" y="182" text-anchor="middle" class="m">click!</text>
+        <text x="85" y="52" text-anchor="middle" class="sm">tickets waiting</text>
+
+        <line x1="146" y1="130" x2="266" y2="130" stroke="currentColor" stroke-width="1.5" marker-end="url(#el1)"/>
+        <text x="206" y="118" text-anchor="middle" class="sm">one at a time</text>
+
+        <rect x="270" y="46" width="240" height="150" rx="14" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="390" y="80" text-anchor="middle" class="big">the one thread</text>
+        <rect x="320" y="140" width="180" height="34" rx="8" fill="var(--surface)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="410" y="162" text-anchor="middle" class="m">handleClick()</text>
+        <text x="390" y="120" text-anchor="middle" class="sm">call stack — the job running now</text>
+
+        <line x1="514" y1="130" x2="634" y2="130" stroke="currentColor" stroke-width="1.5" marker-end="url(#el1)"/>
+        <text x="574" y="118" text-anchor="middle" class="sm">done</text>
+        <circle cx="672" cy="130" r="24" fill="none" stroke="var(--ok)" stroke-width="2"/>
+        <path d="M 661 130 L 669 139 L 684 120" fill="none" stroke="var(--ok)" stroke-width="2.5"/>
+      </svg>
+      <figcaption>No second chef. Whatever is on the call stack is the only thing happening.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">2</span><h2>The problem: slow orders</h2></div>
+    <p>If the chef personally waits for a slow job, the whole kitchen stops. No clicks, no scrolling, no other tickets — the page (or server) is <strong>frozen</strong>.</p>
+    <figure>
+      <svg viewBox="0 0 760 200" role="img" aria-label="A slow synchronous job blocks the thread while clicks and scrolls wait frozen">
+        <rect x="30" y="66" width="110" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="85" y="90" text-anchor="middle" class="m" fill="var(--muted)">click!</text>
+        <rect x="30" y="112" width="110" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="85" y="136" text-anchor="middle" class="m" fill="var(--muted)">scroll!</text>
+        <text x="85" y="176" text-anchor="middle" class="sm" fill="var(--danger)">stuck waiting…</text>
+
+        <rect x="200" y="46" width="420" height="120" rx="14" fill="var(--danger-bg)" stroke="var(--danger)" stroke-width="2"/>
+        <text x="410" y="96" text-anchor="middle" class="m" fill="var(--danger)" font-weight="600">readFileSync("huge.csv")</text>
+        <text x="410" y="128" text-anchor="middle" class="sm">the chef is standing at the oven for 2 whole seconds</text>
+
+        <text x="680" y="96" text-anchor="middle" class="big" fill="var(--danger)">✗</text>
+        <text x="680" y="124" text-anchor="middle" class="sm">frozen</text>
+      </svg>
+      <figcaption>Blocking the one thread blocks everything. This is the problem the event loop exists to solve.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">3</span><h2>The trick: hand it off</h2></div>
+    <p>The chef never waits. Slow work goes to <strong>helpers</strong> — the browser's Web APIs, or Node's libuv and the operating system. When a helper finishes, it drops a ticket (your callback) into the <strong>queue</strong>. The <strong>event loop</strong> is just a rule: <em>when the stack is empty, run the next ticket</em>.</p>
+    <figure>
+      <svg viewBox="0 0 760 400" role="img" aria-label="The full picture: the call stack hands slow work to helpers, helpers queue the callback, and the event loop moves it back to the stack when empty">
+        <defs>
+          <marker id="el3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="el3g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--gold)"/>
+          </marker>
+          <marker id="el3n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--node)"/>
+          </marker>
+        </defs>
+
+        <rect x="50" y="110" width="190" height="180" rx="14" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="145" y="140" text-anchor="middle" class="big">call stack</text>
+        <rect x="75" y="230" width="140" height="34" rx="8" fill="var(--surface)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="145" y="252" text-anchor="middle" class="m">main()</text>
+        <text x="145" y="200" text-anchor="middle" class="sm">keeps cooking</text>
+
+        <rect x="490" y="40" width="240" height="150" rx="14" fill="var(--node-bg)" stroke="var(--node)" stroke-width="2"/>
+        <text x="610" y="70" text-anchor="middle" class="big">helpers</text>
+        <text x="610" y="92" text-anchor="middle" class="sm">browser: Web APIs · Node: libuv + OS</text>
+        <rect x="510" y="106" width="90" height="30" rx="8" fill="var(--surface)" stroke="var(--node)" stroke-width="1.5"/>
+        <text x="555" y="126" text-anchor="middle" class="m">timer 2s</text>
+        <rect x="612" y="106" width="98" height="30" rx="8" fill="var(--surface)" stroke="var(--node)" stroke-width="1.5"/>
+        <text x="661" y="126" text-anchor="middle" class="m">fetch</text>
+        <rect x="510" y="146" width="200" height="30" rx="8" fill="var(--surface)" stroke="var(--node)" stroke-width="1.5"/>
+        <text x="610" y="166" text-anchor="middle" class="m">read file</text>
+
+        <line x1="244" y1="150" x2="484" y2="90" stroke="currentColor" stroke-width="1.5" marker-end="url(#el3)"/>
+        <text x="360" y="100" text-anchor="middle" class="sm">setTimeout(cb, 2000) — "you handle this"</text>
+
+        <rect x="290" y="330" width="330" height="56" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="380" y="322" text-anchor="middle" class="sm">callback queue</text>
+        <rect x="306" y="342" width="70" height="32" rx="8" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="341" y="363" text-anchor="middle" class="m">cb</text>
+        <rect x="386" y="342" width="70" height="32" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <rect x="466" y="342" width="70" height="32" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+        <line x1="630" y1="194" x2="590" y2="326" stroke="var(--node)" stroke-width="1.5" marker-end="url(#el3n)"/>
+        <text x="628" y="266" class="sm" fill="var(--node)">2 s later: cb becomes a ticket</text>
+
+        <path d="M 286 358 C 150 358, 120 340, 138 296" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#el3g)"/>
+        <circle cx="200" cy="330" r="16" fill="var(--surface)" stroke="var(--gold)" stroke-width="2"/>
+        <path d="M 200 320 A 10 10 0 1 1 190 330" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#el3g)"/>
+        <text x="200" y="374" text-anchor="middle" class="sm" fill="var(--gold)">event loop: stack empty? run next ticket</text>
+      </svg>
+      <figcaption>The whole machine. The chef hands off, the helpers wait, the loop feeds finished tickets back — one at a time.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">4</span><h2>Promises jump the line</h2></div>
+    <p>There are actually <strong>two queues</strong>. Promise callbacks (<code>.then</code>, <code>await</code>) go in a VIP <strong>microtask queue</strong> that is emptied completely before the next regular ticket. That's why a promise beats a <code>setTimeout(…, 0)</code>.</p>
+    <figure>
+      <svg viewBox="0 0 760 250" role="img" aria-label="Two queues: the microtask queue for promises is fully emptied before the task queue for timers and clicks">
+        <defs>
+          <marker id="el4g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--gold)"/>
+          </marker>
+          <marker id="el4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="40" y="50" width="420" height="60" rx="12" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="60" y="42" class="sm" fill="var(--gold)">microtask queue — VIP (promises, await)</text>
+        <rect x="60" y="64" width="90" height="32" rx="8" fill="var(--surface)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="105" y="85" text-anchor="middle" class="m">.then cb</text>
+        <rect x="162" y="64" width="90" height="32" rx="8" fill="var(--surface)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="207" y="85" text-anchor="middle" class="m">.then cb</text>
+
+        <rect x="40" y="160" width="420" height="60" rx="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="60" y="152" class="sm">task queue — regular (setTimeout, clicks)</text>
+        <rect x="60" y="174" width="110" height="32" rx="8" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="115" y="195" text-anchor="middle" class="m">timeout cb</text>
+
+        <line x1="464" y1="80" x2="596" y2="80" stroke="var(--gold)" stroke-width="2" marker-end="url(#el4g)"/>
+        <text x="530" y="66" text-anchor="middle" class="sm" fill="var(--gold)">emptied first — all of it</text>
+        <line x1="464" y1="190" x2="596" y2="190" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#el4)"/>
+        <text x="530" y="212" text-anchor="middle" class="sm">then one of these</text>
+
+        <rect x="600" y="110" width="130" height="60" rx="12" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="665" y="146" text-anchor="middle" class="big">stack</text>
+      </svg>
+      <figcaption>Between every regular ticket, the loop drains the entire VIP queue first.</figcaption>
+    </figure>
+    <pre><code>console.log(<span class="c-gold">"1"</span>);                              <span class="c-note">// sync — right now</span>
+setTimeout(() =&gt; console.log(<span class="c-gold">"4"</span>), 0);        <span class="c-note">// regular queue</span>
+Promise.resolve().then(() =&gt; console.log(<span class="c-gold">"3"</span>)); <span class="c-note">// VIP queue</span>
+console.log(<span class="c-gold">"2"</span>);                              <span class="c-note">// sync — right now</span>
+
+<span class="c-note">// prints: 1  2  3  4 — the promise beats the "0 ms" timer</span></code></pre>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">5</span><h2>Node.js: same loop, different helpers</h2></div>
+    <p>Node.js is the same engine (V8) and the same loop, taken out of the browser and given <strong>server helpers</strong>. That's the whole difference.</p>
+    <figure>
+      <svg viewBox="0 0 760 250" role="img" aria-label="Browser and Node share the same JS engine and event loop, but have different helper sets">
+        <rect x="40" y="40" width="320" height="180" rx="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="200" y="70" text-anchor="middle" class="big">browser</text>
+        <rect x="70" y="88" width="120" height="50" rx="10" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="130" y="112" text-anchor="middle" class="m">V8 + loop</text>
+        <text x="130" y="130" text-anchor="middle" class="sm">same core</text>
+        <rect x="210" y="88" width="120" height="112" rx="10" fill="var(--node-bg)" stroke="var(--node)" stroke-width="1.5"/>
+        <text x="270" y="110" text-anchor="middle" class="sm" fill="var(--node)">Web APIs</text>
+        <text x="270" y="134" text-anchor="middle" class="m">DOM · clicks</text>
+        <text x="270" y="156" text-anchor="middle" class="m">fetch · timers</text>
+        <text x="270" y="178" text-anchor="middle" class="m">rAF · storage</text>
+        <rect x="70" y="150" width="120" height="50" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="130" y="180" text-anchor="middle" class="sm">your script</text>
+
+        <rect x="400" y="40" width="320" height="180" rx="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="560" y="70" text-anchor="middle" class="big">Node.js</text>
+        <rect x="430" y="88" width="120" height="50" rx="10" fill="var(--gold-bg)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="490" y="112" text-anchor="middle" class="m">V8 + loop</text>
+        <text x="490" y="130" text-anchor="middle" class="sm">same core</text>
+        <rect x="570" y="88" width="120" height="112" rx="10" fill="var(--node-bg)" stroke="var(--node)" stroke-width="1.5"/>
+        <text x="630" y="110" text-anchor="middle" class="sm" fill="var(--node)">libuv + OS</text>
+        <text x="630" y="134" text-anchor="middle" class="m">files · network</text>
+        <text x="630" y="156" text-anchor="middle" class="m">crypto · dns</text>
+        <text x="630" y="178" text-anchor="middle" class="m">thread pool</text>
+        <rect x="430" y="150" width="120" height="50" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="490" y="180" text-anchor="middle" class="sm">your script</text>
+      </svg>
+      <figcaption>Same language, same one-chef rule. Only the helper crew changes — which is why Node handles thousands of connections on one thread.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="num">6</span><h2>If you remember one thing</h2></div>
+    <div class="recap">
+      <p class="f">Never block the loop.</p>
+      <ul>
+        <li>One thread — a slow <em>synchronous</em> job freezes everything.</li>
+        <li>Hand slow work to helpers with async APIs; take the result as a callback ticket.</li>
+        <li>Promises are VIP tickets — they run before any <code>setTimeout</code>, even a 0&nbsp;ms one.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <strong>"When does my code actually run?"</strong> — the cheat sheet.
+    <div class="tbl-wrap"><table>
+      <tr><td>plain statements</td><td>right now, on the stack</td></tr>
+      <tr><td>.then / await</td><td>right after the current job (microtask, VIP)</td></tr>
+      <tr><td>setTimeout(fn, 0)</td><td>next turn of the loop, after all VIPs</td></tr>
+      <tr><td>requestAnimationFrame</td><td>just before the next paint (browser)</td></tr>
+      <tr><td>setImmediate(fn)</td><td>after I/O callbacks (Node)</td></tr>
+    </table></div>
+  </div>
+
+</div>
