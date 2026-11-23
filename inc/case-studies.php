@@ -2,7 +2,7 @@
 <section id="case-studies" class="case-studies-section border-bottom">
     <div class="container">
         <h2 class="text_shadow mb-5 text-center">Featured Work</h2>
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             <!-- Featured Case Study: Event Management Platform -->
             <div class="col-12">
                 <div class="case-study-card case-study-card--featured">
@@ -84,41 +84,6 @@
                 </div>
             </div>
 
-            <!-- Case Study 2: Event Management -->
-            <div class="col-lg-4 col-md-6">
-                <div class="case-study-card">
-                    <div class="case-study-image">
-                        <i class="fs-1 fas fa-calendar-check"></i>
-                    </div>
-                    <div class="case-study-content">
-                        <h3 class="case-study-title">Event Registration System</h3>
-                        <p class="case-study-description">
-                            Built integrated event management system with third-party APIs leveraging REST APIs and GraphQL.
-                            Automated registration data retrieval and barcode generation for seamless check-ins.
-                        </p>
-                        <div class="case-study-tech">
-                            <span class="tech-badge">Laravel</span>
-                            <span class="tech-badge">REST API</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">MySQL</span>
-                        </div>
-                        <div class="case-study-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">50+</div>
-                                <div class="stat-label">Events Managed</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">10,000+</div>
-                                <div class="stat-label">Registrations</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">60%</div>
-                                <div class="stat-label">Time Saved</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
               <!-- Case Study 1: Healthcare Platform -->
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
