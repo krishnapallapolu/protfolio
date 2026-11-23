@@ -284,6 +284,9 @@ include_once('inc/header.php');
                             <span class="skill-badge">OpenAI API</span>
                             <span class="skill-badge">MCP Servers</span>
                             <span class="skill-badge">AI Agents · Tool Use</span>
+                            <span class="skill-badge">AI Guardrails</span>
+                            <span class="skill-badge">Human-in-the-Loop Approvals</span>
+                            <span class="skill-badge">LLM Evals · Prompt-Injection Testing</span>
                             <span class="skill-badge">Claude, Claude Code</span>
                             <span class="skill-badge">OpenAI Codex</span>
                             <span class="skill-badge">RAG</span>
@@ -402,7 +405,8 @@ include_once('inc/header.php');
                                 <li>Utilized MERN stack for internal applications and Laravel, MySQL, JavaScript, jQuery, Wordpress, Webflow, Wix Velo API, Git/Github and other web technologies.</li>
                             </ul>
                             <ul>
-                                <li>Architected and built the company's in-house <strong>event management platform</strong> (Next.js, TypeScript, PostgreSQL/Prisma, AWS) covering registrations and payments, speakers and agenda, abstract review, check-in and badges, certificates, live webinar streaming, CRM, and procurement, with permission-based access control, CI/CD with blue-green deployments, and an AI agent / MCP server for running events from Claude.</li>
+                                <li>Architected and built the company's in-house <strong>event management platform</strong> (Next.js, TypeScript, PostgreSQL/Prisma, AWS) covering registrations and payments, speakers and agenda, abstract review, check-in and badges, certificates, live webinar streaming, CRM, and procurement, with permission-based access control and CI/CD with blue-green deployments.</li>
+                                <li>Built a <strong>native AI agent</strong> into that platform (in-app and as an MCP server for Claude) that carries out tasks for staff across 130+ tools, with guardrails: per-tool permission checks, human approval for irreversible actions, per-request write caps, role-based redaction, audit logging, and prompt-injection testing.</li>
                                 <li>Developed, and managed scalable websites, educational platforms, and internal applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) ensuring high performance, data integrity, and seamless user experiences.</li>
                                 <li>Led the development of internal application, utilizing the MERN stack to ensure efficient data handling, secure authentication, and user-friendly interfaces. </li>
                                 <li>Successfully delivered a healthcare platform serving 6,000+ active users by implementing scalable architecture, improving site performance, and reducing downtime.</li>

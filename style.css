@@ -899,6 +899,9 @@ h1 .name {
 .case-study-content {
     padding: 25px;
 }
+.case-study-card--featured .case-study-stats {
+    flex-wrap: wrap;
+}
 /* Featured case study: icon panel beside the content on wide screens */
 @media (min-width: 992px) {
     .case-study-card--featured {

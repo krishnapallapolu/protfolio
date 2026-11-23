@@ -16,7 +16,13 @@
                             It covers the whole event lifecycle: registration and online payments, speakers and agenda, abstract submission and peer review, on-site check-in and badge printing, certificates, surveys, and bulk email, alongside CRM, HR, and budget &amp; procurement modules.
                         </p>
                         <p class="case-study-description">
-                            Ships through CI/CD to AWS with zero-downtime blue-green Docker deployments, a background worker tier, live RTMP → HLS webinar streaming, permission-based access control, and an AI agent plus MCP server that lets the events team run operations from Claude.
+                            Ships through CI/CD to AWS with zero-downtime blue-green Docker deployments, a background worker tier, live RTMP → HLS webinar streaming, and permission-based access control.
+                        </p>
+                        <p class="case-study-description">
+                            <strong>Native AI agent, built with guardrails.</strong>
+                            Staff ask in plain language and the agent does the work across 130+ tools: creating registrations, building the agenda, sending bulk emails, pulling reports. It runs inside the app and as an MCP server for Claude.
+                            Every tool call passes the same permission check as the matching screen, so the agent can never do more than the person using it.
+                            Bulk emails, deletions, and other irreversible actions pause for human approval tied to that exact action. Writes are capped per request, payments and other sensitive fields are redacted by role, changes are audit-logged against the person who asked, and attendee-supplied text is treated as data, never as instructions, which a prompt-injection test suite run against the live model verifies.
                         </p>
                         <div class="case-study-tech">
                             <span class="tech-badge">Next.js 16</span>
@@ -41,6 +47,10 @@
                             <div class="stat-item">
                                 <div class="stat-value">1,100+</div>
                                 <div class="stat-label">Automated Test Suites</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">130+</div>
+                                <div class="stat-label">AI Agent Tools</div>
                             </div>
                         </div>
                     </div>
