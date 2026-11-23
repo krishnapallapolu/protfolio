@@ -179,19 +179,20 @@ include_once('inc/header.php');
                     <div class="skill-card shadow p-3 h-100">
                         <h4 class="skill-card-title">Frontend</h4>
                         <div class="skill-badges">
-                            <span class="skill-badge">JavaScript (ES6+)</span>
                             <span class="skill-badge">TypeScript</span>
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Next.js</span>
+                            <span class="skill-badge">React 19</span>
+                            <span class="skill-badge">Next.js 16 (App Router)</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                            <span class="skill-badge">shadcn/ui · Radix UI</span>
+                            <span class="skill-badge">TanStack Query</span>
+                            <span class="skill-badge">React Hook Form · Zod</span>
+                            <span class="skill-badge">Tiptap</span>
+                            <span class="skill-badge">JavaScript (ES6+)</span>
                             <span class="skill-badge">MUI</span>
                             <span class="skill-badge">HTML5</span>
                             <span class="skill-badge">CSS3 / Sass</span>
-                            <span class="skill-badge">Tailwind</span>
                             <span class="skill-badge">Bootstrap</span>
-
                         </div>
-
-
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">UI Architecture</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
                             <div class="skill-row"><div class="skill-name">Performance</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
@@ -205,12 +206,16 @@ include_once('inc/header.php');
                         <h4 class="skill-card-title">Backend & APIs</h4>
                         <div class="skill-badges">
                             <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Next.js Route Handlers</span>
+                            <span class="skill-badge">REST API · OpenAPI</span>
+                            <span class="skill-badge">Prisma ORM</span>
+                            <span class="skill-badge">Zod Validation</span>
+                            <span class="skill-badge">Background Workers (node-cron)</span>
+                            <span class="skill-badge">Webhooks</span>
+                            <span class="skill-badge">GraphQL</span>
                             <span class="skill-badge">Express</span>
                             <span class="skill-badge">PHP / Laravel</span>
-                            <span class="skill-badge">Rest API</span>
-                            <span class="skill-badge">GraphQL</span>
                             <span class="skill-badge">Mongoose</span>
-                            <span class="skill-badge">Prisma</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Scalability</div><div class="skill-line"><div class="skill-level" style="width:88%"></div></div></div>
@@ -226,16 +231,21 @@ include_once('inc/header.php');
                         <div class="skill-badges">
                             <span class="skill-badge">AWS EC2</span>
                             <span class="skill-badge">AWS S3</span>
+                            <span class="skill-badge">AWS SES</span>
+                            <span class="skill-badge">CloudWatch</span>
+                            <span class="skill-badge">CloudFront</span>
+                            <span class="skill-badge">AWS ECR</span>
                             <span class="skill-badge">AWS Lambda</span>
-                            <span class="skill-badge">Apache Server</span>
-                            <span class="skill-badge">Linux</span>
-                            <span class="skill-badge">Cloudflare Stack</span>
-                            <span class="skill-badge">Docker</span>
-                            <span class="skill-badge">GitHub Actions</span>
+                            <span class="skill-badge">Docker · Compose</span>
                             <span class="skill-badge">Blue-Green Deployments</span>
-                            <span class="skill-badge">Vercel</span>
+                            <span class="skill-badge">Nginx</span>
+                            <span class="skill-badge">GitHub Actions</span>
+                            <span class="skill-badge">Terraform</span>
+                            <span class="skill-badge">Linux</span>
                             <span class="skill-badge">Sentry</span>
-
+                            <span class="skill-badge">Vercel</span>
+                            <span class="skill-badge">Cloudflare Stack</span>
+                            <span class="skill-badge">Apache Server</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Reliability</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
@@ -250,9 +260,13 @@ include_once('inc/header.php');
                         <h4 class="skill-card-title">Databases</h4>
                         <div class="skill-badges">
                             <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-badge">Row-Level Security</span>
+                            <span class="skill-badge">Multi-Tenant Data Modelling</span>
+                            <span class="skill-badge">Prisma Migrations</span>
+                            <span class="skill-badge">PgBouncer</span>
+                            <span class="skill-badge">Supabase</span>
                             <span class="skill-badge">MySQL</span>
                             <span class="skill-badge">MongoDB</span>
-                            <span class="skill-badge">Supabase</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Data Modelling</div><div class="skill-line"><div class="skill-level" style="width:86%"></div></div></div>
@@ -266,10 +280,14 @@ include_once('inc/header.php');
                     <div class="skill-card shadow p-3 h-100">
                         <h4 class="skill-card-title">AI & Automation</h4>
                         <div class="skill-badges">
-                            <span class="skill-badge">n8n / Zapier MCP / Make</span>
-                            <span class="skill-badge">OpenAI, Codex</span>
+                            <span class="skill-badge">Claude API (Anthropic SDK)</span>
+                            <span class="skill-badge">OpenAI API</span>
+                            <span class="skill-badge">MCP Servers</span>
+                            <span class="skill-badge">AI Agents · Tool Use</span>
                             <span class="skill-badge">Claude, Claude Code</span>
+                            <span class="skill-badge">OpenAI Codex</span>
                             <span class="skill-badge">RAG</span>
+                            <span class="skill-badge">n8n / Zapier MCP / Make</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">AI Integrations</div><div class="skill-line"><div class="skill-level" style="width:84%"></div></div></div>
@@ -283,14 +301,75 @@ include_once('inc/header.php');
                     <div class="skill-card shadow p-3 h-100">
                         <h4 class="skill-card-title">Security & Auth</h4>
                         <div class="skill-badges">
+                            <span class="skill-badge">NextAuth (Auth.js)</span>
                             <span class="skill-badge">JWT</span>
-                            <span class="skill-badge">OAuth 2.0</span>
-                            <span class="skill-badge">RBAC</span>
+                            <span class="skill-badge">OAuth 2.1 · PKCE</span>
+                            <span class="skill-badge">RBAC · Custom Permissions</span>
+                            <span class="skill-badge">AES-256-GCM Encryption</span>
+                            <span class="skill-badge">Rate Limiting</span>
                             <span class="skill-badge">OWASP</span>
                         </div>
                         <div class="skill-list mt-3">
                             <div class="skill-row"><div class="skill-name">Threat Modelling</div><div class="skill-line"><div class="skill-level" style="width:82%"></div></div></div>
                             <div class="skill-row"><div class="skill-name">Secure Design</div><div class="skill-line"><div class="skill-level" style="width:84%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: Testing & Quality -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Testing & Quality</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Vitest</span>
+                            <span class="skill-badge">Playwright (E2E)</span>
+                            <span class="skill-badge">k6 Load Testing</span>
+                            <span class="skill-badge">ESLint</span>
+                            <span class="skill-badge">CI Quality Gates</span>
+                            <span class="skill-badge">Structured Logging (Pino)</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Test Automation</div><div class="skill-line"><div class="skill-level" style="width:85%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Observability</div><div class="skill-line"><div class="skill-level" style="width:82%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: Integrations & Payments -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Integrations & Payments</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Stripe</span>
+                            <span class="skill-badge">Zoom Meeting SDK · Webinars</span>
+                            <span class="skill-badge">QuickBooks Online</span>
+                            <span class="skill-badge">Transactional Email (SES)</span>
+                            <span class="skill-badge">EventsAir (GraphQL)</span>
+                            <span class="skill-badge">DTCM eTicketing</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">Third-Party APIs</div><div class="skill-line"><div class="skill-level" style="width:90%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Payment Flows</div><div class="skill-line"><div class="skill-level" style="width:84%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: Architecture & Streaming -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card shadow p-3 h-100">
+                        <h4 class="skill-card-title">Architecture & Streaming</h4>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Multi-Tenant SaaS</span>
+                            <span class="skill-badge">Modular Monolith</span>
+                            <span class="skill-badge">Service Layer</span>
+                            <span class="skill-badge">Live Streaming (RTMP → HLS)</span>
+                            <span class="skill-badge">MediaMTX · hls.js</span>
+                            <span class="skill-badge">PDF / DOCX Generation</span>
+                            <span class="skill-badge">Disaster Recovery</span>
+                        </div>
+                        <div class="skill-list mt-3">
+                            <div class="skill-row"><div class="skill-name">System Design</div><div class="skill-line"><div class="skill-level" style="width:88%"></div></div></div>
+                            <div class="skill-row"><div class="skill-name">Domain Modelling</div><div class="skill-line"><div class="skill-level" style="width:86%"></div></div></div>
                         </div>
                     </div>
                 </div>

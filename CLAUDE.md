@@ -33,7 +33,7 @@ Personal portfolio website for Krishna Pallapolu, a Full Stack Developer based i
 ## Key Sections (index.php)
 
 - **About**: Profile card with contact info and social links
-- **Skills**: Technical skills organized by category (Frontend, Backend, CMS, DevOps, Databases, Security)
+- **Skills**: Nine skill cards (Frontend, Backend & APIs, DevOps & Cloud, Databases, AI & Automation, Security & Auth, Testing & Quality, Integrations & Payments, Architecture & Streaming). Each card leads with the stack proven in the EA-SYS platform, followed by earlier-career skills
 - **Work History**: Professional experience timeline
 - **Education**: Academic background
 
