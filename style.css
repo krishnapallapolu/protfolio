@@ -899,6 +899,22 @@ h1 .name {
 .case-study-content {
     padding: 25px;
 }
+/* Featured case study: icon panel beside the content on wide screens */
+@media (min-width: 992px) {
+    .case-study-card--featured {
+        display: flex;
+    }
+    .case-study-card--featured .case-study-image {
+        flex: 0 0 280px;
+        width: 280px;
+        height: auto;
+    }
+    .case-study-card--featured .case-study-content {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 30px;
+    }
+}
 
 .case-study-title {
     font-size: 1.4rem;

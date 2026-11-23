@@ -3,6 +3,50 @@
     <div class="container">
         <h2 class="text_shadow mb-5 text-center">Featured Work</h2>
         <div class="row g-4">
+            <!-- Featured Case Study: Event Management Platform -->
+            <div class="col-12">
+                <div class="case-study-card case-study-card--featured">
+                    <div class="case-study-image">
+                        <i class="fs-1 fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">Event Management Platform</h3>
+                        <p class="case-study-description">
+                            Architected and built a full-stack event management platform for medical conferences, webinars, and hybrid events, running in production at Meeting Minds.
+                            It covers the whole event lifecycle: registration and online payments, speakers and agenda, abstract submission and peer review, on-site check-in and badge printing, certificates, surveys, and bulk email, alongside CRM, HR, and budget &amp; procurement modules.
+                        </p>
+                        <p class="case-study-description">
+                            Ships through CI/CD to AWS with zero-downtime blue-green Docker deployments, a background worker tier, live RTMP → HLS webinar streaming, permission-based access control, and an AI agent plus MCP server that lets the events team run operations from Claude.
+                        </p>
+                        <div class="case-study-tech">
+                            <span class="tech-badge">Next.js 16</span>
+                            <span class="tech-badge">React 19</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">PostgreSQL · Prisma</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Stripe</span>
+                            <span class="tech-badge">Zoom SDK</span>
+                            <span class="tech-badge">Claude API · MCP</span>
+                        </div>
+                        <div class="case-study-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">540+</div>
+                                <div class="stat-label">API Routes</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">160+</div>
+                                <div class="stat-label">Data Models</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">1,100+</div>
+                                <div class="stat-label">Automated Test Suites</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Case Study 1: ETL & Social Automation -->
             <div class="col-lg-4 col-md-6">
                 <div class="case-study-card">
